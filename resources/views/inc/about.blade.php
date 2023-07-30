@@ -5,15 +5,16 @@
                 <div class="well-middle">
                     <div class="single-well">
 
-                        <h3 class="font-weight-bold">Panti Sosial Bina Insan Bangun Daya 1</h3>
+                        <h4 class="font-weight-bold">Panti Sosial Bina Insan Bangun Daya 1</h4>
 
                         <p style="font-size: 20px; line-height:2rem;">
                             Panti Sosial Bina Insan Bangun Daya 1 (PSBI BD 1) adalah unit pelaksana teknis Dinas Sosial yang berlokasi di Jakarta Barat, mempunyai tugas dalam pelaksanaan pengelolaan kegiatan pelayanan kesejahteraan sosial penampungan sementara dan bimbingan sosial awal PMKS hasil penertiban dan penjangkauan sosial. PSBI BD 1 mempunyain tugas melaksanakan pengelolaan kegiatan pelayanan kesejahteraan sosial PMKS hasil penertiban dan penjangkauan sosial.
                         </p>
+
+                        <h4 class="font-weight-bold">Struktur Organisasi</h4>
+
                         <div class="d-flex justify-content-center">
-                            <figure class="highcharts-figure">
-                                <div id="container-chart-organization"></div>
-                            </figure>
+                            <img src="{{ asset('assets') }}/compro/img/Struktur Organisasi.png" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>

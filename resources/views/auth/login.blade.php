@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets') }}/compro/img/PSBI 1.png" rel="icon">
+    <link href="{{ asset('assets') }}/compro/img/favicon.png" rel="icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/login/css/bootstrap.min.css">
@@ -23,8 +23,8 @@
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-9 col-lg-6 col-xl-4 text-right">
-                    <img src="{{ asset('assets') }}/login/images/PSBI Black 1.png" class="img-fluid" alt="Sample image">
+                <div class="col-md-9 col-lg-6 col-xl-4 text-center">
+                    <img src="{{ asset('assets') }}/compro/img/logo.png" class="img-fluid" alt="Logo">
                     <h3 class="text-center">Admin Panel</h3>
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4">

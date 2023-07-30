@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Controller::class, 'compro'])->name('compro');
 
 
-Route::prefix('admin')->group(function () {
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'procLogin'])->name('proc.login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'procLogin'])->name('proc.login');
 
+Route::prefix('admin')->group(function () {
+
+    Route::get('/', [AdminPanelController::class, 'home'])->name('home');
     
 });
