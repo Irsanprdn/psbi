@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         request()->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/admin/login');
     }
     public function procLogin()
     {
@@ -34,12 +34,12 @@ class AuthController extends Controller
                 auth()->logout();
                 return back()->withErrors([
                     'error' => true,
-                    'message' => 'Your email has not been activated, please check your email for activation',
+                    'message' => 'Your username not valid',
                 ]);
             }
             $user->last_login = date("Y-m-d H:i:s");
             $user->update();
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
 
         return back()->withErrors([

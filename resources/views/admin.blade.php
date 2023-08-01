@@ -12,6 +12,8 @@
     <link href="{{ asset('assets') }}/admin/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('assets') }}/admin/css/style.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,7 +35,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Admin Cengkareng/Kedoya</h3>
+                        <h3 class="page-title mb-0 p-0">{{ auth()->user()->fullname}}</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">

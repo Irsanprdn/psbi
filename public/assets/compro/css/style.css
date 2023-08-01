@@ -2991,3 +2991,7 @@ Thanks :)*/
     cursor: auto;
     pointer-events: none;
 }
+
+.form-control-feedback {
+    cursor: pointer !important;
+}

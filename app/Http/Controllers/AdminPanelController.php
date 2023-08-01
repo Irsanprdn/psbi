@@ -11,4 +11,25 @@ class AdminPanelController extends Controller
 
         return view('admin.home');
     }
+
+    public function about_us()
+    {
+
+        return view('admin.about_us');
+    }
+    public function activity()
+    {
+
+        return view('admin.activity');
+    }
+    public function contact()
+    {
+
+        return view('admin.contact');
+    }
+    public function data_wbs()
+    {
+
+        return view('admin.data_wbs');
+    }
 }

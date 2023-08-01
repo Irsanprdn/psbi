@@ -30,12 +30,12 @@
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <form action="{{route('proc.login')}}" method="post">
                         @csrf
-                        <!-- Username input -->
+                        <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label font-weight-bold" for="form3Example3">Username</label>
+                            <label class="form-label font-weight-bold" for="form3Example3">Email</label>
                             <div class="form-group has-icon">
                                 <span class="icon-user form-control-feedback"></span>
-                                <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Masukan Username" />
+                                <input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Masukan Email" />
                             </div>
                         </div>
 
@@ -45,12 +45,12 @@
                             <div class="form-group has-icon">
                                 <span class="icon-lock form-control-feedback"></span>
                                 <span class="icon-eye toggle-password"></span>
-                                <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Masukan Password" />
+                                <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Masukan Password" />
                             </div>
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="button" class="btn btn-primary btn-lg w-100" style="padding-left: 2.5rem; padding-right: 2.5rem; background: #0A215A;">Login</button>
+                            <button type="submit" class="btn btn-primary btn-lg w-100" style="padding-left: 2.5rem; padding-right: 2.5rem; background: #0A215A;">Login</button>
                         </div>
 
                     </form>
@@ -64,7 +64,7 @@
     <script>
         $(".toggle-password").click(function() {
             $(this).toggleClass("icon-eye icon-eye-slash");
-            
+
             input = $(this).parent().find("input");
             if (input.attr("type") == "password") {
                 input.attr("type", "text");
