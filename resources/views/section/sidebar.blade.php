@@ -25,13 +25,13 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <!-- User Profile-->
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="me-3 far fa-clock fa-fw" aria-hidden="true"></i><span class="hide-menu">Home</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="me-3 fas fa-home fa-fw" aria-hidden="true"></i><span class="hide-menu">Home</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-profile.html" aria-expanded="false">
-                        <i class="me-3 fa fa-user" aria-hidden="true"></i><span class="hide-menu">About Us</span></a>
+                        <i class="me-3 fa fa-circle-info" aria-hidden="true"></i><span class="hide-menu">About Us</span></a>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html" aria-expanded="false"><i class="me-3 fa fa-table" aria-hidden="true"></i><span class="hide-menu">Activity</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-fontawesome.html" aria-expanded="false"><i class="me-3 fa fa-font" aria-hidden="true"></i><span class="hide-menu">Contact</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html" aria-expanded="false"><i class="me-3 fa fa-globe" aria-hidden="true"></i><span class="hide-menu">Data WBS</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-fontawesome.html" aria-expanded="false"><i class="me-3 fa fa-location-dot" aria-hidden="true"></i><span class="hide-menu">Contact</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html" aria-expanded="false"><i class="me-3 fa fa-users" aria-hidden="true"></i><span class="hide-menu">Data WBS</span></a></li>
                 <li class="text-center p-20 upgrade-btn mt-5">
                     <a href="https://www.wrappixel.com/templates/monsteradmin/" class="btn btn-danger text-white mt-4" target="_blank">Logout</a>
                 </li>

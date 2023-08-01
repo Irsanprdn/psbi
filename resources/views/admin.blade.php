@@ -11,7 +11,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('assets') }}/admin/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset('assets') }}/admin/css/style.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -42,13 +42,15 @@
                                 </ol>
                             </nav>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
 
             <div class="container-fluid">
-                <div class="div-scroll">
-                    @yield('content')
+                <div class="card">
+                    <div class="card-body overflow-auto div-scroll">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
