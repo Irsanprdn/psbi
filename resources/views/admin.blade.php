@@ -11,7 +11,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('assets') }}/admin/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset('assets') }}/admin/css/style.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/css/style.css?v=1.0" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 </head>

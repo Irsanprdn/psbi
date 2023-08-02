@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/login/css/bootstrap.min.css">
     <!-- Icon Icomoon -->
     <link rel="stylesheet" href="{{ asset('assets') }}/login/fonts/icomoon/style.css">
-    <link rel="stylesheet" href="{{ asset('assets') }}/login/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/login/css/style.css?v=1.1">
 </head>
 
 <body>
