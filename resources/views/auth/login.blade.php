@@ -30,12 +30,15 @@
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <form action="{{route('proc.login')}}" method="post">
                         @csrf
-                        <!-- Email input -->
+                        <!-- Username input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label font-weight-bold" for="form3Example3">Email</label>
+                            <label class="form-label font-weight-bold" for="form3Example3">Username</label>
                             <div class="form-group has-icon">
                                 <span class="icon-user form-control-feedback"></span>
-                                <input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Masukan Email" />
+                                <input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Masukan Username" />
+                                @if($errors->has('email'))
+                                <span id="inputEmail-error" class="error invalid-feedback">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                         </div>
 

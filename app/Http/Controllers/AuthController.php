@@ -24,9 +24,11 @@ class AuthController extends Controller
     public function procLogin()
     {
         $credentials = request()->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required'],
             'password' => ['required'],
         ]);
+        $credentials['email'] = $credentials['email'].'@admin.com';
+        // dd($credentials);
         if (auth()->attempt($credentials)) {
             request()->session()->regenerate();
             $user = User::find(auth()->user()->id);
