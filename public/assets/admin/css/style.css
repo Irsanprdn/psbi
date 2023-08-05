@@ -32,6 +32,8 @@ File: scss
 
 /*Dark transparent bg*/
 
+
+/* @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
@@ -43,15 +45,27 @@ File: scss
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
-@import url(icons/font-awesome/css/fontawesome-all.css);
-@import url(icons/simple-line-icons/css/simple-line-icons.css);
-@import url(icons/weather-icons/css/weather-icons.min.css);
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800"); */
+
+
+/* @import url(icons/font-awesome/css/fontawesome-all.css); */
+
+
+/* @import url(icons/simple-line-icons/css/simple-line-icons.css); */
+
+
+/* @import url(icons/weather-icons/css/weather-icons.min.css); */
+
 @import url(icons/themify-icons/themify-icons.css);
-@import url(icons/flag-icon-css/flag-icon.min.css);
-@import url(icons/material-design-iconic-font/css/materialdesignicons.min.css);
-@import url(icons/crypto-icons/cryptocoins.css);
+
+/* @import url(icons/flag-icon-css/flag-icon.min.css); */
+
+
+/* @import url(icons/material-design-iconic-font/css/materialdesignicons.min.css); */
+
+
+/* @import url(icons/crypto-icons/cryptocoins.css); */
+
 .search-box .app-search .form-control,
 .topbar .mega-dropdown .dropdown-menu {
     border-radius: 0px;
@@ -2534,6 +2548,9 @@ pre code {
     }
     .table-responsive-sm>.table-bordered {
         border: 0;
+    }
+    .dataTables_scrollBody {
+        max-height: 275px !important;
     }
 }
 
@@ -12467,6 +12484,7 @@ Table-Jsgrid table
     font-family: themify;
     color: #ced4da;
     font-size: 11px;
+    display: none;
 }
 
 
@@ -22500,16 +22518,6 @@ File: scss
 @media (max-width: 991.98px) {
     .do-block {
         display: block !important;
-    }
-}
-
-.div-scroll {
-    min-height: 80vh;
-}
-
-@media (max-width: 576px) {
-    .div-scroll {
-        min-height: 65vh;
     }
 }
 

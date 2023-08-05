@@ -27,9 +27,15 @@ class AdminPanelController extends Controller
 
         return view('admin.contact');
     }
-    public function data_wbs()
+    public function wbs_data()
     {
 
-        return view('admin.data_wbs');
+        return view('admin.wbs_data');
+    }
+
+    public function master_data()
+    {
+
+        return view('admin.master_data');
     }
 }
