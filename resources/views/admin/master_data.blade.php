@@ -4,7 +4,7 @@
 
 <div class="table-responsive">
     <table id="master-data" class="display" style="width:100%">
-        <thead>
+        <thead class="bg-base text-light">
             <tr>
                 <th>Name</th>
                 <th>Position</th>
