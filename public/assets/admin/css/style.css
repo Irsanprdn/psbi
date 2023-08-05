@@ -2550,7 +2550,7 @@ pre code {
         border: 0;
     }
     .dataTables_scrollBody {
-        max-height: 275px !important;
+        max-height: 250px !important;
     }
 }
 

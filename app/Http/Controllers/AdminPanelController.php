@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class AdminPanelController extends Controller
@@ -36,6 +37,12 @@ class AdminPanelController extends Controller
     public function master_data()
     {
 
-        return view('admin.master_data');
+        $sql = "SELECT * FROM basic_data ";
+        $data = DB::select($sql);
+
+        $sqListGroup = "SELECT group_id,group_name FROM basic_data GROUP BY group_id,group_name ";
+        $dataListGroup = DB::select($sqListGroup);
+
+        return view('admin.master_data',compact('data', 'dataListGroup'));
     }
 }

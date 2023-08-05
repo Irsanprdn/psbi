@@ -11,7 +11,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('assets') }}/admin/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset('assets') }}/admin/css/style.css?v=1.1" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/css/style.css?v=1.2" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -56,7 +56,7 @@
 
             <div class="container-fluid">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="height: 500px;">
                         @yield('content')
                     </div>
                 </div>
