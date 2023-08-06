@@ -71,8 +71,8 @@
                 <td>{{ $d->updated_by ?? ''}}</td>
                 <td>{{ $d->updated_date ?? '' }}</td>
                 <td>
-                    <a href="{{ route('master_data.edit',[$d->group_id,$d->data_id]) }}" type="button" class="btn btn-sm btn-warning" title="Ubah"><i class="bi bi-pencil"></i> </button>
-                    <a href="{{ route('master_data.delete',[$d->group_id,$d->data_id]) }}" type="button" class="btn btn-sm btn-danger" title="Hapus"><i class="bi bi-trash"></i> </button>
+                    <a href="{{ route('master_data.edit',[$d->group_id,$d->data_id]) }}" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
+                    <a href="{{ route('master_data.delete',[$d->group_id,$d->data_id]) }}" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
                 </td>
             </tr>
             @endforeach

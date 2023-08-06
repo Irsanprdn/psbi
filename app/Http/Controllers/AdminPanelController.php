@@ -38,7 +38,7 @@ class AdminPanelController extends Controller
     public function master_data()
     {
 
-        $sql = "SELECT * FROM basic_data WHERE is_delete = 'N'";
+        $sql = "SELECT * FROM basic_data WHERE is_delete = 'N' ORDER BY group_id,data_id DESC";
         $data = DB::select($sql);
 
         $sqListGroup = "SELECT group_id,group_name FROM basic_data WHERE is_delete = 'N' GROUP BY group_id,group_name ";
