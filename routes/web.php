@@ -32,6 +32,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/activity', [AdminPanelController::class, 'activity'])->name('activity');
         Route::get('/contact', [AdminPanelController::class, 'contact'])->name('contact');
         Route::get('/wbs_data', [AdminPanelController::class, 'wbs_data'])->name('wbs_data');
-        Route::get('/master_data', [AdminPanelController::class, 'master_data'])->name('master_data');
+
+        Route::prefix('master_data')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'master_data'])->name('master_data');
+            Route::post('/post', [AdminPanelController::class, 'master_data_post'])->name('master_data.post');
+            Route::get('/edit/{groupId}/{basicId}', [AdminPanelController::class, 'master_data_edit'])->name('master_data.edit');
+            Route::get('/delete/{groupId}/{basicId}', [AdminPanelController::class, 'master_data_delete'])->name('master_data.delete');
+        });
     });
 });
