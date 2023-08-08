@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
         Route::prefix('master_data')->group(function () {
             Route::get('/', [AdminPanelController::class, 'master_data'])->name('master_data');
             Route::post('/post', [AdminPanelController::class, 'master_data_post'])->name('master_data.post');
-            Route::get('/edit/{groupId}/{basicId}', [AdminPanelController::class, 'master_data_edit'])->name('master_data.edit');
+            Route::post('/edit', [AdminPanelController::class, 'master_data_edit'])->name('master_data.edit');
             Route::get('/delete/{groupId}/{basicId}', [AdminPanelController::class, 'master_data_delete'])->name('master_data.delete');
         });
     });

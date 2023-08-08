@@ -18,9 +18,7 @@ class Controller extends BaseController
 
     public function autoNumber($id)
     {
-        $id = $id + 1;
-        $jumlahId = strlen($id);
-        $jumlahAngka = 6 - $jumlahId;
-        return sprintf("%0".$jumlahAngka."s",$id);
+        $id = (int)$id + 1;
+        return sprintf("%06s",$id);
     }
 }
