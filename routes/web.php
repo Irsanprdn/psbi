@@ -31,8 +31,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/about_us', [AdminPanelController::class, 'about_us'])->name('about_us');
         Route::get('/activity', [AdminPanelController::class, 'activity'])->name('activity');
         Route::get('/contact', [AdminPanelController::class, 'contact'])->name('contact');
-        Route::get('/wbs_data', [AdminPanelController::class, 'wbs_data'])->name('wbs_data');
 
+        Route::prefix('wbs_data')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'wbs_data'])->name('wbs_data');
+            Route::post('/import', [AdminPanelController::class, 'wbs_data_import'])->name('wbs_data.import');
+        });
         Route::prefix('master_data')->group(function () {
             Route::get('/', [AdminPanelController::class, 'master_data'])->name('master_data');
             Route::post('/post', [AdminPanelController::class, 'master_data_post'])->name('master_data.post');

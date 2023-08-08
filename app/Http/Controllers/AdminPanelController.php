@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Imports\WBSImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminPanelController extends Controller
 {
@@ -31,8 +33,31 @@ class AdminPanelController extends Controller
     }
     public function wbs_data()
     {
+        $sql = "SELECT * FROM wbs WHERE is_delete = 'N' ORDER BY nama ASC ";
+        $data = DB::select($sql);
+        return view('admin.wbs_data', compact('data'));
+    }
 
-        return view('admin.wbs_data');
+    public function wbs_data_import(Request $req)
+    {
+
+        // menangkap file excel
+        $file = $req->file('importData');
+            // DD($file);
+        // membuat nama file unik
+        $nama_file = rand() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('public/uploads/file_WBS', $nama_file);
+
+        // import data
+        $importAct = Excel::import(new WBSImport(), public_path('/uploads/file_WBS/'.$nama_file));
+        
+        if ($importAct) {
+            return redirect()->route('wbs_data')->with('success', 'Data berhasil diimport');
+        }else{
+            return redirect()->route('wbs_data')->with('error', 'Data gagal diimport');
+        }
     }
 
     public function master_data()
