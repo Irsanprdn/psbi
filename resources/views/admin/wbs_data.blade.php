@@ -5,29 +5,43 @@
 <div class="table-responsive">
 
     @if (session('error'))
-    <div class="alert my-3 alert-danger">{{ session('error') }}</div>
+    <div class="alert my-3 alert-danger">{{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     @endif
     @if (session('success'))
-    <div class="alert my-3 alert-success">{{ session('success') }}</div>
+    <div class="alert my-3 alert-success">{{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     @endif
 
     <table id="wbs-data" class="table table-bordered table-striped table-hover" style="width:100%">
         <thead class="bg-base text-light">
             <tr>
-                <th>No</th>
-                <th>Photo</th>
-                <th>Nama</th>
-                <th>Umur</th>
-                <th>Tgl. masuk</th>
-                <th>Asal</th>
-                <th>Domisili</th>
-                <th>Alamat</th>
-                <th>Klasifikasi</th>
-                <th>Hasil Jangkauan</th>
-                <th>Lokasi</th>
-                <th>Sumber</th>
-                <th>Status</th>
-                <th>Aksi</th>
+                <th class="text-capitalize"> no </th>
+                <th class="text-capitalize"> foto </th>
+                <th class="text-capitalize"> nama </th>
+                <th class="text-capitalize"> jenis kelamin </th>
+                <th class="text-capitalize"> umur </th>
+                <th class="text-capitalize"> status </th>
+                <th class="text-capitalize"> pendidikan </th>
+                <th class="text-capitalize"> agama </th>
+                <th class="text-capitalize"> tanggal masuk </th>
+                <th class="text-capitalize"> asal </th>
+                <th class="text-capitalize"> domisili </th>
+                <th class="text-capitalize"> alamat </th>
+                <th class="text-capitalize"> hasil jangkauan </th>
+                <th class="text-capitalize"> status pernikahan </th>
+                <th class="text-capitalize"> klasifikasi </th>
+                <th class="text-capitalize"> lokasi </th>
+                <th class="text-capitalize"> sumber </th>
+                <th class="text-capitalize"> updated by </th>
+                <th class="text-capitalize"> updated date </th>
+                <th class="text-capitalize"> aksi </th>
             </tr>
         </thead>
         <tbody>
@@ -35,27 +49,33 @@
 
             @foreach( $data as $d )
             @php
-            
-            $default =  ENV('ASSET_URL')."/assets/compro/img/user.png";
+
+            $default = ENV('ASSET_URL')."/assets/compro/img/user.png";
             $foto = 'https://drive.google.com/uc?export=view&id='. $d->foto;
-            $foto = ( $d->foto == '' ? $default : $foto  );
+            $foto = ( $d->foto == '' ? $default : $foto );
             @endphp
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>
-                    <img src="{{ $foto }}" alt="Foto {{ $d->nama }} )" style="width:50px; height:60px">
+                    <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width:50px; height:60px">
                 </td>
-                <td>{{ $d->nama }}</td>
-                <td>{{ $d->umur }}</td>
-                <td>{{ $d->tanggal_masuk }}</td>
-                <td>{{ $d->asal }}</td>
-                <td>{{ $d->domisili }}</td>
-                <td>{{ $d->alamat }}</td>
-                <td>{{ $d->klasifikasi }}</td>
-                <td>{{ $d->hasil_jangkauan }}</td>
-                <td>{{ $d->lokasi }}</td>
-                <td>{{ $d->sumber }}</td>
-                <td>{{ $d->status }}</td>
+                <td> {{$d->nama}} </td>
+                <td> {{$d->jenis_kelamin}} </td>
+                <td> {{$d->umur}} </td>
+                <td> {{$d->statusNm}} </td>
+                <td> {{$d->pendidikanNm}} </td>
+                <td> {{$d->agamaNm}} </td>
+                <td> {{$d->tanggal_masuk}} </td>
+                <td> {{$d->asal}} </td>
+                <td> {{$d->domisili}} </td>
+                <td> {{$d->alamat}} </td>
+                <td> {{$d->hjNm}} </td>
+                <td> {{$d->spNm}} </td>
+                <td> {{$d->klasifikasi}} </td>
+                <td> {{$d->lokasi}} </td>
+                <td> {{$d->sumber}} </td>
+                <td> {{$d->updated_by}} </td>
+                <td> {{$d->updated_date}} </td>
                 <td>
                     <a href="#" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </a>
                     <a href="#" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
@@ -71,7 +91,7 @@
 
     <button class="btn btn-sm btn-primary bg-base" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
 
-    <a href="{{ asset('assets') }}/template.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-download"></i> Download Template</a>
+    <a href="{{ asset('assets') }}/templet.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-download"></i> Download Template</a>
 </div>
 
 

@@ -34,7 +34,61 @@ class AdminPanelController extends Controller
     }
     public function wbs_data()
     {
-        $data = WBS::where('is_delete', 'N')->get();
+        $data = WBS::select(
+            DB::raw(' nama,
+            jenis_kelamin,
+            umur,
+            status,
+            pendidikan,
+            tanggal_masuk,
+            agama,
+            asal,
+            domisili,
+            alamat,
+            hasil_jangkauan,
+            status_pernikahan,
+            klasifikasi,
+            lokasi,
+            sumber,
+            foto,
+            wbs.updated_by,
+            wbs.updated_date,
+            wbs.is_delete, 
+            IFNULL(`bsAgama`.data_name,agama) as agamaNm,
+            IFNULL(`bsJK`.data_name,jenis_kelamin) as jkNm, 
+            IFNULL(`bsPendidikan`.data_name,pendidikan) as pendidikanNm, 
+            IFNULL(`bsHJ`.data_name,hasil_jangkauan) as hjNm, 
+            IFNULL(`bsSP`.data_name,status_pernikahan) as spNm, 
+            IFNULL(`bsStatus`.data_name,status) as statusNm 
+            ')
+
+        )
+            ->leftJoin('basic_data as bsAgama', function ($join1) {
+                $join1->on('bsAgama.group_id', '=', DB::raw("'000001'"));
+                $join1->on('wbs.agama', '=', 'bsAgama.data_id');
+            })
+            ->leftJoin('basic_data as bsJK', function ($join2) {
+                $join2->on('bsJK.group_id', '=', DB::raw("'000002'"));
+                $join2->on('wbs.agama', '=', 'bsJK.data_id');
+            })
+            ->leftJoin('basic_data as bsPendidikan', function ($join3) {
+                $join3->on('bsPendidikan.group_id', '=', DB::raw("'000003'"));
+                $join3->on('wbs.agama', '=', 'bsPendidikan.data_id');
+            })
+            ->leftJoin('basic_data as bsHJ', function ($join4) {
+                $join4->on('bsHJ.group_id', '=', DB::raw("'000004'"));
+                $join4->on('wbs.agama', '=', 'bsHJ.data_id');
+            })
+            ->leftJoin('basic_data as bsSP', function ($join5) {
+                $join5->on('bsSP.group_id', '=', DB::raw("'000005'"));
+                $join5->on('wbs.agama', '=', 'bsSP.data_id');
+            })
+            ->leftJoin('basic_data as bsStatus', function ($join6) {
+                $join6->on('bsStatus.group_id', '=', DB::raw("'000006'"));
+                $join6->on('wbs.agama', '=', 'bsStatus.data_id');
+            })
+            ->where('wbs.is_delete', 'N')->get();
+        
         return view('admin.wbs_data', compact('data'));
     }
 
@@ -43,7 +97,7 @@ class AdminPanelController extends Controller
 
         // menangkap file excel
         $file = $req->file('importData');
-            // DD($file);
+        // DD($file);
         // membuat nama file unik
         $nama_file = rand() . $file->getClientOriginalName();
 
@@ -51,11 +105,11 @@ class AdminPanelController extends Controller
         $file->move('public/uploads/file_WBS', $nama_file);
 
         // import data
-        $importAct = Excel::import(new WBSImport(), public_path('/uploads/file_WBS/'.$nama_file));
-        
+        $importAct = Excel::import(new WBSImport(), public_path('/uploads/file_WBS/' . $nama_file));
+
         if ($importAct) {
             return redirect()->route('wbs_data')->with('success', 'Data berhasil diimport');
-        }else{
+        } else {
             return redirect()->route('wbs_data')->with('error', 'Data gagal diimport');
         }
     }
