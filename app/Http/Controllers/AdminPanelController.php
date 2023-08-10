@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Imports\WBSImport;
+use App\Models\WBS;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminPanelController extends Controller
@@ -33,8 +34,7 @@ class AdminPanelController extends Controller
     }
     public function wbs_data()
     {
-        $sql = "SELECT * FROM wbs WHERE is_delete = 'N' ORDER BY nama ASC ";
-        $data = DB::select($sql);
+        $data = WBS::where('is_delete', 'N')->get();
         return view('admin.wbs_data', compact('data'));
     }
 

@@ -56,7 +56,7 @@
 
             <div class="container-fluid">
                 <div class="card">
-                    <div class="card-body" style="height: 500px;">
+                    <div class="card-body" style="min-height: 500px;">
                         @yield('content')
                     </div>
                 </div>

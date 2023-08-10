@@ -15,35 +15,51 @@
         <thead class="bg-base text-light">
             <tr>
                 <th>No</th>
+                <th>Photo</th>
                 <th>Nama</th>
                 <th>Umur</th>
                 <th>Tgl. masuk</th>
                 <th>Asal</th>
+                <th>Domisili</th>
                 <th>Alamat</th>
                 <th>Klasifikasi</th>
                 <th>Hasil Jangkauan</th>
                 <th>Lokasi</th>
+                <th>Sumber</th>
                 <th>Status</th>
-                <th>Photo</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1;?>
+            <?php $no = 1; ?>
+
             @foreach( $data as $d )
+            @php
+            
+            $default =  ENV('ASSET_URL')."/assets/compro/img/user.png";
+            $foto = 'https://drive.google.com/uc?export=view&id='. $d->foto;
+            $foto = ( $d->foto == '' ? $default : $foto  );
+            @endphp
             <tr>
-                <td class="text-nowrap">{{ $no++ }}</td>
-                <td class="text-nowrap">{{ $d->nama }}</td>
-                <td class="text-nowrap">{{ $d->umur }}</td>
-                <td class="text-nowrap">{{ $d->tanggal_masuk }}</td>
-                <td class="text-nowrap">{{ $d->asal }}</td>
-                <td class="text-nowrap">{{ $d->domisili }}</td>
-                <td class="text-nowrap">{{ $d->alamat }}</td>
-                <td class="text-nowrap">{{ $d->klasifikasi }}</td>
-                <td class="text-nowrap">{{ $d->hasil_jangkauan }}</td>
-                <td class="text-nowrap"></td>
-                <td class="text-nowrap">{{ $d->status }}</td>
-                <td class="text-nowrap"></td>
+                <td>{{ $no++ }}</td>
+                <td>
+                    <img src="{{ $foto }}" alt="Foto {{ $d->nama }} )" style="width:50px; height:60px">
+                </td>
+                <td>{{ $d->nama }}</td>
+                <td>{{ $d->umur }}</td>
+                <td>{{ $d->tanggal_masuk }}</td>
+                <td>{{ $d->asal }}</td>
+                <td>{{ $d->domisili }}</td>
+                <td>{{ $d->alamat }}</td>
+                <td>{{ $d->klasifikasi }}</td>
+                <td>{{ $d->hasil_jangkauan }}</td>
+                <td>{{ $d->lokasi }}</td>
+                <td>{{ $d->sumber }}</td>
+                <td>{{ $d->status }}</td>
+                <td>
+                    <a href="#" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </a>
+                    <a href="#" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -51,9 +67,11 @@
 </div>
 
 <div id="btn-add" class="d-none">
-    <button class="btn btn-sm btn-primary bg-base" data-toggle="modal" data-target="#importModal"><i class="bi bi-download"></i> Import Data</button>
+    <button class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</button>
 
-    <button class="btn btn-sm btn-primary bg-base btn-adds" data-toggle="collapse" href="#collapseTambahData" role="button" aria-expanded="false" aria-controls="collapseTambahData" type="button"><i class="bi bi-plus"></i> Tambah Data</button>
+    <button class="btn btn-sm btn-primary bg-base" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
+
+    <a href="{{ asset('assets') }}/template.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-download"></i> Download Template</a>
 </div>
 
 
