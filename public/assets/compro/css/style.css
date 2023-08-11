@@ -2589,7 +2589,7 @@ span.email-notes {
         padding: 0;
     }
     .search-depan {
-        width: 300px !important;
+        width: 275px !important;
     }
 }
 
@@ -2994,4 +2994,41 @@ Thanks :)*/
 
 .form-control-feedback {
     cursor: pointer !important;
+}
+
+#konten-dua {
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 15vh;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (max-height: 680px) {
+    #konten-dua {
+        width: 100%;
+        min-height: 100vh;
+        margin-top: 17vh;
+        background: #fff;
+        overflow: hidden;
+        position: relative;
+    }
+}
+
+.text-base {
+    color: #0D2A64 !important;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.img-pencarian {
+    width: 140px;
+    height: 155px;
+}
+
+.accordion-button::after {
+    display: none;
 }

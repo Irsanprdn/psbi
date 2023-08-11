@@ -35,7 +35,7 @@ class AdminPanelController extends Controller
     public function wbs_data()
     {
         $data = WBS::select(
-            DB::raw(' nama,
+            DB::raw('nomor_panti, nama,
             jenis_kelamin,
             umur,
             status,
