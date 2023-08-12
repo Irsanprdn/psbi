@@ -124,13 +124,13 @@
             groupId: groupId,
             dataId: dataId
         }
-        var fromData = JSON.stringify(data);
+        var formData = JSON.stringify(data);
         $.ajax({
             type: 'POST',
             url: "{{  route('master_data.edit') }}",
             contentType: "application/json",
             processData: false,
-            data: fromData,
+            data: formData,
             success: function(response) {
                 console.log(response)
                 if (response.code == 200) {

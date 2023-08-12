@@ -79,6 +79,7 @@ class Controller extends BaseController
         return view('index', compact('data', 'dataStatus', 'dataHJ'));
     }
 
+
     public function autoNumber($id)
     {
         $id = (int)$id + 1;

@@ -200,6 +200,17 @@ div#preloader {
     background: #fff url("../img/preloader.gif") no-repeat center center;
 }
 
+div#preloader2 {
+    /* position: fixed; */
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: #fff url("../img/preloader.gif") no-repeat center center;
+}
+
 ::-moz-selection {
     background: #3EC1D5;
     text-shadow: none;
@@ -3025,8 +3036,8 @@ Thanks :)*/
 }
 
 .img-pencarian {
-    width: 140px;
-    height: 155px;
+    width: 125px;
+    height: 130px;
 }
 
 .accordion-button::after {
