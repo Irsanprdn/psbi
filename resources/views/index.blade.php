@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/login/fonts/icomoon/style.css">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.2" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.3" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: eBusiness
@@ -243,10 +243,10 @@
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +
-                                '<div class="col-md-4 px-0">' +
-                                '<div class="accordion" id="accordion' + value['nomor_panti'] + '">' +
+                                '<div class="col-md-4 custom-mobile-accordion px-0">' +
+                                '<div class="accordion " id="accordion' + value['nomor_panti'] + '">' +
                                 '<div class="accordion-item">' +
-                                '<p class="accordion-header bg-light text-base text-center" id="heading' + value['nomor_panti'] + '" style="margin-top:-30px;">' +
+                                '<p class="accordion-header custom-mobile-accordion-2 bg-light text-base text-center" id="heading' + value['nomor_panti'] + '" style="margin-top:-30px;">' +
                                 '<a class="px-2 py-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' + value['nomor_panti'] + '" aria-expanded="false" aria-controls="collapse' + value['nomor_panti'] + '" style="font-size:13px;">' +
                                 ' Keterangan Tambahan ' +
                                 '</a>' +

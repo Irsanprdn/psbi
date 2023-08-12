@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 d-xs-none">
             <div class="my-3">
                 <p class="text-base font-weight-bold mb-0"> Status</p>
                 <input type="hidden" id="statusval">
