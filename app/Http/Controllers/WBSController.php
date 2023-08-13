@@ -95,7 +95,11 @@ class WBSController extends Controller
     {
         if ( $id == 0 ) { //create
             
+
+
         }else{ //update
+
+            
 
         }
 
@@ -161,6 +165,7 @@ class WBSController extends Controller
         ]);
     }
 
+
     public function wbs_data_import(Request $req)
     {
         // menangkap file excel
@@ -179,6 +184,21 @@ class WBSController extends Controller
             return redirect()->route('wbs_data')->with('success', 'Data berhasil diimport');
         } else {
             return redirect()->route('wbs_data')->with('error', 'Data gagal diimport');
+        }
+    }
+
+    public function wbs_data_delete($id)
+    {
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+        $sqlUpd = DB::update(" UPDATE wbs SET  is_delete = 'Y', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND nomor_panti = '" . $id . "'  ");
+
+        if ($sqlUpd) {
+
+            return redirect()->route('wbs_data')->with('success', 'Data berhasil dihapus');
+        } else {
+
+            return redirect()->route('wbs_data')->with('error', 'Data gagal dihapus');
         }
     }
 }
