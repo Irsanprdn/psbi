@@ -69,7 +69,7 @@ class WBSController extends Controller
             })
             ->where('wbs.is_delete', 'N')->get();
 
-        return view('admin.wbs_data.index', compact('data'));
+        return view('admin.wbs_data', compact('data'));
     }
 
     public function wbs_data_input($id)

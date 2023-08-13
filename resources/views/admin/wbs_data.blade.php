@@ -121,12 +121,13 @@
 @endsection
 @section('js')
 <script>
+    var height = $('#getHeight').height()    
     new DataTable('#wbs-data', {
         fixedHeader: true,
         paging: false,
         scrollCollapse: true,
         scrollX: true,
-        scrollY: 350,
+        scrollY: height-125,
         bLengthChange: true,
         bInfo: false,
         "initComplete": function(settings, json) {

@@ -71,8 +71,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="Asal"><span class="text-danger">*</span> Asal</label>
-                    <select name="asal" id="asal" class="form-control" required>
+                    <label for="Asal"><span class="text-danger">*</span> Asal</label><br>
+                    <select name="asal" id="asal" class="select-search form-control" required>
                         <option value="" class="text-secondary">Pilih Asal</option>
                         @foreach( $dataKota as $dk)
                         <option value="{{ $dk->id }}" class="text-dark">{{ $dk->name }}</option>
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <label for="Domisili"><span class="text-danger">*</span> Domisili</label>
-                    <select name="domisili" id="domisili" class="form-control" required>
+                    <select name="domisili" id="domisili" class="select-search form-control" required>
                         <option value="" class="text-secondary">Pilih Domisili</option>
                         @foreach( $dataKota as $dk)
                         <option value="{{ $dk->id }}" class="text-dark">{{ $dk->name }}</option>
@@ -103,8 +103,12 @@
         <div class="row">
             <div class="col-md-6 col-12">
                 <div class="form-group">
-                    <label for="nama"><span class="text-danger">*</span> Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama" required>
+                    <label for="nama"><span class="text-danger">*</span> Lokasi</label>
+                    <select name="lokasi" id="lokasi" class="form-control">
+                        <option value="">Pilih Lokasi</option>
+                        <option value="Kedoya">PSBI Bangun Daya 1 Kedoya</option>
+                        <option value="Cengkareng">PSBI Bangun Daya 1 Cengkareng</option>
+                    </select>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -200,5 +204,9 @@
 </form>
 @endsection
 @section('js')
-
+<script>
+    $(document).ready(function() {
+        $('.select-search').select2();
+    });
+</script>
 @endsection
