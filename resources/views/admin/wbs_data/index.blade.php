@@ -77,8 +77,8 @@
                 <td> {{$d->updated_by}} </td>
                 <td> {{$d->updated_date}} </td>
                 <td>
-                    <a href="#" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </a>
-                    <a href="#" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                    <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </a>
+                    <a href="{{ route('wbs_data.delete', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
                 </td>
             </tr>
             @endforeach
@@ -87,7 +87,7 @@
 </div>
 
 <div id="btn-add" class="d-none">
-    <button class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</button>
+    <a  href="{{ route('wbs_data.input', 0) }}" class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</a>
 
     <button class="btn btn-sm btn-primary bg-base" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
 

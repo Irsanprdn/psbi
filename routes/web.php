@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\WBSController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controller::class, 'compro'])->name('compro');
 
-Route::post('/search', [AdminPanelController::class, 'wbs_search'])->name('wbs.search');
+Route::post('/search', [WBSController::class, 'wbs_search'])->name('wbs.search');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -34,8 +35,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/contact', [AdminPanelController::class, 'contact'])->name('contact');
 
         Route::prefix('wbs_data')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'wbs_data'])->name('wbs_data');
-            Route::post('/import', [AdminPanelController::class, 'wbs_data_import'])->name('wbs_data.import');
+            Route::get('/', [WBSController::class, 'wbs_data'])->name('wbs_data');
+            Route::get('/input/{id}', [WBSController::class, 'wbs_data_input'])->name('wbs_data.input');
+            Route::post('/post/{id}', [WBSController::class, 'wbs_data_post'])->name('wbs_data.post');
+            Route::get('/delete/{id}', [WBSController::class, 'wbs_data_delete'])->name('wbs_data.delete');
+            Route::post('/import', [WBSController::class, 'wbs_data_import'])->name('wbs_data.import');
         });
         Route::prefix('master_data')->group(function () {
             Route::get('/', [AdminPanelController::class, 'master_data'])->name('master_data');

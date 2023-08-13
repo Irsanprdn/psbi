@@ -32,10 +32,10 @@
                 <div class="col-md-4 col-12">
                     <div class="form-group">
                         <label for="catatan">Catatan</label>
-                        <input type="text" name="note" id="note" class="form-control" placeholder="Masukan Catata">
+                        <input type="text" name="note" id="note" class="form-control" placeholder="Masukan Catatan">
                     </div>
                     <p class="text-right mt-3 pb-0 mb-0">
-                        <button class="btn btn-sm btn-success" type="button" onclick="resetForm()"><i class="bi bi-save"></i> Reset Form</button>
+                        <button class="btn btn-sm btn-secondary" type="button" onclick="resetForm()"><i class="bi bi-arrow-clockwise"></i> Reset Form</button>
                         <button class="btn btn-sm btn-success" type="submit"><i class="bi bi-save"></i> Simpan Data</button>
                     </p>
                 </div>
