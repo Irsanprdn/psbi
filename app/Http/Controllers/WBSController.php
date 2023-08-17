@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\WBSImport;
 use App\Models\WBS;
 use Maatwebsite\Excel\Facades\Excel;
+use Image;
 
 class WBSController extends Controller
 {
@@ -67,7 +68,7 @@ class WBSController extends Controller
                 $join6->on('bsStatus.group_id', '=', DB::raw("'000006'"));
                 $join6->on('wbs.agama', '=', 'bsStatus.data_id');
             })
-            ->where('wbs.is_delete', 'N')->get();
+            ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->get();
 
         return view('admin.wbs_data', compact('data'));
     }
@@ -88,21 +89,57 @@ class WBSController extends Controller
 
         $dataKota =  DB::select(" SELECT id,name FROM regencies ");
 
-        return view('admin.wbs_data.create', compact('dataAgama', 'dataJK', 'dataPendidikan', 'dataHJ', 'dataSP', 'dataStatus', 'id', 'dataKota'));
-    }
+        $data = "";
 
-    public function wbs_search_post(Request $req,$id)
-    {
-        if ( $id == 0 ) { //create
-            
-
-
-        }else{ //update
-
-            
-
+        if ($id > 0) {
+            $data = WBS::where('wbs.is_delete', 'N')->where('wbs.nomor_panti', $id)->first();
         }
 
+        return view('admin.wbs_data.create', compact('dataAgama', 'dataJK', 'dataPendidikan', 'dataHJ', 'dataSP', 'dataStatus', 'id', 'dataKota', 'data'));
+    }
+
+    public function wbs_data_post(Request $req, $id)
+    {
+        $input = $req->all();
+        $this->validate($req, [
+            'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+        ]);
+
+        $image = $req->file('imgFile');
+        if ($image != '') {
+
+            $input['foto'] = time() . '.' . $image->extension();
+
+            $filePath = public_path('/uploads/foto_WBS/');
+            $img = Image::make($image->path());
+            $img->resize(97.5, 130, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath . '/' . $input['foto']);
+        } else {
+            $input['foto'] = "";
+        }
+
+        $input['sumber']  = "Input";
+        $input['updated_date'] = date('Y-m-d H:i:s');
+
+        if ($id == 0) { //create
+            $save = WBS::create($input);
+        } else { //update
+            if ($input['foto'] == '') {
+                unset($input['foto']);
+            }
+
+            if ($input['_token'] != '') {
+                unset($input['_token']);
+            }
+            $save = WBS::where("nomor_panti", $id)->update($input);
+        }
+
+        if ($save) {
+            return redirect()->route('wbs_data')->with('success', 'Data berhasil disimpan');
+        } else {
+            return redirect()->route('wbs_data')->with('error', 'Data gagal disimpan');
+        }
     }
 
     public function wbs_search(Request $req)

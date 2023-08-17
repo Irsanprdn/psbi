@@ -45,22 +45,26 @@
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1; ?>
+            @foreach ($data as $d)
+            <?php $no = 1;
 
-            @foreach( $data as $d )
-            @php
-
-            $default = ENV('ASSET_URL')."/assets/compro/img/user.png";
-            $foto = 'https://drive.google.com/uc?export=view&id='. $d->foto;
-            $foto = ( $d->foto == '' ? $default : $foto );
-            @endphp
+                $default = ENV('ASSET_URL') . "/assets/compro/img/user.png";
+            $foto = "";
+            if ($d->sumber == 'Input') {
+                $foto = ENV('ASSET_URL') . "/uploads/foto_WBS/" . $d->foto;
+                $foto = ($d->foto == '' ? $default : $foto);
+            } else {
+                $foto = 'https://drive.google.com/uc?export=view&id=' . $d->foto;
+                $foto = ($d->foto == '' ? $default : $foto);
+            }
+            ?>
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>
-                    <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width:50px; height:60px">
+                <td align="center">
+                    <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 70%;">
                 </td>
                 <td> {{$d->nama}} </td>
-                <td> {{$d->jenis_kelamin}} </td>
+                <td> {{$d->jkNm}} </td>
                 <td> {{$d->umur}} </td>
                 <td> {{$d->statusNm}} </td>
                 <td> {{$d->pendidikanNm}} </td>
@@ -87,7 +91,7 @@
 </div>
 
 <div id="btn-add" class="d-none">
-    <a  href="{{ route('wbs_data.input', 0) }}" class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</a>
+    <a href="{{ route('wbs_data.input', 0) }}" class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</a>
 
     <button class="btn btn-sm btn-primary bg-base" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
 
@@ -121,13 +125,13 @@
 @endsection
 @section('js')
 <script>
-    var height = $('#getHeight').height()    
+    var height = $('#getHeight').height()
     new DataTable('#wbs-data', {
         fixedHeader: true,
         paging: false,
         scrollCollapse: true,
         scrollX: true,
-        scrollY: height-125,
+        scrollY: height - 125,
         bLengthChange: true,
         bInfo: false,
         "initComplete": function(settings, json) {
