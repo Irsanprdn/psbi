@@ -157,7 +157,7 @@
                 status: status,
             }
             var formData = JSON.stringify(data);
-            
+
 
             $.ajax({
                 type: 'POST',
@@ -172,9 +172,19 @@
 
                         var html = "";
                         $.each(row, function(key, value) {
-                            var defaults = "{{ ENV('ASSET_URL') }}" + "/assets/compro/img/user.png";
-                            var foto = 'https://drive.google.com/uc?export=view&id=' + value['foto'];
-                            foto = (value['foto'] == '' ? defaults : foto);
+
+
+                            defaults = "{{ ENV('ASSET_URL') }}" + "/assets/compro/img/user.png";
+                            foto = "";
+                            if (value['sumber'] == 'Input') {
+                                foto = "{{ ENV('ASSET_URL') }}" +  "/uploads/foto_WBS/" + value['foto'];
+                                foto = (value['foto'] == '' ? defaults : foto);
+                            } else {
+                                foto = 'https://drive.google.com/uc?export=view&id=' + value['foto'];
+                                foto = (value['foto'] == '' ? defaults : foto);
+                            }
+                            
+
                             console.log(foto)
                             html += ' <div class="card shadow my-3">' +
                                 '<div class="card-body" style="padding: 2rem;">' +
