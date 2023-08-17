@@ -29,7 +29,24 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-        Route::get('/', [AdminPanelController::class, 'home'])->name('home');
+        Route::prefix('home')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'home'])->name('home');
+            Route::post('/post/{id}', [AdminPanelController::class, 'home_post'])->name('home.post');
+            Route::get('/delete/{id}', [AdminPanelController::class, 'home_delete'])->name('home.delete');
+        });
+
+        Route::prefix('about')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'home'])->name('home');
+            Route::post('/post', [AdminPanelController::class, 'home_post'])->name('home.post');
+            Route::get('/delete/{id}', [AdminPanelController::class, 'home_delete'])->name('home.delete');
+        });
+
+        Route::prefix('activity')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'activity'])->name('activity');
+            Route::post('/post', [AdminPanelController::class, 'activity_post'])->name('activity.post');
+            Route::get('/delete/{id}', [AdminPanelController::class, 'activity_delete'])->name('activity.delete');
+        });
+
         Route::get('/about_us', [AdminPanelController::class, 'about_us'])->name('about_us');
         Route::get('/activity', [AdminPanelController::class, 'activity'])->name('activity');
         Route::get('/contact', [AdminPanelController::class, 'contact'])->name('contact');

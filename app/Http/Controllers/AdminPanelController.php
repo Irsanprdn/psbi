@@ -14,7 +14,47 @@ class AdminPanelController extends Controller
     public function home()
     {
 
-        return view('admin.home');
+        $sql = "SELECT * FROM home WHERE is_delete = 'N' ORDER BY idx ASC";
+        $data = DB::select($sql);
+
+        return view('admin.home', compact('data'));
+    }
+
+    public function home_post(Request $req, $id)
+    {
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+
+        if ($id == 0) {
+
+            $save = DB::insert(" INSERT INTO ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $req->slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $req->updated_by . "', '" . $req->updated_date . "' ) ");
+        } else {
+
+            $save = DB::update(" UPDATE home SET slide = '" . $req->slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $id . "' ");
+        }
+
+        if ($save) {
+
+            return redirect()->route('home')->with('success', 'Data berhasil disimpan');
+        } else {
+
+            return redirect()->route('home')->with('error', 'Data gagal disimpan');
+        }
+    }
+
+    public function home_delete($id)
+    {
+
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+        $sqlUpd = DB::update(" UPDATE home SET  is_delete = 'Y', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND home_id = '" . $id . "'  ");
+
+        if ($sqlUpd) {
+            return redirect()->route('home')->with('success', 'Data berhasil dihapus');
+        } else {
+
+            return redirect()->route('home')->with('error', 'Data gagal dihapus');
+        }
     }
 
     public function about_us()
@@ -32,7 +72,7 @@ class AdminPanelController extends Controller
 
         return view('admin.contact');
     }
-    
+
     public function master_data()
     {
 
