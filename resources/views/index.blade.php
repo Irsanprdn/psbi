@@ -284,7 +284,7 @@
                                 'Keterangan Khusus' +
                                 '</div>' +
                                 '<div class="col-md-8 col-7 px-0">' +
-                                ': &nbsp;' +
+                                ': &nbsp;' + (value['keterangan'] ?? '') +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +
