@@ -126,8 +126,8 @@
                 </div> -->
 
                 <div class="form-group">
-                    <label for="Klasifikasi">Klasifikasi</label>
-                    <input type="text" class="form-control" value="{{ $data->klasifikasi ?? '' }}" id="klasifikasi" name="klasifikasi">
+                    <label for="Klasifikasi"><span class="text-danger">*</span>Klasifikasi</label>
+                    <input type="text" class="form-control" value="{{ $data->klasifikasi ?? '' }}" id="klasifikasi" name="klasifikasi" required>
                 </div>
 
                 <div class="form-group">
