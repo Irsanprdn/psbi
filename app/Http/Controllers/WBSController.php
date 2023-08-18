@@ -52,28 +52,28 @@ class WBSController extends Controller
             })
             ->leftJoin('basic_data as bsJK', function ($join2) {
                 $join2->on('bsJK.group_id', '=', DB::raw("'000002'"));
-                $join2->on('wbs.agama', '=', 'bsJK.data_id');
+                $join2->on('wbs.jenis_kelamin', '=', 'bsJK.data_id');
             })
             ->leftJoin('basic_data as bsPendidikan', function ($join3) {
                 $join3->on('bsPendidikan.group_id', '=', DB::raw("'000003'"));
-                $join3->on('wbs.agama', '=', 'bsPendidikan.data_id');
+                $join3->on('wbs.pendidikan', '=', 'bsPendidikan.data_id');
             })
             ->leftJoin('basic_data as bsHJ', function ($join4) {
                 $join4->on('bsHJ.group_id', '=', DB::raw("'000004'"));
-                $join4->on('wbs.agama', '=', 'bsHJ.data_id');
+                $join4->on('wbs.hasil_jangkauan', '=', 'bsHJ.data_id');
             })
             ->leftJoin('basic_data as bsSP', function ($join5) {
                 $join5->on('bsSP.group_id', '=', DB::raw("'000005'"));
-                $join5->on('wbs.agama', '=', 'bsSP.data_id');
+                $join5->on('wbs.status_pernikahan', '=', 'bsSP.data_id');
             })
             ->leftJoin('basic_data as bsStatus', function ($join6) {
                 $join6->on('bsStatus.group_id', '=', DB::raw("'000006'"));
-                $join6->on('wbs.agama', '=', 'bsStatus.data_id');
+                $join6->on('wbs.status', '=', 'bsStatus.data_id');
             })
-            ->leftJoin('regencies as kotaAsal', function ($join6) {                
+            ->leftJoin('regencies as kotaAsal', function ($join6) {
                 $join6->on('wbs.asal', '=', 'kotaAsal.id');
             })
-            ->leftJoin('regencies as kotaDomisili', function ($join6) {                
+            ->leftJoin('regencies as kotaDomisili', function ($join6) {
                 $join6->on('wbs.asal', '=', 'kotaDomisili.id');
             })
             ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->get();
@@ -174,23 +174,23 @@ class WBSController extends Controller
             })
             ->leftJoin('basic_data as bsJK', function ($join2) {
                 $join2->on('bsJK.group_id', '=', DB::raw("'000002'"));
-                $join2->on('wbs.agama', '=', 'bsJK.data_id');
+                $join2->on('wbs.jenis_kelamin', '=', 'bsJK.data_id');
             })
             ->leftJoin('basic_data as bsPendidikan', function ($join3) {
                 $join3->on('bsPendidikan.group_id', '=', DB::raw("'000003'"));
-                $join3->on('wbs.agama', '=', 'bsPendidikan.data_id');
+                $join3->on('wbs.pendidikan', '=', 'bsPendidikan.data_id');
             })
             ->leftJoin('basic_data as bsHJ', function ($join4) {
                 $join4->on('bsHJ.group_id', '=', DB::raw("'000004'"));
-                $join4->on('wbs.agama', '=', 'bsHJ.data_id');
+                $join4->on('wbs.hasil_jangkauan', '=', 'bsHJ.data_id');
             })
             ->leftJoin('basic_data as bsSP', function ($join5) {
                 $join5->on('bsSP.group_id', '=', DB::raw("'000005'"));
-                $join5->on('wbs.agama', '=', 'bsSP.data_id');
+                $join5->on('wbs.status_pernikahan', '=', 'bsSP.data_id');
             })
             ->leftJoin('basic_data as bsStatus', function ($join6) {
                 $join6->on('bsStatus.group_id', '=', DB::raw("'000006'"));
-                $join6->on('wbs.agama', '=', 'bsStatus.data_id');
+                $join6->on('wbs.status', '=', 'bsStatus.data_id');
             })
             ->where('wbs.is_delete', 'N')
             ->whereRaw(" CONCAT_WS('-', nama, jenis_kelamin, umur, status, pendidikan, agama, tanggal_masuk, asal, domisili, alamat, hasil_jangkauan, status_pernikahan, klasifikasi, lokasi) LIKE '%" . $val . "%' ");
