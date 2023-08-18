@@ -196,7 +196,7 @@ class WBSController extends Controller
             ->where('wbs.is_delete', 'N')
             ->whereRaw(" CONCAT_WS('-', nama, jenis_kelamin, umur, status, pendidikan, agama, tanggal_masuk, asal, domisili, alamat, hasil_jangkauan, status_pernikahan, klasifikasi, lokasi) LIKE '%" . $val . "%' ");
         if ($hj != '') {
-            $data = $data->where('bsHJ.data_name', $hj);
+            $data = $data->where('hjNm', $hj);
         }
 
         if ($status != '') {
