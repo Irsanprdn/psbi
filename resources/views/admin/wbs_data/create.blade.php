@@ -117,16 +117,16 @@
                         <option value="Cengkareng" {{ $selectedCengkareng }}>PSBI Bangun Daya 1 Cengkareng</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="nama"><span class="text-danger">*</span> Klasifikasi</label>
                     <select name="grup_klasifikasi" id="grup_klasifikasi" class="form-control" required>
                         <option value="">Pilih Klasifikasi</option>
                         <option value=""></option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="form-group">
-                    <label for="Klasifikasi Detail">Klasifikasi Detail</label>
+                    <label for="Klasifikasi">Klasifikasi</label>
                     <input type="text" class="form-control" value="{{ $data->klasifikasi ?? '' }}" id="klasifikasi" name="klasifikasi">
                 </div>
 

@@ -24,7 +24,7 @@ class WBS extends Model
         'alamat',
         'hasil_jangkauan',
         'status_pernikahan',
-        'grup_klasifikasi',
+        // 'grup_klasifikasi',
         'klasifikasi',
         'lokasi',
         'link_berkas',
