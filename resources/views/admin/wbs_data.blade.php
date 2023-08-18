@@ -45,9 +45,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $d)
             <?php $no = 1;
-
+            ?>
+            @foreach ($data as $d)
+            <?php
                 $default = ENV('ASSET_URL') . "/assets/compro/img/user.png";
             $foto = "";
             if ($d->sumber == 'Input') {
@@ -70,8 +71,8 @@
                 <td> {{$d->pendidikanNm}} </td>
                 <td> {{$d->agamaNm}} </td>
                 <td> {{$d->tanggal_masuk}} </td>
-                <td> {{$d->asal}} </td>
-                <td> {{$d->domisili}} </td>
+                <td> {{$d->asalNm}} </td>
+                <td> {{$d->domisiliNm}} </td>
                 <td> {{$d->alamat}} </td>
                 <td> {{$d->hjNm}} </td>
                 <td> {{$d->spNm}} </td>

@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+        Route::get('/', [AdminPanelController::class, 'home'])->name('home');
         Route::prefix('home')->group(function () {
             Route::get('/', [AdminPanelController::class, 'home'])->name('home');
             Route::post('/post/{id}', [AdminPanelController::class, 'home_post'])->name('home.post');
