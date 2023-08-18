@@ -165,7 +165,8 @@ class WBSController extends Controller
             IFNULL(`bsPendidikan`.data_name,pendidikan) as pendidikanNm,
             IFNULL(`bsHJ`.data_name,hasil_jangkauan) as hjNm,
             IFNULL(`bsSP`.data_name,status_pernikahan) as spNm,
-            IFNULL(`bsStatus`.data_name,status) as statusNm
+            IFNULL(`bsStatus`.data_name,status) as statusNm,
+            keterangan
             ')
         )
             ->leftJoin('basic_data as bsAgama', function ($join1) {
@@ -194,12 +195,14 @@ class WBSController extends Controller
             })
             ->where('wbs.is_delete', 'N')
             ->whereRaw(" CONCAT_WS('-', nama, jenis_kelamin, umur, status, pendidikan, agama, tanggal_masuk, asal, domisili, alamat, hasil_jangkauan, status_pernikahan, klasifikasi, lokasi) LIKE '%" . $val . "%' ");
+        if ($hj != '') {
+            $data = $data->where('bsHJ.data_name', $hj);
+        }
+
         if ($status != '') {
             $data = $data->where('bsStatus.data_name', $status);
         }
-        if ($hj != '') {
-            $data = $data->where('bsHj.data_name', $hj);
-        }
+
         $data = $data->get();
 
         $code =  (count($data) > 0 ?  200 : $code);

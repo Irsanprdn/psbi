@@ -52,11 +52,11 @@
                 $default = ENV('ASSET_URL') . "/assets/compro/img/user.png";
             $foto = "";
             if ($d->sumber == 'Input') {
-                $foto = ENV('ASSET_URL') . "/uploads/foto_WBS/" . $d->foto;
-                $foto = ($d->foto == '' ? $default : $foto);
+                $foto = ENV('ASSET_URL') . "/uploads/foto_WBS/" .  ($d->foto ?? '');
+                $foto = ( ($d->foto ?? '') == '' ? $default : $foto);
             } else {
-                $foto = 'https://drive.google.com/uc?export=view&id=' . $d->foto;
-                $foto = ($d->foto == '' ? $default : $foto);
+                $foto = 'https://drive.google.com/uc?export=view&id=' .  ($d->foto ?? '');
+                $foto = ( ($d->foto ?? '') == '' ? $default : $foto);
             }
             ?>
             <tr>
