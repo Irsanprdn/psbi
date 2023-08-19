@@ -3062,3 +3062,7 @@ Thanks :)*/
     background-color: #0D2A64 !important;
     color: #fff !important;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

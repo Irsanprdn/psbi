@@ -22527,7 +22527,7 @@ File: scss
 
 .content {
     position: relative;
-    width: 90%;
+    width: 100%;
     /* max-width: 500px; */
     margin: auto;
     overflow: hidden;
@@ -22610,4 +22610,8 @@ File: scss
 
 .hover-simple:hover {
     padding-top: 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

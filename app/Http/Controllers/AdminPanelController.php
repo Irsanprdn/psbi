@@ -22,7 +22,21 @@ class AdminPanelController extends Controller
         return view('admin.home', compact('data', 'dataSosmed'));
     }
 
-    public function home_post(Request $req, $id)
+    public function home_edit(Request $req)
+    {
+        $code = 404;
+        $sql = "SELECT * FROM home WHERE is_delete = 'N' AND home_id = '" . $req->id . "' ";
+        $data = collect(DB::select($sql))->first();
+
+        $code =  ($data ?  200 : $code);
+
+        return response()->json([
+            'code' => $code,
+            'data' => $data
+        ]);
+    }
+
+    public function home_post(Request $req)
     {
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
@@ -36,7 +50,7 @@ class AdminPanelController extends Controller
         }
 
         $slide = "";
-        $image = ( $req->file('imgFile') == '' ? $req->file('imgFile0') : $req->file('imgFile'));
+        $image = $req->file('imgFile');
         if ($image != '') {
 
             $slide = time() . '.' . $image->extension();
@@ -50,15 +64,15 @@ class AdminPanelController extends Controller
             $slide = "";
         }
 
-        if ($id == 0) {
+        if ($req->id == 0) {
 
             $save = DB::insert(" INSERT INTO home ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $user . "', '" . $date . "' ) ");
         } else {
 
             if ($slide == "") {
-                $save = DB::update(" UPDATE home SET idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $id . "' ");
+                $save = DB::update(" UPDATE home SET idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $req->id . "' ");
             } else {
-                $save = DB::update(" UPDATE home SET slide = '" . $req->slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $id . "' ");
+                $save = DB::update(" UPDATE home SET slide = '" . $slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $req->id . "' ");
             }
         }
 
@@ -110,7 +124,10 @@ class AdminPanelController extends Controller
     public function activity()
     {
 
-        return view('admin.activity');
+        $sql = "SELECT * FROM activity WHERE is_delete = 'N' ORDER BY idx ASC";
+        $data = DB::select($sql);
+
+        return view('admin.activity', compact('data'));
     }
     public function contact()
     {

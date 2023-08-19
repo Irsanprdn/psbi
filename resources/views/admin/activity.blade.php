@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     @php
-    $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/slide.png";
+    $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/activity.png";
     $default = "";
     @endphp
     @foreach( $data as $d )
@@ -31,26 +31,13 @@
     <div class="col-md-4 mb-3">
         <div class="content">
             <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
-                <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 325px;height:126px;">
+                <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 190px;height:200px;">
             </a>
         </div>
     </div>
 </div>
 
-<!-- SOSIAL MEDIA -->
-<div class="row mt-3">
-    @foreach( $dataSosmed as $ds )
-    <div class="col-md-6 col-12">
-        <label for="">{{ $ds->data_name }} {{ ($ds->data_name == 'Whatsapp' ? ($ds->data_id == '000003' ? 'Kedoya' : 'Cengkareng') : '' ) }} </label>
-        <div class="input-group mb-3">
-            <span class="input-group-text">
-                <i class="bi bi-{{ strtolower($ds->data_name) }}"></i>
-            </span>
-            <input type="text" class="form-control" placeholder="{{ $ds->data_name }} Link" aria-label="{{ $ds->data_name }} Link" name="{{ strtolower($ds->data_name) }}_link" id="{{ strtolower($ds->data_name) }}_link" data-name="{{ strtolower($ds->data_name) }}" data-id="{{ $ds->data_id }}" value="{{ $ds->note ?? '' }}" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)">
-        </div>
-    </div>
-    @endforeach
-</div>
+
 
 <div class="modal fade" id="addSlider" tabindex="-1" role="dialog" aria-labelledby="addSliderLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -148,34 +135,4 @@
         $('#imgFile').click();
     }
 
-    function saveLink(e) {
-        var id = $(e).attr('data-id')
-        var name = $(e).attr('data-name')
-        var link = $(e).val()
-
-        var data = {
-            _token: '{{ csrf_token() }}',
-            id: id,
-            name: name,
-            link: link
-        }
-        var formData = JSON.stringify(data);
-        $.ajax({
-            type: 'POST',
-            url: "{{  route('home_social_media.post') }}",
-            contentType: "application/json",
-            processData: false,
-            data: formData,
-            success: function(response) {
-                console.log(response)
-                if (response.code == 200) {
-                    alert('Berhasil menyimpan')
-                }else{
-                    alert('Gagal menyimpan')
-                }
-            }
-        });
-
-    }
-</script>
 @endsection
