@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Masukan urutan</label>
-                                <input type="text" class="form-control" required name="idx" id="idx" value="{{ $d->idx ?? '' }}">
+                                <input type="text" class="form-control" name="idx" id="idx" value="{{ $d->idx ?? '' }}">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Masukan status</label>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-body">
                     <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
-                    <input type="file" class="form-control d-none" required name="imgFile" id="imgFile" onchange="readURL(this)">
+                    <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
                     <div id="preview" class="text-center">
                         <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 325px;height:126px;">
                     </div>
@@ -114,7 +114,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Masukan urutan</label>
-                            <input type="text" class="form-control" required name="idx" id="idx">
+                            <input type="text" class="form-control" name="idx" id="idx">
                         </div>
                         <div class="col-md-6">
                             <label for="">Masukan status</label>
