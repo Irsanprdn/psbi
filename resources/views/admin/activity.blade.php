@@ -134,5 +134,5 @@
     function openFormFile() {
         $('#imgFile').click();
     }
-
+</script>
 @endsection
