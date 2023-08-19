@@ -43,7 +43,7 @@
                         <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
                         <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
                         <div id="preview" class="text-center">
-                            <img id="viewImg" src="{{ $default }}" alt="Upload Preview" onclick="openFormFile()" style="width: 100%;">
+                            <img id="viewImg" src="{{ $default }}" alt="Upload Preview" onclick="openFormFile()" style="width: 325px;height:126px;">
                         </div>
                         <br>
                         <div class="row">
@@ -74,7 +74,7 @@
     @endforeach
     <div class="col-md-4">
         <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
-            <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 100%;">
+            <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 325px;height:126px;">
         </a>
     </div>
 </div>
@@ -108,7 +108,7 @@
                     <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
                     <input type="file" class="form-control d-none" required name="imgFile" id="imgFile" onchange="readURL(this)">
                     <div id="preview" class="text-center">
-                        <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 100%;">
+                        <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 325px;height:126px;">
                     </div>
                     <br>
                     <div class="row">

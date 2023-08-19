@@ -2862,6 +2862,10 @@ Thanks :)*/
     height: 20vh;
 }
 
+#social-media a {
+    background-color: #0D2A64;
+}
+
 #social-media a:hover {
     /* background-color: rgb(13, 42, 100, 0.1); */
     background-color: #234486;
@@ -3050,8 +3054,8 @@ Thanks :)*/
 }
 
 .hover-base {
-    background-color: #fff;
-    color: black;
+    background-color: #fff !important;
+    color: black !important;
 }
 
 .hover-base a:hover {

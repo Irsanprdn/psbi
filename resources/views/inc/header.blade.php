@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="logo mb-2">
-                    <a href="#"><img src="{{ asset('assets') }}/compro/img/logonavbar.png" alt="" class="img-fluid"></a>
+                    <a href="{{ route('compro') }}"><img src="{{ asset('assets') }}/compro/img/logonavbar.png" alt="" class="img-fluid"></a>
                 </div>
             </div>
             <div class="col-md-8">

@@ -25,15 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/login/fonts/icomoon/style.css">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.3" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: eBusiness
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.5" rel="stylesheet">
 </head>
 
 <body>
@@ -311,6 +303,11 @@
         function showaAnotherLink(e){
             $(e).addClass('d-none')
             $('#doubleWA').removeClass('d-none')
+        }
+
+        function showaAnotherLink2(e){
+            $(e).addClass('d-none')
+            $('#penampungWA').removeClass('d-none')
         }
     </script>
 </body>

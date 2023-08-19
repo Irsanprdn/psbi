@@ -1,9 +1,9 @@
 <div id="social-media">
     <div class="row">
-        @foreach($dataSocmed as $ds)       
+        @foreach($dataSocmed as $ds)
         @if( $ds->data_name == 'Whatsapp' )
-       
-        <a onclick="showaAnotherLink(this)" class="col-md-4 col-4" style="background: #0D2A64;" id="penampungWA">
+
+        <a onclick="showaAnotherLink(this)" class="col-md-4 col-4 cursor-pointer" id="penampungWA">
             <div class="contact-icon text-center">
                 <div class="single-icon mt-3">
                     <i class="bi bi-{{ strtolower($ds->data_name) }}"></i>
@@ -14,8 +14,9 @@
             </div>
         </a>
 
-        <div id="doubleWA" class="col-md-4 col-4 d-none">
-            <div class="text-center">
+        <div id="doubleWA" class="col-md-4 col-4 d-none cursor-pointer">
+            <span style="position: absolute; right:0px; padding:3px 20px;" onclick="showaAnotherLink2(this)"><i class="bi bi-x text-light"></i></span>
+            <div class="text-center hover-base">
                 <div class="row">
                     @foreach($dataSocmedWA as $dswa)
                     @if( $dswa->data_id == '000004' )
@@ -33,7 +34,7 @@
         </div>
 
         @else
-        <a href="{{ $ds->note }}" target="_blank" class="col-md-4 col-4" style="background: #0D2A64;">
+        <a href="{{ $ds->note }}" target="_blank" class="col-md-4 col-4">
             <div class="contact-icon text-center">
                 <div class="single-icon mt-3">
                     <i class="bi bi-{{ strtolower($ds->data_name) }}"></i>
