@@ -15,11 +15,11 @@
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="{{ asset('assets') }}/admin/DataTables/datatables.min.css" rel="stylesheet">      
+    <link href="{{ asset('assets') }}/admin/DataTables/datatables.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/Responsive/css/responsive.datatables.min.css" rel="stylesheet">
-    <link href="{{ asset('assets') }}/admin/DataTables/FixedHeader/css/fixedHeader.datatables.min.css" rel="stylesheet">      
-    <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.responsive.css" rel="stylesheet">  
-    <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.FixedHeader.css" rel="stylesheet">      
+    <link href="{{ asset('assets') }}/admin/DataTables/FixedHeader/css/fixedHeader.datatables.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.FixedHeader.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap/css/bootstrap-select.css" rel="stylesheet">
 </head>
 
@@ -40,24 +40,26 @@
 
         <div class="page-wrapper">
             <div class="page-breadcrumb">
-                <div class="row align-items-center">
-                    <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">{{ auth()->user()->fullname}}</h3>
-                        <div class="d-flex align-items-center">
+                <div class="row align-items-center">                    
+                    <div class="col-md-6 col-8">                        
+                        <div class="d-flex align-items-center ">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">> @yield('title')</li>
+                                    <li style="font-size: 20px;" class="breadcrumb-item"><a href="#">Admin</a></li>
+                                    <li style="font-size: 20px;" class="breadcrumb-item active" aria-current="page">> @yield('title')</li>
                                 </ol>
                             </nav>
                         </div>
+                    </div>
+                    <div class="col-md-6 col-8 align-self-center text-right">
+                        <h5 class="page-title mb-0 p-0">{{ auth()->user()->fullname}}</h5>
                     </div>
                 </div>
             </div>
 
             <div class="container-fluid">
                 <div class="card">
-                    <div class="card-body" id="getHeight" style="height: 80vh; overflow-y:auto;">
+                    <div class="card-body" id="getHeight" style="height: 85vh; overflow-y:auto;">
                         @yield('content')
                     </div>
                 </div>
@@ -73,11 +75,11 @@
     <script src="{{ asset('assets') }}/login/js/popper.min.js"></script>
     <!-- datatales -->
     <script src="{{ asset('assets') }}/admin/DataTables/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets') }}/admin/DataTables/datatables.min.js"></script> 
-    <script src="{{ asset('assets') }}/admin/DataTables/Responsive/js/responsive.datatables.min.js"></script> 
-    <script src="{{ asset('assets') }}/admin/DataTables/fixedHeader/js/fixedHeader.datatables.min.js"></script>     
-    <script src="{{ asset('assets') }}/admin/DataTables/js/dataTables.responsive.js"></script>    
-    <script src="{{ asset('assets') }}/admin/DataTables/js/dataTables.FixedHeader.js"></script>    
+    <script src="{{ asset('assets') }}/admin/DataTables/datatables.min.js"></script>
+    <script src="{{ asset('assets') }}/admin/DataTables/Responsive/js/responsive.datatables.min.js"></script>
+    <script src="{{ asset('assets') }}/admin/DataTables/fixedHeader/js/fixedHeader.datatables.min.js"></script>
+    <script src="{{ asset('assets') }}/admin/DataTables/js/dataTables.responsive.js"></script>
+    <script src="{{ asset('assets') }}/admin/DataTables/js/dataTables.FixedHeader.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('assets') }}/admin/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets') }}/admin/js/app-style-switcher.js"></script>
@@ -88,7 +90,7 @@
     <script src="{{ asset('assets') }}/admin/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('assets') }}/admin/js/custom.js"></script>
-    
+
 
     <script src="{{ asset('assets') }}/admin/plugins/flot/jquery.flot.js"></script>
     <script src="{{ asset('assets') }}/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
