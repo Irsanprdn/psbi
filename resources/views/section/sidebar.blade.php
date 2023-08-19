@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('about_us') }}" aria-expanded="false">                    
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('about') }}" aria-expanded="false">                    
                         <i class="me-3 bi bi-info-circle" aria-hidden="true"></i><span class="hide-menu">About Us</span>
                     </a>
                 </li>

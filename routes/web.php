@@ -39,9 +39,9 @@ Route::prefix('admin')->group(function () {
         });
 
         Route::prefix('about')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'home'])->name('about');
-            Route::post('/post', [AdminPanelController::class, 'home_post'])->name('about.post');
-            Route::get('/delete/{id}', [AdminPanelController::class, 'home_delete'])->name('about.delete');
+            Route::get('/', [AdminPanelController::class, 'about'])->name('about');
+            Route::post('/post', [AdminPanelController::class, 'about_post'])->name('about.post');
+            Route::get('/delete/{id}', [AdminPanelController::class, 'about_delete'])->name('about.delete');
         });
 
         Route::prefix('activity')->group(function () {
@@ -50,7 +50,6 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{id}', [AdminPanelController::class, 'activity_delete'])->name('activity.delete');
         });
 
-        Route::get('/about_us', [AdminPanelController::class, 'about_us'])->name('about_us');
         Route::get('/activity', [AdminPanelController::class, 'activity'])->name('activity');
         Route::get('/contact', [AdminPanelController::class, 'contact'])->name('contact');
 

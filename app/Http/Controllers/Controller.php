@@ -28,7 +28,13 @@ class Controller extends BaseController
         $dataSocmedWA = DB::select(" SELECT * FROM basic_data WHERE is_delete = 'N' AND group_id = '999999'
         AND data_name = 'Whatsapp' ORDER BY data_id ASC ");
 
-        return view('index', compact('dataHome', 'dataStatus', 'dataHJ', 'dataSocmed', 'dataSocmedWA'));
+        $sql = "SELECT * FROM about WHERE is_delete = 'N' AND about_id = '1' ";
+        $data1 = collect(DB::select($sql))->first();
+
+        $sql = "SELECT * FROM about WHERE is_delete = 'N' AND about_id = '2' ";
+        $data2 = collect(DB::select($sql))->first();
+
+        return view('index', compact('dataHome', 'dataStatus', 'dataHJ', 'dataSocmed', 'dataSocmedWA', 'data1', 'data2'));
     }
 
 

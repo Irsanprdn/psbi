@@ -116,11 +116,66 @@ class AdminPanelController extends Controller
         ]);
     }
 
-    public function about_us()
+    public function about()
     {
 
-        return view('admin.about_us');
+        $sql = "SELECT * FROM about WHERE is_delete = 'N' AND about_id = '1' ";
+        $data1 = collect(DB::select($sql))->first();
+
+        $sql = "SELECT * FROM about WHERE is_delete = 'N' AND about_id = '2' ";
+        $data2 = collect(DB::select($sql))->first();
+
+        return view('admin.about_us', compact('data1', 'data2'));
     }
+
+    public function about_post(Request $req)
+    {
+
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+
+        $validator = Validator::make($req->all(), [
+            'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+        }
+
+        $so = "";
+        $image = $req->file('imgFile');
+        if ($image != '') {
+
+            $so = time() . '.' . $image->extension();
+
+            $filePath = public_path('/uploads/so/');
+            $img = Image::make($image->path());
+            $img->resize(1600, 900, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath . '/' . $so);
+        } else {
+            $so = "";
+        }
+
+        if ($req->title1 != '') {
+            $sqlUpd = DB::update(" UPDATE about SET  title = '" . $req->title1 . "',  description = '" . $req->description1 . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND about_id = '1' ");
+        }
+        if ($req->title2) {
+            if ($so == '') {
+                $sqlUpd = DB::update(" UPDATE about SET  title = '" . $req->title2 . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND about_id = '2' ");
+            } else {
+                $sqlUpd = DB::update(" UPDATE about SET  title = '" . $req->title2 . "',  description = '" . $so . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND about_id = '2' ");
+            }
+        }
+
+        if ($sqlUpd) {
+            return redirect()->route('about')->with('success', 'Data berhasil dihapus');
+        } else {
+
+            return redirect()->route('about')->with('error', 'Data gagal dihapus');
+        }
+    }
+
     public function activity()
     {
 
