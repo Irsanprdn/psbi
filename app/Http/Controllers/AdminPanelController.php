@@ -35,6 +35,7 @@ class AdminPanelController extends Controller
             return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
         }
 
+        $slide = "";
         $image = $req->file('imgFile');
         if ($image != '') {
 
@@ -85,20 +86,20 @@ class AdminPanelController extends Controller
         }
     }
 
-    public function home_socmed_post(Request $req){
+    public function home_socmed_post(Request $req)
+    {
 
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
         $code = 400;
 
-        $sqlUpd = DB::update(" UPDATE basic_data SET  note = '".$req->link."', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND group_id = '999999' AND  data_id = '" . $req->id . "' ");
+        $sqlUpd = DB::update(" UPDATE basic_data SET  note = '" . $req->link . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND group_id = '999999' AND  data_id = '" . $req->id . "' ");
 
         $code =  ($sqlUpd ?  200 : $code);
 
         return response()->json([
             'code' => $code
         ]);
-
     }
 
     public function about_us()
