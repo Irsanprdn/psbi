@@ -306,7 +306,7 @@
         }
 
         function showaAnotherLink2(e){
-            $(e).addClass('d-none')
+            $('#doubleWA').addClass('d-none')
             $('#penampungWA').removeClass('d-none')
         }
     </script>
