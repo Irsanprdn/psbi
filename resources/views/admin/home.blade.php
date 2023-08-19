@@ -106,9 +106,9 @@
                 </div>
                 <div class="modal-body">
                     <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
-                    <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
+                    <input type="file" class="form-control d-none" name="imgFile0" id="imgFile0" onchange="readURLZero(this)">
                     <div id="preview" class="text-center">
-                        <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 325px;height:126px;">
+                        <img id="viewImg0" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFileZero()" style="width: 325px;height:126px;">
                     </div>
                     <br>
                     <div class="row">
@@ -157,6 +157,26 @@
 
     function openFormFile() {
         $('#imgFile').click();
+    }
+
+    function readURLZero(input) {
+        var defaults = "{{ $default }}";
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#viewImg0')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            $('#viewImg').attr('src', defaults);
+        }
+    }
+
+    function openFormFileZero() {
+        $('#imgFile0').click();
     }
 
     function saveLink(e) {

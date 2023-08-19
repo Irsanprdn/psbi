@@ -36,7 +36,7 @@ class AdminPanelController extends Controller
         }
 
         $slide = "";
-        $image = $req->file('imgFile');
+        $image = ( $req->file('imgFile') == '' ? $req->file('imgFile0') : $req->file('imgFile'));
         if ($image != '') {
 
             $slide = time() . '.' . $image->extension();
