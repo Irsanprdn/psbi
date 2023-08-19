@@ -72,10 +72,12 @@
 
 
     @endforeach
-    <div class="col-md-4">
-        <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
-            <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 325px;height:126px;">
-        </a>
+    <div class="col-md-4 px-0 mb-3">
+        <div class="content">
+            <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
+                <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 325px;height:126px;">
+            </a>
+        </div>
     </div>
 </div>
 
