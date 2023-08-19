@@ -2860,7 +2860,6 @@ Thanks :)*/
 
 #social-media {
     height: 20vh;
-    background: #0D2A64;
 }
 
 #social-media a:hover {
@@ -3048,4 +3047,14 @@ Thanks :)*/
 
 .accordion-button::after {
     display: none;
+}
+
+.hover-base {
+    background-color: #fff;
+    color: black;
+}
+
+.hover-base a:hover {
+    background-color: #0D2A64 !important;
+    color: #fff !important;
 }

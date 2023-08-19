@@ -307,6 +307,11 @@
                 }
             });
         }
+
+        function showaAnotherLink(e){
+            $(e).addClass('d-none')
+            $('#doubleWA').removeClass('d-none')
+        }
     </script>
 </body>
 
