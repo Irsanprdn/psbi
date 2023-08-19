@@ -9,6 +9,7 @@ use App\Imports\WBSImport;
 use App\Models\WBS;
 use Maatwebsite\Excel\Facades\Excel;
 use Image;
+use Validator;
 
 class WBSController extends Controller
 {
@@ -109,9 +110,13 @@ class WBSController extends Controller
     public function wbs_data_post(Request $req, $id)
     {
         $input = $req->all();
-        $this->validate($req, [
+        $validator = Validator::make($req->all(), [
             'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+        }
 
         $image = $req->file('imgFile');
         if ($image != '') {
@@ -196,12 +201,12 @@ class WBSController extends Controller
             ->where('wbs.is_delete', 'N')
             ->whereRaw(" CONCAT_WS('-', nama, jenis_kelamin, umur, status, pendidikan, agama, tanggal_masuk, asal, domisili, alamat, hasil_jangkauan, status_pernikahan, klasifikasi, lokasi) LIKE '%" . $val . "%' ");
         if ($hj != '') {
-            $data = $data->whereRaw(" `bsHJ`.data_name = '".$hj."' ");
+            $data = $data->whereRaw(" `bsHJ`.data_name = '" . $hj . "' ");
         }
 
         if ($status != '') {
             // $data = $data->where('bsStatus.data_name', $status);
-            $data = $data->whereRaw(" `bsStatus`.data_name = '".$status."' ");
+            $data = $data->whereRaw(" `bsStatus`.data_name = '" . $status . "' ");
         }
 
         $data = $data->get();

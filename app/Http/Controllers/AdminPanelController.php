@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Imports\WBSImport;
-use App\Models\WBS;
-use Maatwebsite\Excel\Facades\Excel;
+use Image;
+use Validator;
 
 class AdminPanelController extends Controller
 {
@@ -17,7 +16,10 @@ class AdminPanelController extends Controller
         $sql = "SELECT * FROM home WHERE is_delete = 'N' ORDER BY idx ASC";
         $data = DB::select($sql);
 
-        return view('admin.home', compact('data'));
+        $sql = "SELECT * FROM basic_data WHERE is_delete = 'N' AND  group_id= '999999'  ORDER BY data_id ASC";
+        $dataSosmed = DB::select($sql);
+
+        return view('admin.home', compact('data', 'dataSosmed'));
     }
 
     public function home_post(Request $req, $id)
@@ -25,12 +27,38 @@ class AdminPanelController extends Controller
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
 
+        $validator = Validator::make($req->all(), [
+            'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+        }
+
+        $image = $req->file('imgFile');
+        if ($image != '') {
+
+            $slide = time() . '.' . $image->extension();
+
+            $filePath = public_path('/uploads/slider/');
+            $img = Image::make($image->path());
+            $img->resize(1600, 900, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath . '/' . $slide);
+        } else {
+            $slide = "";
+        }
+
         if ($id == 0) {
 
-            $save = DB::insert(" INSERT INTO ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $req->slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $req->updated_by . "', '" . $req->updated_date . "' ) ");
+            $save = DB::insert(" INSERT INTO home ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $user . "', '" . $date . "' ) ");
         } else {
 
-            $save = DB::update(" UPDATE home SET slide = '" . $req->slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $id . "' ");
+            if ($slide == "") {
+                $save = DB::update(" UPDATE home SET idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $id . "' ");
+            } else {
+                $save = DB::update(" UPDATE home SET slide = '" . $req->slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $id . "' ");
+            }
         }
 
         if ($save) {
@@ -55,6 +83,22 @@ class AdminPanelController extends Controller
 
             return redirect()->route('home')->with('error', 'Data gagal dihapus');
         }
+    }
+
+    public function home_socmed_post(Request $req){
+
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+        $code = 400;
+
+        $sqlUpd = DB::update(" UPDATE basic_data SET  note = '".$req->link."', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND group_id = '999999' AND  data_id = '" . $req->id . "' ");
+
+        $code =  ($sqlUpd ?  200 : $code);
+
+        return response()->json([
+            'code' => $code
+        ]);
+
     }
 
     public function about_us()

@@ -22608,21 +22608,6 @@ File: scss
     left: 80%;
 }
 
-.align-middle-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 130px;
-}
-
-.raise:hover,
-.raise:focus {
-    box-shadow: 0 0.5em 0.5em -0.4em #0D2A64;
-    transform: translateY(-0.25em);
-}
-
-.trasform-rotate-45 {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
+.hover-simple:hover {
+    padding-top: 10px;
 }

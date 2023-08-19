@@ -6,23 +6,34 @@
             <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
 
             <div class="carousel-inner" role="listbox">
-
-                <div class="carousel-item active" style="background-image: url(public/assets/compro/img/slider/slider1.jpg)">
+                @php
+                $no = 1;
+                @endphp
+                @foreach($dataHome as $sh)
+                @php
+                $urlImage = "public/uploads/slider/".$sh->slide;
+                @endphp
+                @if($no == 1)
+                <div class="carousel-item active" style="background-image: url({{ $urlImage }})">
                     <div class="carousel-container">
                         <div class="container">
-                            <!-- <p class="animate__animated animate__fadeInUp">Helping Business Security & Peace of Mind for Your Family</p> -->
+                            <!-- <p class="animate__animated animate__fadeInUp">Text</p> -->
                         </div>
                     </div>
                 </div>
-
-                <div class="carousel-item" style="background-image: url(public/assets/compro/img/slider/slider2.jpg)">
+                @else
+                <div class="carousel-item " style="background-image: url({{ $urlImage }})">
                     <div class="carousel-container">
                         <div class="container">
-                            <!-- <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem</p> -->
+                            <!-- <p class="animate__animated animate__fadeInUp">Text</p> -->
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @php
+                $no++;
+                @endphp
+                @endforeach
             </div>
 
             <a class="carousel-control-prev" href="{{ asset('assets') }}/compro/#heroCarousel" role="button" data-bs-slide="prev">
