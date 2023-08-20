@@ -9,7 +9,7 @@ use Image;
 use Validator;
 
 class AdminPanelController extends Controller
-{   
+{
 
     //HOME
     public function home()
@@ -274,15 +274,46 @@ class AdminPanelController extends Controller
     public function contact()
     {
 
-        return view('admin.contact');
+        $sql = "SELECT * FROM contact WHERE is_delete = 'N' ORDER BY contact_id ASC";
+        $data = DB::select($sql);
+
+        return view('admin.contact', compact('data'));
+    }
+
+    public function contact_post(Request $req)
+    {
+        // dd($req);
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+        $sqlUpdAll = true;
+
+        for ($i = 0; $i < count($req->name); $i++) {
+
+            $query = " UPDATE contact SET  name = ?,  link_name = ?, updated_by = ?, updated_date =  ? WHERE is_delete = 'N' AND  contact_id = ?  ";
+
+            $params = [ $req->name[$i], $req->link_name[$i], $user, $date, $req->contact_id[$i]];
+
+            $sqlUpd = DB::update($query, $params);
+
+            if (!$sqlUpd) {
+                $sqlUpdAll = false;
+            }
+        }
+
+        if ($sqlUpdAll) {
+            return redirect()->route('contact')->with('success', 'Data berhasil diubah');
+        } else {
+
+            return redirect()->route('contact')->with('error', 'Data gagal diubah');
+        }
     }
 
 
     //MASTER DATA
     public function master_data()
     {
-
-        $sql = "SELECT * FROM basic_data WHERE is_delete = 'N' AND group_id < 900000 ORDER BY group_id,data_id DESC";
+        // AND group_id < 900000
+        $sql = "SELECT * FROM basic_data WHERE is_delete = 'N'  ORDER BY group_id,data_id DESC";
         $data = DB::select($sql);
 
         $sqListGroup = "SELECT group_id,group_name FROM basic_data WHERE is_delete = 'N' GROUP BY group_id,group_name ";

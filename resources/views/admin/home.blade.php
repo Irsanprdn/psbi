@@ -67,7 +67,7 @@
                 <span class="input-group-text">
                     <i class="bi bi-{{ strtolower($ds->data_name) }}"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="{{ $ds->data_name }} Link" aria-label="{{ $ds->data_name }} Link" name="{{ strtolower($ds->data_name) }}_link" id="{{ strtolower($ds->data_name) }}_link" data-name="{{ strtolower($ds->data_name) }}" data-id="{{ $ds->data_id }}" value="{{ $ds->note ?? '' }}" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)">
+                <input type="text" class="form-control" placeholder="{{ $ds->data_name }}" aria-label="{{ $ds->data_name }} Link" name="{{ strtolower($ds->data_name) }}_link" id="{{ strtolower($ds->data_name) }}_link" data-name="{{ strtolower($ds->data_name) }}" data-id="{{ $ds->data_id }}" value="{{ $ds->note ?? '' }}" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)">
             </div>
         </div>
         @endforeach

@@ -22,11 +22,13 @@
                         <div class="footer-head">
                             <h4>Kontak & Alamat</h4>
                             <div class="footer-contacts">
-                                <p><span class="bi bi-geo-alt"></span> Jl. Kembangan Raya No.2 Kebon Jeruk Jakarta Barat 11530</p>
-                                <p><span class="bi bi-facebook"></span> Psbi Bangun Daya 1</p>
+                                @foreach( $dataSocmed2 as $ds2 )
+                                <p><span class="bi bi-{{ strtolower($ds2->data_name) }}"></span> {{ $ds2->note }}</p>
+                                @endforeach
+                                <!-- <p><span class="bi bi-facebook"></span> Psbi Bangun Daya 1</p>
                                 <p><span class="bi bi-instagram"></span> @psbibangundaya.1</p>
                                 <p><span class="bi bi-whatsapp"></span> 085777564256</p>
-                                <p><span class="bi bi-envelope"></span> psbikedoya1@gmail.com</p>
+                                <p><span class="bi bi-envelope"></span> psbikedoya1@gmail.com</p> -->
                             </div>
                         </div>
                     </div>

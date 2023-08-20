@@ -17,20 +17,20 @@
     </div>
     @endif
 
-    <form action="{{ route('about.post') }}" enctype="multipart/form-data" method="POST" id="formAddSlider"> @csrf
+    <form action="{{ route('about.post') }}" enctype="multipart/form-data" method="POST" id="formAbout"> @csrf
         <div class="form-group">
             <label for="">Judul</label>
-            <input type="text" class="form-control w-50" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)" name="title1" id="title1" value="{{ $data1->title ?? '' }}">
+            <input type="text" class="form-control w-50"  name="title1" id="title1" value="{{ $data1->title ?? '' }}">
         </div>
 
         <div class="form-group">
-            <label for="">Description</label>
-            <textarea name="description1" id="description1" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)" class="form-control" rows="5">{{ $data1->description }}</textarea>
+            <label for="">Deskripsi</label>
+            <textarea name="description1" id="description1"  class="form-control" rows="5">{{ $data1->description }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="">Judul Struktur Organisasi</label>
-            <input type="text" class="form-control w-50" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)" name="title2" id="title2" value="{{ $data2->title ?? 'Struktur Organisasi' }}">
+            <input type="text" class="form-control w-50"  name="title2" id="title2" value="{{ $data2->title ?? 'Struktur Organisasi' }}">
         </div>
         @php
         $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/slide.png";

@@ -1,7 +1,7 @@
 <div id="social-media">
     <div class="row">
         @foreach($dataSocmed as $ds)
-        @if( $ds->data_name == 'Whatsapp' )
+        @if( $ds->data_name == 'Whatsapp Link' )
 
         <a onclick="showaAnotherLink(this)" class="col-md-4 col-4 cursor-pointer" id="penampungWA">
             <div class="contact-icon text-center">

@@ -41,7 +41,6 @@ Route::prefix('admin')->group(function () {
         Route::prefix('about')->group(function () {
             Route::get('/', [AdminPanelController::class, 'about'])->name('about');
             Route::post('/post', [AdminPanelController::class, 'about_post'])->name('about.post');
-            Route::get('/delete/{id}', [AdminPanelController::class, 'about_delete'])->name('about.delete');
         });
 
         Route::prefix('activity')->group(function () {
@@ -51,8 +50,11 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{id}', [AdminPanelController::class, 'activity_delete'])->name('activity.delete');
         });
 
-        Route::get('/activity', [AdminPanelController::class, 'activity'])->name('activity');
-        Route::get('/contact', [AdminPanelController::class, 'contact'])->name('contact');
+        
+        Route::prefix('contact')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'contact'])->name('contact');
+            Route::post('/post', [AdminPanelController::class, 'contact_post'])->name('contact.post');
+        });
 
         Route::prefix('wbs_data')->group(function () {
             Route::get('/', [WBSController::class, 'wbs_data'])->name('wbs_data');
