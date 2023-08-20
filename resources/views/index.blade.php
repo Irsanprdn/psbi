@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/login/fonts/icomoon/style.css">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.5" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.6" rel="stylesheet">
 </head>
 
 <body>
