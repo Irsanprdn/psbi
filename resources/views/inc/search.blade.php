@@ -11,7 +11,7 @@
                     </label>
                 </div> -->
                 <select data-id="status" name="status-checkbox" id="{{ $ds->data_name }}" onchange="selectOnlyThis(this)">
-                    <option value="">Semua</option>
+                    <option value="" selected>Semua</option>
                     @foreach( $dataStatus as $ds )
                     <option value="{{ $ds->data_name }}">{{ $ds->data_name }}</option>
                     <!-- <div class="form-check">
