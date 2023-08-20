@@ -18,7 +18,7 @@
                     </label>
                 </div>
                 @endforeach
-                <select data-id="status" class="form-control d-none" name="status-checkbox" id="status" onchange="selectOnlyThis(this)">
+                <select data-id="status" class="form-control" name="status-checkbox" id="status" onchange="selectOnlyThis(this)">
                     <option value="" selected>Semua</option>
                     @foreach( $dataStatus as $ds )
                     <option value="{{ $ds->data_name }}">{{ $ds->data_name }}</option>
@@ -42,7 +42,7 @@
                     </label>
                 </div>
                 @endforeach
-                <select data-id="hasil-jangkauan" class="form-control d-none" name="hasil-jangkauan-checkbox" id="hasil-jangkauan" onchange="selectOnlyThis(this)">
+                <select data-id="hasil-jangkauan" class="form-control" name="hasil-jangkauan-checkbox" id="hasil-jangkauan" onchange="selectOnlyThis(this)">
                     <option value="" selected>Semua</option>
                     @foreach( $dataHJ as $dhj )
                     <option value="{{ $dhj->data_name }}">{{ $dhj->data_name }}</option>
