@@ -44,7 +44,7 @@ class WBSImport implements ToModel
                 $foto = str_replace('/view?usp=sharing', '', $foto);
             }
 
-            $tglMasuk = date('Y-m-d');
+            $tglMasuk = date('Y-m-d'); 
             if ($row[7] != '') {
                 $tglMasukArr = [];
                 $tglMasukArr = explode('/', $row[7]);
