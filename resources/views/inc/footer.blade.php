@@ -60,7 +60,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="copyright">
                         <p>
-                            © Copyright 2023 by Panti Sosial Bina Indan Bangun Daya . All right reserved
+                            © Copyright 2023 by Panti Sosial Bina Insan Bangun Daya . All right reserved
                         </p>
                     </div>
                 </div>
