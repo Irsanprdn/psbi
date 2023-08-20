@@ -145,6 +145,7 @@ class WBSController extends Controller
             if ($input['_token'] != '') {
                 unset($input['_token']);
             }
+            unset($input['imgFile']);
             $save = WBS::where("nomor_panti", $id)->update($input);
         }
 
