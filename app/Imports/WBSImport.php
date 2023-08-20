@@ -44,9 +44,15 @@ class WBSImport implements ToModel
                 $foto = str_replace('/view?usp=sharing', '', $foto);
             }
 
+            $tglMasuk = "";
             $tglMasukArr = [];
-            $tglMasukArr = explode('/', $row[7]);                                    
-            $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
+            $tglMasukArr = explode('/', $row[7]);
+            if ( count($tglMasukArr) > 0 ) {
+                $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));                
+            }else{
+                $tglMasukArr = explode('-', $row[7]);
+                $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));                
+            }                             
 
             $data = [
                 'nama' => $row[1],
