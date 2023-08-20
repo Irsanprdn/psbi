@@ -10,7 +10,7 @@
                         Semua
                     </label>
                 </div> -->
-                <select data-id="status" name="status-checkbox" id="status" onchange="selectOnlyThis(this)">
+                <select data-id="status" class="form-control" name="status-checkbox" id="status" onchange="selectOnlyThis(this)">
                     <option value="" selected>Semua</option>
                     @foreach( $dataStatus as $ds )
                     <option value="{{ $ds->data_name }}">{{ $ds->data_name }}</option>
