@@ -32,26 +32,28 @@ class WBSImport implements ToModel
         $dataSP =  collect(DB::select(" SELECT data_id,data_name FROM basic_data WHERE group_id = '000005' "))->keyBy('data_name');
 
         $dataStatus =  collect(DB::select(" SELECT data_id,data_name FROM basic_data WHERE group_id = '000006' "))->keyBy('data_name');
-       
+
 
         $data = [];
         if ($row[0] != 'No' && $row[0] != null && $row[0] != '' &&  $row[1] != null && $row[1] != '') {
 
             $foto = $row[15];
-            if ( $foto != '' ) {
+            if ($foto != '') {
                 $foto = str_replace('https://drive.google.com/file/d/', '', $foto);
                 $foto = str_replace('/view?usp=drive_link', '', $foto);
                 $foto = str_replace('/view?usp=sharing', '', $foto);
             }
 
             $tglMasuk = "";
-            $tglMasukArr = [];
-            $tglMasukArr = explode('/', $row[7]);
-            if ( count($tglMasukArr) > 0 ) {
-                $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
-            }else{
-                $tglMasukArr = explode('-', $row[7]);
-                $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
+            if ($row[7] != '') {
+                $tglMasukArr = [];
+                $tglMasukArr = explode('/', $row[7]);
+                if (count($tglMasukArr) > 0) {
+                    $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
+                } else {
+                    $tglMasukArr = explode('-', $row[7]);
+                    $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
+                }
             }
 
             $data = [
