@@ -51,36 +51,37 @@
     @if (session('success'))
     <div class="alert my-3 alert-success">{{ session('success') }}</div>
     @endif
-
-    <table id="master-data" class="table table-striped table-hover" style="width:100%">
-        <thead class="bg-base text-light">
-            <tr>
-                <th>Kelompok Data</th>
-                <!-- <th>ID Data </th> -->
-                <th>Nama Data</th>
-                <th>Catatan</th>
-                <th>Di Ubah Oleh</th>
-                <th>Di Ubah Kapan</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach( $data as $d )
-            <tr>
-                <td>{{ $d->group_name ?? ''}}</td>
-                <!-- <td>{{ $d->data_id ?? ''}}</td> -->
-                <td>{{ $d->data_name ?? ''}}</td>
-                <td>{{ $d->note ?? ''}}</td>
-                <td>{{ $d->updated_by ?? ''}}</td>
-                <td>{{ $d->updated_date ?? '' }}</td>
-                <td>
-                    <button onclick="getDataEdit('{{ $d->group_id }}','{{ $d->data_id }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
-                    <a href="{{ route('master_data.delete',[$d->group_id,$d->data_id]) }}" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table id="master-data" class="table table-striped table-hover" style="width:100%">
+            <thead class="bg-base text-light">
+                <tr>
+                    <th>Kelompok Data</th>
+                    <!-- <th>ID Data </th> -->
+                    <th>Nama Data</th>
+                    <th>Catatan</th>
+                    <th>Di Ubah Oleh</th>
+                    <th>Di Ubah Kapan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach( $data as $d )
+                <tr>
+                    <td>{{ $d->group_name ?? ''}}</td>
+                    <!-- <td>{{ $d->data_id ?? ''}}</td> -->
+                    <td>{{ $d->data_name ?? ''}}</td>
+                    <td>{{ $d->note ?? ''}}</td>
+                    <td>{{ $d->updated_by ?? ''}}</td>
+                    <td>{{ $d->updated_date ?? '' }}</td>
+                    <td>
+                        <button onclick="getDataEdit('{{ $d->group_id }}','{{ $d->data_id }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
+                        <a href="{{ route('master_data.delete',[$d->group_id,$d->data_id]) }}" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div id="btn-add" class="d-none">
