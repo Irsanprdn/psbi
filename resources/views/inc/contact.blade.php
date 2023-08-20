@@ -22,7 +22,7 @@
                                 @if( $ds->is_title == 'Y' )
                                 <h5 class="mt-5">
                                     @if( $ds->link_name != '' )
-                                    <a href="{{$ds->link_name}}" class="text-dark text-link">{{$ds->name}}</a>
+                                    <a target="_blank" href="{{$ds->link_name}}" class="text-dark text-link">{{$ds->name}}</a>
                                     @else
                                     {{$ds->name}}
                                     @endif
@@ -30,7 +30,7 @@
                                 @else
                                 
                                     @if( $ds->link_name != '' )
-                                    <a href="{{$ds->link_name}}" class="text-dark text-link">{{$ds->name}}</a><br><br>
+                                    <a target="_blank" href="{{$ds->link_name}}" class="text-dark text-link">{{$ds->name}}</a><br><br>
                                     @else
                                     {{$ds->name}}
                                     @endif
