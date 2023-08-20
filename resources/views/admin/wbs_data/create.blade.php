@@ -103,17 +103,12 @@
 
     $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/user.png";
     $default = "";
-    if (($data->foto ?? '') != '') {
-        $fotoArr = explode('.', $data->foto);
-        if (is_int($fotoArr[0])) {
-            $default = ENV('ASSET_URL') . "/uploads/foto_WBS/" .  ($data->foto ?? '');
-            $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
-        } else {
-            $default = 'https://drive.google.com/uc?export=view&id=' .  ($data->foto ?? '');
-            $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
-        }
+    if (($data->foto ?? '') != '' && str_contains($data->foto, 'WBS')) {
+        $default = ENV('ASSET_URL') . "/uploads/foto_WBS/" .  ($data->foto ?? '');
+        $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
     } else {
-        $default =  ENV('ASSET_URL') . "/assets/compro/img/user.png";
+        $default = 'https://drive.google.com/uc?export=view&id=' .  ($data->foto ?? '');
+        $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
     }
 
     ?>
