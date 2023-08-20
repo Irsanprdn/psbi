@@ -49,14 +49,14 @@
             ?>
             @foreach ($data as $d)
             <?php
-                $default = ENV('ASSET_URL') . "/assets/compro/img/user.png";
+            $default = ENV('ASSET_URL') . "/assets/compro/img/user.png";
             $foto = "";
-            if ($d->sumber == 'Input') {
+            if (($d->foto ?? '') != '' && str_contains($d->foto, 'WBS')) {
                 $foto = ENV('ASSET_URL') . "/uploads/foto_WBS/" .  ($d->foto ?? '');
-                $foto = ( ($d->foto ?? '') == '' ? $default : $foto);
+                $foto = (($d->foto ?? '') == '' ? $default : $foto);
             } else {
                 $foto = 'https://drive.google.com/uc?export=view&id=' .  ($d->foto ?? '');
-                $foto = ( ($d->foto ?? '') == '' ? $default : $foto);
+                $foto = (($d->foto ?? '') == '' ? $default : $foto);
             }
             ?>
             <tr>

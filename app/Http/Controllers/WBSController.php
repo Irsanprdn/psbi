@@ -121,7 +121,7 @@ class WBSController extends Controller
         $image = $req->file('imgFile');
         if ($image != '') {
 
-            $input['foto'] = time() . '.' . $image->extension();
+            $input['foto'] = 'WBS'.time() . '.' . $image->extension();
 
             $filePath = public_path('/uploads/foto_WBS/');
             $img = Image::make($image->path());

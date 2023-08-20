@@ -100,12 +100,22 @@
     <?php
     $selectedKedoya = (str_replace("Admin ", "", auth()->user()->fullname) == "Kedoya" ? "selected" : "");
     $selectedCengkareng = ((str_replace("Admin ", "", auth()->user()->fullname)) == "Cengkareng" ? "selected" : "");
+
     $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/user.png";
     $default = "";
-    $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
-    if ($data) {
-        $default = ($data->sumber == 'Input' ? ENV('ASSET_URL') . "/uploads/foto_WBS/" .  ($data->foto ?? '') : 'https://drive.google.com/uc?export=view&id=' .  ($data->foto ?? ''));
+    if (($data->foto ?? '') != '') {
+        $fotoArr = explode('.', $data->foto);
+        if (is_int($fotoArr[0])) {
+            $default = ENV('ASSET_URL') . "/uploads/foto_WBS/" .  ($data->foto ?? '');
+            $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
+        } else {
+            $default = 'https://drive.google.com/uc?export=view&id=' .  ($data->foto ?? '');
+            $default = (($data->foto ?? '') == '' ? $defaultFoto : $default);
+        }
+    } else {
+        $default =  ENV('ASSET_URL') . "/assets/compro/img/user.png";
     }
+
     ?>
     <h5 class="font-weight-bold"> <u>Informasi Detail</u> </h5>
     <div class="card card-body">
