@@ -14,7 +14,7 @@
                         <h4 class="font-weight-bold">{{ $data2->title }}</h4>
 
                         <div class="d-flex justify-content-center">
-                            <img src="{{ ENV('asset_url') }}/uploads/so/{{ $data2->description }}" class="img-fluid">
+                            <img src="{{ ENV('ASSET_URL') }}/uploads/so/{{ $data2->description }}" class="img-fluid">
                         </div>
                     </div>
                 </div>

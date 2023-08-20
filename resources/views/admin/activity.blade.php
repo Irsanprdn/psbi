@@ -1,5 +1,5 @@
 @extends('admin')
-@section('title', 'Home')
+@section('title', 'Activity')
 @section('content')
 <div class="row">
     @php
@@ -8,14 +8,14 @@
     @endphp
     @foreach( $data as $d )
     @php
-    $default = ($d->slide == '' ? $defaultFoto : ENV('ASSET_URL') . "/uploads/slider/" . $d->slide);
+    $default = ($d->image == '' ? $defaultFoto : ENV('ASSET_URL') . "/uploads/activity/" . $d->image);
     @endphp
     <div class="col-md-4 mb-3">
         <div class="content rounded">
             <span class="bg-base text-light" style="position: absolute;  padding:4px 8px;">{{ $d->idx }}</span>
             <span class="bg-base text-light" style="position: absolute; right:0px; padding:3px 20px;">{{ $d->status }}</span>
             <div class="content-overlay"></div>
-            <img class="content-image" src="{{ $default }}" alt="Img Slider" style="width: 325px;height:126px;">
+            <img class="content-image" src="{{ $default }}" alt="Image Activity" style="width: 325px;height:126px;">
             <div class="content-details fadeIn-bottom">
                 <a onclick="getDataHome(this)" data-id="{{ $d->home_id }}" class="cursor-pointer">
                     <h5 class="content-title"><i class="bi bi-pencil"></i> Ubah Data</h5>
@@ -30,8 +30,8 @@
     @endforeach
     <div class="col-md-4 mb-3">
         <div class="content">
-            <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
-                <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 190px;height:200px;">
+            <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addActivity">
+                <h1><i class="bi bi-plus-circle"></i></h1>
             </a>
         </div>
     </div>
@@ -39,13 +39,13 @@
 
 
 
-<div class="modal fade" id="addSlider" tabindex="-1" role="dialog" aria-labelledby="addSliderLabel" aria-hidden="true">
+<div class="modal fade" id="addActivity" tabindex="-1" role="dialog" aria-labelledby="addActivityLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('home.post') }}" enctype="multipart/form-data" method="POST" id="formAddSlider"> @csrf
+            <form action="{{ route('activity.post') }}" enctype="multipart/form-data" method="POST" id="formAddActivity"> @csrf
                 <input type="hidden" value="0" name="id" id="id">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addSliderLabel">Form Slider</h5>
+                    <h5 class="modal-title" id="addActivityLabel">Form Activity</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -103,12 +103,12 @@
                 console.log(response)
                 var row = response.data
                 if (response.code == 200) {
-                    var file = "{{ENV('ASSET_URL')}}" + "/uploads/slider/" + row.slide
+                    var file = "{{ENV('ASSET_URL')}}" + "/uploads/activity/" + row.image
                     $('#viewImg').attr('src', file)
                     $('#id').val(row.home_id)
                     $('#idx').val(row.idx)
                     $('#status').val(row.status)
-                    $('#addSlider').modal('show')
+                    $('#addActivity').modal('show')
                 }
             }
         });
