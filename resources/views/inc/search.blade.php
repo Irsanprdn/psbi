@@ -4,20 +4,24 @@
             <div class="my-3">
                 <p class="text-base font-weight-bold mb-0"> Status</p>
                 <input type="hidden" id="statusval">
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input class="form-check-input status-checkbox" type="checkbox" value="" data-id="status" name="status-checkbox" id="Semua" checked onclick="selectOnlyThis(this)">
                     <label class="form-check-label" for="Semua">
                         Semua
                     </label>
-                </div>
-                @foreach( $dataStatus as $ds )
-                <div class="form-check">
+                </div> -->
+                <select data-id="status" name="status-checkbox" id="{{ $ds->data_name }}" onchange="selectOnlyThis(this)">
+                    <option value="">Semua</option>
+                    @foreach( $dataStatus as $ds )
+                    <option value="{{ $ds->data_name }}">{{ $ds->data_name }}</option>
+                    <!-- <div class="form-check">
                     <input class="form-check-input status-checkbox" type="checkbox" value="{{ $ds->data_name }}" data-id="status" name="status-checkbox" id="{{ $ds->data_name }}" onclick="selectOnlyThis(this)">
                     <label class="form-check-label" for="{{ $ds->data_name }}">
                         {{ $ds->data_name }}
                     </label>
-                </div>
-                @endforeach
+                </div> -->
+                    @endforeach
+                </select>
             </div>
             <div class="my-3">
                 <p class="text-base font-weight-bold mb-0"> Hasil Jangkauan</p>
