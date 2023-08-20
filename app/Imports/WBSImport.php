@@ -38,9 +38,11 @@ class WBSImport implements ToModel
         if ($row[0] != 'No' && $row[0] != null && $row[0] != '' &&  $row[1] != null && $row[1] != '') {
 
             $foto = $row[15];
-            $foto = str_replace('https://drive.google.com/file/d/', '', $foto);
-            $foto = str_replace('/view?usp=drive_link', '', $foto);
-            $foto = str_replace('/view?usp=sharing', '', $foto);
+            if ( $foto != '' ) {
+                $foto = str_replace('https://drive.google.com/file/d/', '', $foto);
+                $foto = str_replace('/view?usp=drive_link', '', $foto);
+                $foto = str_replace('/view?usp=sharing', '', $foto);
+            }
 
             $tglMasukArr = [];
             $tglMasukArr = explode('/', $row[7]);                                    
