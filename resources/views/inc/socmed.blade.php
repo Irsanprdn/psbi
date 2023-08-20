@@ -20,11 +20,11 @@
                 <div class="row">
                     @foreach($dataSocmedWA as $dswa)
                     @if( $dswa->data_id == '000004' )
-                    <a href="{{ $dswa->note }}" class=" pt-3 col-md-12 col-12" style="height: 10vh; font-size:20px;">
+                    <a target="_blank" href="{{ $dswa->note }}" class=" pt-3 col-md-12 col-12" style="height: 10vh; font-size:20px;">
                         PSBI Bangun Daya 1 Cengkareng
                     </a>
                     @else
-                    <a href="{{ $dswa->note }}" class=" pt-3 col-md-12 col-12" style="height: 10vh; font-size:20px;">
+                    <a target="_blank" href="{{ $dswa->note }}" class=" pt-3 col-md-12 col-12" style="height: 10vh; font-size:20px;">
                         PSBI Bangun Daya 1 Kedoya
                     </a>
                     @endif
