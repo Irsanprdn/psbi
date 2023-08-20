@@ -208,7 +208,7 @@
                                 'Asal' +
                                 '</div>' +
                                 '<div class="col-md-8 col-7">' +
-                                ': &nbsp;' + (value['asal'] ?? '') +
+                                ': &nbsp;' + (value['asalNm'] ?? '') +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="row">' +
@@ -216,7 +216,7 @@
                                 'Domisili' +
                                 '</div>' +
                                 '<div class="col-md-8 col-7">' +
-                                ': &nbsp;' + (value['domisili'] ?? '') +
+                                ': &nbsp;' + (value['domisiliNm'] ?? '') +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="row">' +
