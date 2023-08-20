@@ -172,7 +172,9 @@ class WBSController extends Controller
             IFNULL(`bsHJ`.data_name,hasil_jangkauan) as hjNm,
             IFNULL(`bsSP`.data_name,status_pernikahan) as spNm,
             IFNULL(`bsStatus`.data_name,status) as statusNm,
-            keterangan
+            keterangan,
+            IFNULL(`kotaAsal`.name,asal) as asalNm ,
+            IFNULL(`kotaDomisili`.name,domisili) as domisiliNm   
             ')
         )
             ->leftJoin('basic_data as bsAgama', function ($join1) {
@@ -198,6 +200,12 @@ class WBSController extends Controller
             ->leftJoin('basic_data as bsStatus', function ($join6) {
                 $join6->on('bsStatus.group_id', '=', DB::raw("'000006'"));
                 $join6->on('wbs.status', '=', 'bsStatus.data_id');
+            })
+            ->leftJoin('regencies as kotaAsal', function ($join6) {
+                $join6->on('wbs.asal', '=', 'kotaAsal.id');
+            })
+            ->leftJoin('regencies as kotaDomisili', function ($join6) {
+                $join6->on('wbs.domisili', '=', 'kotaDomisili.id');
             })
             ->where('wbs.is_delete', 'N')
             ->whereRaw(" CONCAT_WS('-', nama, jenis_kelamin, umur, status, pendidikan, agama, tanggal_masuk, asal, domisili, alamat, hasil_jangkauan, status_pernikahan, klasifikasi, lokasi) LIKE '%" . $val . "%' ");
