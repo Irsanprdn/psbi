@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('activity')->group(function () {
             Route::get('/', [AdminPanelController::class, 'activity'])->name('activity');
+            Route::post('/edit', [AdminPanelController::class, 'activity_edit'])->name('activity.edit');
             Route::post('/post', [AdminPanelController::class, 'activity_post'])->name('activity.post');
             Route::get('/delete/{id}', [AdminPanelController::class, 'activity_delete'])->name('activity.delete');
         });

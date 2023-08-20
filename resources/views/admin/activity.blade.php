@@ -15,12 +15,12 @@
             <span class="bg-base text-light" style="position: absolute;  padding:4px 8px;">{{ $d->idx }}</span>
             <span class="bg-base text-light" style="position: absolute; right:0px; padding:3px 20px;">{{ $d->status }}</span>
             <div class="content-overlay"></div>
-            <img class="content-image" src="{{ $default }}" alt="Image Activity" style="width: 325px;height:126px;">
+            <img class="content-image" src="{{ $default }}" alt="Image Activity" style="width: 320px;height:320px;">
             <div class="content-details fadeIn-bottom">
-                <a onclick="getDataHome(this)" data-id="{{ $d->home_id }}" class="cursor-pointer">
+                <a onclick="getDataActivity(this)" data-id="{{ $d->activity_id }}" class="cursor-pointer">
                     <h5 class="content-title"><i class="bi bi-pencil"></i> Ubah Data</h5>
                 </a>
-                <a href="{{ route('home.delete', $d->home_id ) }}">
+                <a href="{{ route('activity.delete', $d->activity_id ) }}">
                     <h5 class="content-title"><i class="bi bi-trash"></i> Hapus Data</h5>
                 </a>
             </div>
@@ -30,9 +30,11 @@
     @endforeach
     <div class="col-md-4 mb-3">
         <div class="content">
-            <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addActivity">
-                <h1><i class="bi bi-plus-circle"></i></h1>
-            </a>
+            <div style="height:320px;position: relative;">
+                <a class="hover-simple cursor-pointer" onclick="openModal()" style=" margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                    <h1><i class="bi bi-plus-circle"></i></h1>
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -46,7 +48,7 @@
                 <input type="hidden" value="0" name="id" id="id">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addActivityLabel">Form Activity</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" onclick="closeModal()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -54,7 +56,7 @@
                     <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
                     <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
                     <div id="preview" class="text-center">
-                        <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 325px;height:126px;">
+                        <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 320px;height:320px;">
                     </div>
                     <br>
                     <div class="row">
@@ -73,7 +75,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
@@ -85,7 +87,7 @@
 @endsection
 @section('js')
 <script>
-    function getDataHome(e) {
+    function getDataActivity(e) {
         var id = $(e).attr('data-id')
 
         var data = {
@@ -95,7 +97,7 @@
         var formData = JSON.stringify(data);
         $.ajax({
             type: 'POST',
-            url: "{{  route('home.edit') }}",
+            url: "{{  route('activity.edit') }}",
             contentType: "application/json",
             processData: false,
             data: formData,
@@ -105,7 +107,7 @@
                 if (response.code == 200) {
                     var file = "{{ENV('ASSET_URL')}}" + "/uploads/activity/" + row.image
                     $('#viewImg').attr('src', file)
-                    $('#id').val(row.home_id)
+                    $('#id').val(row.activity_id)
                     $('#idx').val(row.idx)
                     $('#status').val(row.status)
                     $('#addActivity').modal('show')
@@ -133,6 +135,19 @@
 
     function openFormFile() {
         $('#imgFile').click();
+    }
+
+    function closeModal() {        
+        $('#addActivity').modal('hide')
+        var file = "{{ENV('ASSET_URL')}}" + "/assets/compro/img/activity.png"
+        $('#viewImg').attr('src', file)
+        $('#id').val('')
+        $('#idx').val('')
+        $('#status').val('')
+    }
+
+    function openModal(){
+        $('#addActivity').modal('show')
     }
 </script>
 @endsection

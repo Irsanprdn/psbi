@@ -33,8 +33,11 @@ class Controller extends BaseController
 
         $sql = "SELECT * FROM about WHERE is_delete = 'N' AND about_id = '2' ";
         $data2 = collect(DB::select($sql))->first();
+        
+        $sql = "SELECT * FROM activity WHERE is_delete = 'N' ORDER BY idx ASC";
+        $dataActivity = DB::select($sql);
 
-        return view('index', compact('dataHome', 'dataStatus', 'dataHJ', 'dataSocmed', 'dataSocmedWA', 'data1', 'data2'));
+        return view('index', compact('dataHome', 'dataStatus', 'dataHJ', 'dataSocmed', 'dataSocmedWA', 'data1', 'data2', 'dataActivity'));
     }
 
 

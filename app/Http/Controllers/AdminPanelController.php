@@ -9,7 +9,9 @@ use Image;
 use Validator;
 
 class AdminPanelController extends Controller
-{
+{   
+
+    //HOME
     public function home()
     {
 
@@ -116,6 +118,8 @@ class AdminPanelController extends Controller
         ]);
     }
 
+
+    //ABOUT
     public function about()
     {
 
@@ -176,6 +180,8 @@ class AdminPanelController extends Controller
         }
     }
 
+
+    // ACTIVITY
     public function activity()
     {
 
@@ -183,6 +189,20 @@ class AdminPanelController extends Controller
         $data = DB::select($sql);
 
         return view('admin.activity', compact('data'));
+    }
+
+    public function activity_edit(Request $req)
+    {
+        $code = 404;
+        $sql = "SELECT * FROM activity WHERE is_delete = 'N' AND activity_id = '" . $req->id . "' ";
+        $data = collect(DB::select($sql))->first();
+
+        $code =  ($data ?  200 : $code);
+
+        return response()->json([
+            'code' => $code,
+            'data' => $data
+        ]);
     }
 
     public function activity_post(Request $req)
@@ -206,7 +226,7 @@ class AdminPanelController extends Controller
 
             $filePath = public_path('/uploads/activity/');
             $img = Image::make($image->path());
-            $img->resize(1600, 900, function ($const) {
+            $img->resize(500, 500, function ($const) {
                 $const->aspectRatio();
             })->save($filePath . '/' . $slide);
         } else {
@@ -215,13 +235,13 @@ class AdminPanelController extends Controller
 
         if ($req->id == 0) {
 
-            $save = DB::insert(" INSERT INTO activity ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $user . "', '" . $date . "' ) ");
+            $save = DB::insert(" INSERT INTO activity ( image,idx,status,updated_by,updated_date ) VALUES ( '" . $slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $user . "', '" . $date . "' ) ");
         } else {
 
             if ($slide == "") {
                 $save = DB::update(" UPDATE activity SET idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE activity_id = '" . $req->id . "' ");
             } else {
-                $save = DB::update(" UPDATE activity SET slide = '" . $slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE activity_id = '" . $req->id . "' ");
+                $save = DB::update(" UPDATE activity SET image = '" . $slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE activity_id = '" . $req->id . "' ");
             }
         }
 
@@ -234,12 +254,31 @@ class AdminPanelController extends Controller
         }
     }
 
+    public function activity_delete($id)
+    {
+
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+        $sqlUpd = DB::update(" UPDATE activity SET  is_delete = 'Y', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND activity_id = '" . $id . "'  ");
+
+        if ($sqlUpd) {
+            return redirect()->route('activity')->with('success', 'Data berhasil dihapus');
+        } else {
+
+            return redirect()->route('activity')->with('error', 'Data gagal dihapus');
+        }
+    }
+
+
+    //CONTACT
     public function contact()
     {
 
         return view('admin.contact');
     }
 
+
+    //MASTER DATA
     public function master_data()
     {
 

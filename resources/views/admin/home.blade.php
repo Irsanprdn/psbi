@@ -47,9 +47,11 @@
         @endforeach
         <div class="col-md-4 mb-3">
             <div class="content">
-                <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
-                    <img src="{{ $defaultFoto }}" alt="Add Slider" style="width: 325px;height:126px;">
-                </a>
+                <div style="height:126px;position: relative;">
+                    <a class="hover-simple cursor-pointer" onclick="openModal()" style=" margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h1><i class="bi bi-plus-circle"></i></h1>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -76,7 +78,7 @@
                     <input type="hidden" value="0" name="id" id="id">
                     <div class="modal-header">
                         <h5 class="modal-title" id="addSliderLabel">Form Slider</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" onclick="closeModal()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -103,7 +105,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
@@ -192,7 +194,19 @@
                 }
             }
         });
+    }
 
+    function closeModal() {
+        $('#addSlider').modal('hide')
+        var file = "{{ENV('ASSET_URL')}}" + "/assets/compro/img/slide.png";
+        $('#viewImg').attr('src', file)
+        $('#id').val(row.home_id)
+        $('#idx').val(row.idx)
+        $('#status').val(row.status)
+    }
+
+    function openModal() {
+        $('#addSlider').modal('show')
     }
 </script>
 @endsection
