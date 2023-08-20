@@ -75,7 +75,7 @@ class WBSController extends Controller
                 $join6->on('wbs.asal', '=', 'kotaAsal.id');
             })
             ->leftJoin('regencies as kotaDomisili', function ($join6) {
-                $join6->on('wbs.asal', '=', 'kotaDomisili.id');
+                $join6->on('wbs.domisili', '=', 'kotaDomisili.id');
             })
             ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->get();
 
