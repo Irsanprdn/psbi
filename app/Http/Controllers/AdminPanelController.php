@@ -184,6 +184,56 @@ class AdminPanelController extends Controller
 
         return view('admin.activity', compact('data'));
     }
+
+    public function activity_post(Request $req)
+    {
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+
+        $validator = Validator::make($req->all(), [
+            'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('activity')->with('error', 'Format file atau Ukuran file tidak sesuai');
+        }
+
+        $slide = "";
+        $image = $req->file('imgFile');
+        if ($image != '') {
+
+            $slide = time() . '.' . $image->extension();
+
+            $filePath = public_path('/uploads/activity/');
+            $img = Image::make($image->path());
+            $img->resize(1600, 900, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath . '/' . $slide);
+        } else {
+            $slide = "";
+        }
+
+        if ($req->id == 0) {
+
+            $save = DB::insert(" INSERT INTO activity ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $user . "', '" . $date . "' ) ");
+        } else {
+
+            if ($slide == "") {
+                $save = DB::update(" UPDATE activity SET idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE activity_id = '" . $req->id . "' ");
+            } else {
+                $save = DB::update(" UPDATE activity SET slide = '" . $slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE activity_id = '" . $req->id . "' ");
+            }
+        }
+
+        if ($save) {
+
+            return redirect()->route('activity')->with('success', 'Data berhasil disimpan');
+        } else {
+
+            return redirect()->route('activity')->with('error', 'Data gagal disimpan');
+        }
+    }
+
     public function contact()
     {
 

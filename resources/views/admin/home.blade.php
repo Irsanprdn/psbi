@@ -28,7 +28,7 @@
         $default = ($d->slide == '' ? $defaultFoto : ENV('ASSET_URL') . "/uploads/slider/" . $d->slide);
         @endphp
         <div class="col-md-4 mb-3">
-            <div class="content rounded">
+            <div class="content">
                 <span class="bg-base text-light" style="position: absolute;  padding:4px 8px;">{{ $d->idx }}</span>
                 <span class="bg-base text-light" style="position: absolute; right:0px; padding:3px 20px;">{{ $d->status }}</span>
                 <div class="content-overlay"></div>
@@ -48,7 +48,7 @@
         <div class="col-md-4 mb-3">
             <div class="content">
                 <a href="javascript:void();" class="hover-simple" data-toggle="modal" data-target="#addSlider">
-                    <img src="{{ $defaultFoto }}" alt="Add Slider" class="rounded-t" style="width: 325px;height:126px;">
+                    <img src="{{ $defaultFoto }}" alt="Add Slider" style="width: 325px;height:126px;">
                 </a>
             </div>
         </div>
@@ -81,7 +81,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
+                        <label for=""> File harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
                         <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
                         <div id="preview" class="text-center">
                             <img id="viewImg" src="{{ $defaultFoto }}" alt="Upload Preview" onclick="openFormFile()" style="width: 325px;height:126px;">
@@ -89,12 +89,12 @@
                         <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="">Masukan urutan</label>
-                                <input type="text" class="form-control" name="idx" id="idx">
+                                <label for=""><span class="text-danger">*</span> Urutan</label>
+                                <input type="text" class="form-control" required name="idx" id="idx">
                             </div>
                             <div class="col-md-6">
-                                <label for="">Masukan status</label>
-                                <select name="status" id="status" class="form-control">
+                                <label for=""><span class="text-danger">*</span> Status</label>
+                                <select name="status" id="status" required class="form-control">
                                     <option value="">Pilih Status</option>
                                     <option value="Draft">Draft</option>
                                     <option value="Publish">Publish</option>
