@@ -40,6 +40,7 @@ class WBSImport implements ToModel
             $foto = $row[15];
             $foto = str_replace('https://drive.google.com/file/d/', '', $foto);
             $foto = str_replace('/view?usp=drive_link', '', $foto);
+            $foto = str_replace('/view?usp=sharing', '', $foto);
 
             $tglMasukArr = [];
             $tglMasukArr = explode('/', $row[7]);                                    

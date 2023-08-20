@@ -2,6 +2,7 @@
 @section('title', 'Home')
 @section('content')
 <div class="container">
+    <h3>Slider</h3>
     @if (session('error'))
     <div class="alert my-3 alert-danger">{{ session('error') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -57,6 +58,7 @@
     </div>
 
     <!-- SOSIAL MEDIA -->
+    <h3 class="my-3 p-0">Social Media</h3>
     <div class="row mt-3">
         @foreach( $dataSosmed as $ds )
         <div class="col-md-6 col-12">
