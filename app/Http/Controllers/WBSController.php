@@ -142,6 +142,14 @@ class WBSController extends Controller
                 unset($input['foto']);
             }
 
+            if ($input['asal'] == '') {
+                unset($input['asal']);
+            }
+
+            if ($input['domisili'] == '') {
+                unset($input['domisili']);
+            }
+
             if ($input['_token'] != '') {
                 unset($input['_token']);
             }
