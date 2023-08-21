@@ -46,21 +46,24 @@ class WBSImport implements ToModel
 
             $tglMasuk = "";
             $excelSerialDate = $row[7]; // For example, the serial date value representing 2021-08-21
-            // Convert Excel serial date to Unix timestamp
-            $unixTimestamp = ($excelSerialDate - 25569) * 86400;
-            // Convert Unix timestamp to a formatted date
-            $tglMasuk = date("Y-m-d", $unixTimestamp);
 
-            // $tglMasukArr = [];
-            // if (str_contains($row[7], '/')) {
-            //     $tglMasukArr = explode('/', $row[7]);
-            //     $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
-            // }else if (str_contains($row[7], '-')) {
-            //     $tglMasukArr = explode('-', $row[7]);
-            //     $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[0] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[2] : date('Y-m-d'));
-            // }else{
-            //     $tglMasuk = date('Y-m-d');
-            // }
+            if (is_int($excelSerialDate)) {
+                // Convert Excel serial date to Unix timestamp
+                $unixTimestamp = ($excelSerialDate - 25569) * 86400;
+                // Convert Unix timestamp to a formatted date
+                $tglMasuk = date("Y-m-d", $unixTimestamp);
+            } else {
+                $tglMasukArr = [];
+                if (str_contains($row[7], '/')) {
+                    $tglMasukArr = explode('/', $row[7]);
+                    $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
+                }else if (str_contains($row[7], '-')) {
+                    $tglMasukArr = explode('-', $row[7]);
+                    $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[0] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[2] : date('Y-m-d'));
+                }else{
+                    $tglMasuk = date('Y-m-d');
+                }
+            }
 
 
             $data = [
