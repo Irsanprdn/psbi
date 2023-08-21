@@ -46,13 +46,12 @@ class WBSImport implements ToModel
 
             $tglMasuk = "";
             $tglMasukArr = [];
-            $tglMasukArr = explode('/', $row[7]);
-            if (count($tglMasukArr) > 0) {
-                $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[0] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[2] : date('Y-m-d'));
-            }
-            $tglMasukArr = explode('-', $row[7]);
-            if (count($tglMasukArr) > 0) {
+            if (str_contains($row[7], '/')) {
+                $tglMasukArr = explode('/', $row[7]);
                 $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[2] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[0] : date('Y-m-d'));
+            }else{
+                $tglMasukArr = explode('-', $row[7]);
+                $tglMasuk = (count($tglMasukArr) == 3 ?  $tglMasukArr[0] . '-' . $tglMasukArr[1] . '-' . $tglMasukArr[2] : date('Y-m-d'));
             }
 
 
