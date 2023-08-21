@@ -46,6 +46,12 @@ class WBSImport implements ToModel
 
             $tglMasuk = "";
             $excelSerialDate = $row[7]; // For example, the serial date value representing 2021-08-21
+            // if (preg_match('/^[0-9\-\/]+$/', $row[7])) {
+            //     $excelSerialDate = $row[7];
+            // } else {
+            //     $dateReplace = preg_replace('/[^0-9\-\/]+/', '', $row[7]);
+            //     $excelSerialDate = intval($dateReplace);
+            // }
 
             if (is_int($excelSerialDate)) {
                 // Convert Excel serial date to Unix timestamp
