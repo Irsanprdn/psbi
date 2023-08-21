@@ -83,7 +83,7 @@
                     <td> {{$d->updated_date}} </td>
                     <td>
                         <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </a>
-                        <a href="{{ route('wbs_data.delete', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                        <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
                     </td>
                 </tr>
                 @endforeach
@@ -142,5 +142,15 @@
             $('#wbs-data_wrapper').children().children().children().attr('id', 'btn-tambah')
         }
     });
+
+    function confirmDelete(e) {
+        if (confirm('Apakah anda yakin ingin menghapus data ini ?')) {
+            var url = $(e).attr('data-url')
+            window.location.href = url;
+        } else {
+            // Do nothing!
+            Alert('Hapus telah dibatalkan')
+        }
+    }
 </script>
 @endsection

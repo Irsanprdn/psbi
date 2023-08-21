@@ -21,7 +21,7 @@
                     <a onclick="getDataActivity(this)" data-id="{{ $d->activity_id }}" class="cursor-pointer">
                         <h5 class="content-title"><i class="bi bi-pencil"></i> Ubah Data</h5>
                     </a>
-                    <a href="{{ route('activity.delete', $d->activity_id ) }}">
+                    <a data-url="{{ route('activity.delete', $d->activity_id ) }}" onclick="confirmDelete(this)" class="cursor-pointer">
                         <h5 class="content-title"><i class="bi bi-trash"></i> Hapus Data</h5>
                     </a>
                 </div>
@@ -115,6 +115,16 @@
             }
         });
 
+    }
+
+    function confirmDelete(e) {
+        if (confirm('Apakah anda yakin ingin menghapus data ini ?')) {
+            var url = $(e).attr('data-url')
+            window.location.href = url;
+        } else {
+            // Do nothing!
+            Alert('Hapus telah dibatalkan')
+        }
     }
 
     function readURL(input) {

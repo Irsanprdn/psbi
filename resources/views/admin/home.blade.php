@@ -38,7 +38,7 @@
                     <a onclick="getDataHome(this)" data-id="{{ $d->home_id }}" class="cursor-pointer">
                         <h5 class="content-title"><i class="bi bi-pencil"></i> Ubah Data</h5>
                     </a>
-                    <a href="{{ route('home.delete', $d->home_id ) }}">
+                    <a class="cursor-pointer" data-url="{{ route('home.delete', $d->home_id ) }}" onclick="confirmDelete(this)">
                         <h5 class="content-title"><i class="bi bi-trash"></i> Hapus Data</h5>
                     </a>
                 </div>
@@ -146,7 +146,16 @@
                 }
             }
         });
+    }
 
+    function confirmDelete(e) {
+        if (confirm('Apakah anda yakin ingin menghapus data ini ?')) {
+            var url = $(e).attr('data-url')
+            window.location.href = url;
+        } else {
+            // Do nothing!
+            Alert('Hapus telah dibatalkan')
+        }
     }
 
     function readURL(input) {
