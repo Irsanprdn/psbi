@@ -72,7 +72,7 @@
 
                 <div class="form-group">
                     <label for="Asal"><span class="text-danger">*</span> Asal</label><br>
-                    <select name="asal" id="asal" class="select-search form-control" >
+                    <select name="asal" id="asal" class="select-search" >
                         <option value="" class="text-secondary">Pilih Asal</option>
                         @foreach( $dataKota as $dk)
                         <option value="{{ $dk->id }}" {{ ( ($data->asal ?? '') == $dk->id ? 'selected' : ''  ) }} class="text-dark">{{ $dk->name }}</option>
@@ -81,8 +81,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="Domisili"><span class="text-danger">*</span> Domisili</label>
-                    <select name="domisili" id="domisili" class="select-search form-control" >
+                    <label for="Domisili"><span class="text-danger">*</span> Domisili</label><br>
+                    <select name="domisili" id="domisili" class="select-search" >
                         <option value="" class="text-secondary">Pilih Domisili</option>
                         @foreach( $dataKota as $dk)
                         <option value="{{ $dk->id }}" {{ ( ($data->domisili ?? '') == $dk->id ? 'selected' : ''  ) }} class="text-dark">{{ $dk->name }}</option>

@@ -84,7 +84,7 @@
                 <tr>
                     <td>{{ $no++ }}</td>
                     <td align="center">
-                        <!-- <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;"> -->
+                        <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;">
                     </td>
                     <td> {{$d->nama}} </td>
                     <td> {{$d->jkNm}} </td>
