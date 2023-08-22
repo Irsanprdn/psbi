@@ -21,6 +21,7 @@
     <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.responsive.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.FixedHeader.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/plugins/bootstrap/dist/css/bootstrap-datepicker.css" rel="stylesheet">
 </head>
 
 <body>
@@ -82,6 +83,7 @@
     <script src="{{ asset('assets') }}/admin/DataTables/js/dataTables.FixedHeader.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('assets') }}/admin/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets') }}/admin/plugins/bootstrap/dist/js/bootstrap-datepicker.js"></script>
     <script src="{{ asset('assets') }}/admin/js/app-style-switcher.js"></script>
     <script src="{{ asset('assets') }}/compro/vendor/bootstrap/js/bootstrap-select.js"></script>
     <!--Wave Effects -->

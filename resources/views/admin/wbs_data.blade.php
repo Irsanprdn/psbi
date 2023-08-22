@@ -1,9 +1,16 @@
 @extends('admin')
 @section('title', 'Data WBS')
+@section('css')
+<style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+@endsection
 @section('content')
 
-<div class="table-responsive">
-
+<form action="{{ route('wbs_data.export') }}" method="POST" id="formPost">`
+    @csrf
     @if (session('error'))
     <div class="alert my-3 alert-danger">{{ session('error') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -18,6 +25,21 @@
         </button>
     </div>
     @endif
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Tahun</label>
+                <input class="form-control form-control-sm" type="text" name="year" id="year" required maxlength="4" value="{{ date('Y') }}">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">&nbsp;</label><br>
+                <button class="btn btn-primary bg-base btn-sm" type="submit">Export</button>
+            </div>
+        </div>
+
+    </div>
     <div class="table-responsive">
         <table id="wbs-data" class="table table-bordered table-striped table-hover" style="width:100%">
             <thead class="bg-base text-light">
@@ -62,7 +84,7 @@
                 <tr>
                     <td>{{ $no++ }}</td>
                     <td align="center">
-                        <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;">
+                        <!-- <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;"> -->
                     </td>
                     <td> {{$d->nama}} </td>
                     <td> {{$d->jkNm}} </td>
@@ -91,7 +113,7 @@
             </tbody>
         </table>
     </div>
-</div>
+</form>
 
 <div id="btn-add" class="d-none">
     <a href="{{ route('wbs_data.input', 0) }}" class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</a>
@@ -142,6 +164,11 @@
             $('#wbs-data_wrapper').find('#btn-add').removeClass('d-none')
             $('#wbs-data_wrapper').children().children().children().attr('id', 'btn-tambah')
         }
+    });
+
+    $('.date-own').datepicker({
+        minViewMode: 2,
+        format: 'yyyy'
     });
 
     function confirmDelete(e) {

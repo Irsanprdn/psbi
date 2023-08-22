@@ -10,6 +10,7 @@ use App\Models\WBS;
 use Maatwebsite\Excel\Facades\Excel;
 use Image;
 use Validator;
+use App\Exports\WBSExport;
 
 class WBSController extends Controller
 {
@@ -81,6 +82,11 @@ class WBSController extends Controller
             ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->get();
 
         return view('admin.wbs_data', compact('data'));
+    }
+
+    public function wbs_data_export(Request $req)
+    {
+        return Excel::download(new WBSExport($req->year ?? date('Y')), 'monthly_data.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
 
     public function wbs_data_input($id)

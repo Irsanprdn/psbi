@@ -58,6 +58,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('wbs_data')->group(function () {
             Route::get('/', [WBSController::class, 'wbs_data'])->name('wbs_data');
+            Route::post('/export', [WBSController::class, 'wbs_data_export'])->name('wbs_data.export');
             Route::get('/input/{id}', [WBSController::class, 'wbs_data_input'])->name('wbs_data.input');
             Route::post('/post/{id}', [WBSController::class, 'wbs_data_post'])->name('wbs_data.post');
             Route::get('/delete/{id}', [WBSController::class, 'wbs_data_delete'])->name('wbs_data.delete');
