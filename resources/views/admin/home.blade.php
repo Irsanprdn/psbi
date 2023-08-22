@@ -2,7 +2,6 @@
 @section('title', 'Home')
 @section('content')
 <div class="container">
-    <h3>Slider</h3>
     @if (session('error'))
     <div class="alert my-3 alert-danger">{{ session('error') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -17,61 +16,84 @@
         </button>
     </div>
     @endif
-
-
-    <div class="row">
-        @php
-        $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/slide.png";
-        $default = "";
-        @endphp
-        @foreach( $data as $d )
-        @php
-        $default = ($d->slide == '' ? $defaultFoto : ENV('ASSET_URL') . "/uploads/slider/" . $d->slide);
-        @endphp
-        <div class="col-md-4 mb-3">
-            <div class="content">
-                <span class="bg-base text-light" style="position: absolute;  padding:4px 8px;">{{ $d->idx }}</span>
-                <span class="bg-base text-light" style="position: absolute; right:0px; padding:3px 20px;">{{ $d->status }}</span>
-                <div class="content-overlay"></div>
-                <img class="content-image" src="{{ $default }}" alt="Img Slider" style="width: 325px;height:126px;">
-                <div class="content-details fadeIn-bottom">
-                    <a onclick="getDataHome(this)" data-id="{{ $d->home_id }}" class="cursor-pointer">
-                        <h5 class="content-title"><i class="bi bi-pencil"></i> Ubah Data</h5>
-                    </a>
-                    <a class="cursor-pointer" data-url="{{ route('home.delete', $d->home_id ) }}" onclick="confirmDelete(this)">
-                        <h5 class="content-title"><i class="bi bi-trash"></i> Hapus Data</h5>
-                    </a>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="my-1 p-0">Slider</h5>
         </div>
+        <div class="card-body">
+            <div class="row">
+                @php
+                $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/slide.png";
+                $default = "";
+                @endphp
+                @foreach( $data as $d )
+                @php
+                $default = ($d->slide == '' ? $defaultFoto : ENV('ASSET_URL') . "/uploads/slider/" . $d->slide);
+                @endphp
+                <div class="col-md-4 mb-3">
+                    <div class="content">
+                        <span class="bg-base text-light" style="position: absolute;  padding:4px 8px;">{{ $d->idx }}</span>
+                        <span class="bg-base text-light" style="position: absolute; right:0px; padding:3px 20px;">{{ $d->status }}</span>
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="{{ $default }}" alt="Img Slider" style="width: 325px;height:126px;">
+                        <div class="content-details fadeIn-bottom">
+                            <a onclick="getDataHome(this)" data-id="{{ $d->home_id }}" class="cursor-pointer">
+                                <h5 class="content-title"><i class="bi bi-pencil"></i> Ubah Data</h5>
+                            </a>
+                            <a class="cursor-pointer" data-url="{{ route('home.delete', $d->home_id ) }}" onclick="confirmDelete(this)">
+                                <h5 class="content-title"><i class="bi bi-trash"></i> Hapus Data</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        @endforeach
-        <div class="col-md-4 mb-3">
-            <div class="content">
-                <div style="height:126px;position: relative;">
-                    <a class="hover-simple cursor-pointer" onclick="openModal()" style=" margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
-                        <h1><i class="bi bi-plus-circle"></i></h1>
-                    </a>
+                @endforeach
+                <div class="col-md-4 mb-3">
+                    <div class="content">
+                        <div style="height:126px;position: relative;">
+                            <a class="hover-simple cursor-pointer" onclick="openModal()" style=" margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                                <h1><i class="bi bi-plus-circle"></i></h1>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SOSIAL MEDIA -->
-    <h3 class="my-3 p-0">Social Media</h3>
-    <div class="row mt-3">
-        @foreach( $dataSosmed as $ds )
-        <div class="col-md-6 col-12">
-            <label for="">{{ $ds->data_name }} {{ ($ds->data_name == 'Whatsapp' ? ($ds->data_id == '000003' ? 'Kedoya' : 'Cengkareng') : '' ) }} </label>
-            <div class="input-group mb-3">
-                <span class="input-group-text">
-                    <i class="bi bi-{{ strtolower($ds->data_name) }}"></i>
-                </span>
-                <input type="text" class="form-control" placeholder="{{ $ds->data_name }}" aria-label="{{ $ds->data_name }} Link" name="{{ strtolower($ds->data_name) }}_link" id="{{ strtolower($ds->data_name) }}_link" data-name="{{ strtolower($ds->data_name) }}" data-id="{{ $ds->data_id }}" value="{{ $ds->note ?? '' }}" onchange="saveLink(this)" onclick="saveLink(this)" onkeyup="saveLink(this)">
+
+    <div class="card">
+        <form action="{{ route('home_social_media.post') }}" method="POST" id="formSocmed">
+            @csrf
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="my-1 p-0">Social Media</h5>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        @endforeach
+            <div class="card-body">
+                <!-- SOSIAL MEDIA -->
+                <div class="row mt-3">
+                    @foreach( $dataSosmed as $ds )
+                    <div class="col-md-6 col-12">
+                        <label for="">{{ $ds->data_name }} {{ ($ds->data_name == 'Whatsapp' ? ($ds->data_id == '000003' ? 'Kedoya' : 'Cengkareng') : '' ) }} </label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-{{ strtolower($ds->data_name) }}"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="{{ $ds->data_name }}" aria-label="{{ $ds->data_name }} Link" name="{{ strtolower($ds->data_id) }}" id="{{ strtolower($ds->data_name) }}_link" data-name="{{ strtolower($ds->data_name) }}" data-id="{{ $ds->data_id }}" value="{{ $ds->note ?? '' }}">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </form>
     </div>
+
 
     <div class="modal fade" id="addSlider" tabindex="-1" role="dialog" aria-labelledby="addSliderLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

@@ -18,19 +18,22 @@
     @endif
 
     <form action="{{ route('about.post') }}" enctype="multipart/form-data" method="POST" id="formAbout"> @csrf
+        <div class="text-right mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
         <div class="form-group">
             <label for="">Judul</label>
-            <input type="text" class="form-control w-50"  name="title1" id="title1" value="{{ $data1->title ?? '' }}">
+            <input type="text" class="form-control w-50" name="title1" id="title1" value="{{ $data1->title ?? '' }}">
         </div>
 
         <div class="form-group">
             <label for="">Deskripsi</label>
-            <textarea name="description1" id="description1"  class="form-control" rows="5">{{ $data1->description }}</textarea>
+            <textarea name="description1" id="description1" class="form-control" rows="5">{{ $data1->description }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="">Judul Struktur Organisasi</label>
-            <input type="text" class="form-control w-50"  name="title2" id="title2" value="{{ $data2->title ?? 'Struktur Organisasi' }}">
+            <input type="text" class="form-control w-50" name="title2" id="title2" value="{{ $data2->title ?? 'Struktur Organisasi' }}">
         </div>
         @php
         $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/slide.png";
@@ -41,10 +44,6 @@
         <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
         <div id="preview" class="text-center">
             <img id="viewImg" src="{{ $default }}" alt="Upload Preview" onclick="openFormFile()" style="width: 100%;" class="img-responsive">
-        </div>
-        <div class="text-right mt-3">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
 </div>

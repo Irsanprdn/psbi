@@ -107,15 +107,23 @@ class AdminPanelController extends Controller
 
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
-        $code = 400;
+        $sqlUpd = true;
 
-        $sqlUpd = DB::update(" UPDATE basic_data SET  note = '" . $req->link . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND group_id = '999999' AND  data_id = '" . $req->id . "' ");
+        $input = $req->all();
 
-        $code =  ($sqlUpd ?  200 : $code);
+        foreach ($input as $key => $value) {
 
-        return response()->json([
-            'code' => $code
-        ]);
+            $sqlUpd = DB::update(" UPDATE basic_data SET  note = '" . $value . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND group_id = '999999' AND  data_id = '" . $key . "' ");
+            if (!$sqlUpd) {
+                $sqlUpd = false;
+            }
+        }
+
+        if ($sqlUpd) {
+            return redirect()->route('home')->with('success', 'Data berhasil diubah');
+        } else {
+            return redirect()->route('home')->with('error', 'Data gagal diubah');
+        }
     }
 
 
@@ -291,7 +299,7 @@ class AdminPanelController extends Controller
 
             $query = " UPDATE contact SET  name = ?,  link_name = ?, updated_by = ?, updated_date =  ? WHERE is_delete = 'N' AND  contact_id = ?  ";
 
-            $params = [ $req->name[$i], $req->link_name[$i], $user, $date, $req->contact_id[$i]];
+            $params = [$req->name[$i], $req->link_name[$i], $user, $date, $req->contact_id[$i]];
 
             $sqlUpd = DB::update($query, $params);
 

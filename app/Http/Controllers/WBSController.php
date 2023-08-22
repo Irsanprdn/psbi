@@ -32,6 +32,7 @@ class WBSController extends Controller
             klasifikasi,
             lokasi,
             sumber,
+            link_berkas,
             foto,
             wbs.updated_by,
             wbs.updated_date,

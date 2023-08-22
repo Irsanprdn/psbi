@@ -18,14 +18,16 @@
     @endif
 
     <form action="{{ route('contact.post') }}" enctype="multipart/form-data" method="POST" id="formContact"> @csrf
-       
+        <div class="text-right mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
         @foreach( $data as $d )
         <div class="row">
             <div class="col-md-6">
                 <input type="hidden" name="contact_id[]" value="{{ $d->contact_id ?? '' }}">
                 <div class="form-group">
                     <label for="">Nama Kontak</label>
-                    <input type="text" class="form-control"  name="name[]" id="name" value="{{ $d->name ?? '' }}">
+                    <input type="text" class="form-control" name="name[]" id="name" value="{{ $d->name ?? '' }}">
                 </div>
             </div>
             <div class="col-md-6">
@@ -40,12 +42,8 @@
                     <input type="checkbox" name="is_title[]" id="is_title" class="form-control-sm" {{  ( $d->is_title ?? '' ) == 'Y' ? 'checked' : '' }}>
                 </div>
             </div> -->
-        </div>        
-        @endforeach
-        <div class="text-right mt-3">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
         </div>
+        @endforeach
     </form>
 </div>
 @endsection
