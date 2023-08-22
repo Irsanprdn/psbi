@@ -118,7 +118,7 @@
 <div id="btn-add" class="d-none">
     <a href="{{ route('wbs_data.input', 0) }}" class="btn btn-sm btn-primary bg-base btn-adds" type="button"><i class="bi bi-plus"></i> Tambah Data</a>
 
-    <button class="btn btn-sm btn-primary bg-base" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
+    <button class="btn btn-sm btn-primary bg-base" type="button" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
 
     <a href="{{ asset('assets') }}/templet.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-download"></i> Download Template</a>
 </div>
