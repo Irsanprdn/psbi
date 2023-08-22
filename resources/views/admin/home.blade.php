@@ -116,11 +116,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for=""><span class="text-danger">*</span> Urutan</label>
-                                <input type="text" class="form-control" required name="idx" id="idx">
+                                <input type="text" required class="form-control" required name="idx" id="idx">
                             </div>
                             <div class="col-md-6">
                                 <label for=""><span class="text-danger">*</span> Status</label>
-                                <select name="status" id="status" required class="form-control">
+                                <select name="status" required id="status" required class="form-control">
                                     <option value="">Pilih Status</option>
                                     <option value="Draft">Draft</option>
                                     <option value="Publish">Publish</option>
