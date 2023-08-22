@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <input type="hidden" name="contact_id[]" value="{{ $d->contact_id ?? '' }}">
                 <div class="form-group">
-                    <label for="">Nama Kontak</label>
+                    <label for="">Lokasi</label>
                     <input type="text" class="form-control" name="name[]" id="name" value="{{ $d->name ?? '' }}">
                 </div>
             </div>

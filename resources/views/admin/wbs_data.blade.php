@@ -83,7 +83,7 @@
                     <td> {{$d->updated_date}} </td>
                     <td>
                         <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning m-1 text-light" title="Ubah"><i class="bi bi-pencil"></i> </a>
-                        <a href="{{ $d->link_berkas }}" target="_blank" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a>
+                        <a data-url="{{ $d->link_berkas }}" onclick="openBerkas(this)" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a>
                         <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger m-1 text-light" title="Hapus"><i class="bi bi-trash"></i> </button>
                     </td>
                 </tr>
@@ -152,6 +152,15 @@
             // Do nothing!
             Alert('Hapus telah dibatalkan')
         }
+    }
+
+    function openBerkas(e) {
+        var url = $(e).attr('data-url')
+        if (url == "") {
+            alert('Maaf link belum tersedia, Silahkan isi terlebih dahulu')
+            return;
+        }
+        window.open(url, '_blank');
     }
 </script>
 @endsection
