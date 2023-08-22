@@ -82,8 +82,9 @@
                     <td> {{$d->updated_by}} </td>
                     <td> {{$d->updated_date}} </td>
                     <td>
-                        <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </a>
-                        <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                        <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning m-1 text-light" title="Ubah"><i class="bi bi-pencil"></i> </a>
+                        <a href="{{ $d->link_berkas }}" target="_blank" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a>
+                        <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger m-1 text-light" title="Hapus"><i class="bi bi-trash"></i> </button>
                     </td>
                 </tr>
                 @endforeach
