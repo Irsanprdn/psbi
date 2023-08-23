@@ -168,13 +168,19 @@
 
                             defaults = "{{ ENV('ASSET_URL') }}" + "/assets/compro/img/user.png";
                             foto = "";
-                            if ( (value['foto'] ?? '')  != '' &&  ((value[foto] ?? '') == '' ? '' : value[foto].search == 'WBS')) {
-                                foto = "{{ ENV('ASSET_URL') }}" +  "/uploads/foto_WBS/" + value['foto'];
-                                foto = (value['foto'] == '' ? defaults : foto);
-                            } else {
+                            if ( (value['foto'] ?? '')  == '') {
                                 foto = 'https://drive.google.com/uc?export=view&id=' + value['foto'];
                                 foto = (value['foto'] == '' ? defaults : foto);
-                            }
+                            }else{
+                                if( value['sumber'] == 'Input' ){
+                                    
+                                    foto = "{{ ENV('ASSET_URL') }}" +  "/uploads/foto_WBS/" + value['foto'];
+                                    foto = (value['foto'] == '' ? defaults : foto);
+                                }else{
+                                    foto = 'https://drive.google.com/uc?export=view&id=' + value['foto'];
+                                    foto = (value['foto'] == '' ? defaults : foto);
+                                }
+                            } 
                                     
 
                             console.log(foto)

@@ -9,7 +9,7 @@
 @endsection
 @section('content')
 
-<form action="{{ route('wbs_data.export') }}" method="POST" id="formPost">`
+<form action="{{ route('wbs_data.export') }}" method="POST" id="formPost">
     @csrf
     @if (session('error'))
     <div class="alert my-3 alert-danger">{{ session('error') }}
