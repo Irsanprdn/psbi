@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Image;
 use Validator;
 use App\Exports\WBSExport;
+use App\Exports\WBSExportStatus;
 
 class WBSController extends Controller
 {
@@ -81,12 +82,24 @@ class WBSController extends Controller
             })
             ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->get();
 
-        return view('admin.wbs_data', compact('data'));
+        $dataStatus =  DB::select(" SELECT data_id,data_name FROM basic_data WHERE group_id = '000006' ");
+
+        return view('admin.wbs_data', compact('data', 'dataStatus'));
     }
 
     public function wbs_data_export(Request $req)
     {
-        return Excel::download(new WBSExport($req->year ?? date('Y')), 'monthly_data.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+        if ( isset($req->status) ) {
+            if ( $req->status == '' ) {
+                return redirect()->route('wbs_data')->with('error', 'Filter tidak boleh kosong');
+            }
+            return Excel::download(new WBSExportStatus($req->status), 'status_data.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+        }else{
+            if ( $req->year == '' || $req->status == '') {
+                return redirect()->route('wbs_data')->with('error', 'Filter tidak boleh kosong');
+            }
+            return Excel::download(new WBSExport($req->year ?? date('Y')), 'monthly_data.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+        }
     }
 
     public function wbs_data_input($id)
@@ -128,7 +141,7 @@ class WBSController extends Controller
         $image = $req->file('imgFile');
         if ($image != '') {
 
-            $input['foto'] = 'WBS'.time() . '.' . $image->extension();
+            $input['foto'] = 'WBS' . time() . '.' . $image->extension();
 
             $filePath = public_path('/uploads/foto_WBS/');
             $img = Image::make($image->path());

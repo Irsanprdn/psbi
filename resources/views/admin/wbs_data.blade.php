@@ -28,8 +28,29 @@
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
+                <label for="">Filter Export</label>
+                <select name="filterExport" id="filterExport" class="form-control form-control-sm">
+                    <option value="">Pilih Filter Export</option>
+                    <option value="filterTahun">Berdasarkan Tahun</option>
+                    <option value="filterStatus">Berdasarkan Status</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2 d-none saringan" id="filterTahun">
+            <div class="form-group">
                 <label for="">Tahun</label>
-                <input class="form-control form-control-sm" type="text" name="year" id="year" required maxlength="4" value="{{ date('Y') }}">
+                <input class="form-control form-control-sm" type="text" name="year" id="year" maxlength="4" value="{{ date('Y') }}">
+            </div>
+        </div>
+        <div class="col-md-2 d-none saringan" id="filterStatus">
+            <div class="form-group">
+                <label for="">Status</label>
+                <select name="status" id="status" class="form-control form-control-sm">
+                    <option value="">Pilih Status</option>
+                    @foreach( $dataStatus as $ds )
+                    <option value="{{ $ds->data_id }}">{{ $ds->data_name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="col-md-2">
@@ -180,6 +201,12 @@
             Alert('Hapus telah dibatalkan')
         }
     }
+
+    $('#filterExport').on('change',function(){
+        var val = $(this).val()
+        $('.saringan').addClass('d-none')
+        $('#'+val).removeClass('d-none')
+    })
 
     function openBerkas(e) {
         var url = $(e).attr('data-url')
