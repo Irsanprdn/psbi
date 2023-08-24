@@ -63,11 +63,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Masukan urutan</label>
-                                <input type="text" class="form-control" name="idx" id="idx">
+                                <input type="text" class="form-control" required name="idx" id="idx">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Masukan status</label>
-                                <select name="status" id="status" class="form-control">
+                                <select name="status" id="status" class="form-control" required>
                                     <option value="">Pilih Status</option>
                                     <option value="Draft">Draft</option>
                                     <option value="Publish">Publish</option>
