@@ -116,7 +116,7 @@
                     <td> {{$d->statusNm}} </td>
                     <td>
                         @if( $d->riwayat_rumah_sakit == 'Pernah')
-                        <a href="{{ ENV('ASSET_URL') }}'/uploads/bukti_riwayat_rumah_sakit/' {{$d->bukti_riwayat}}" target="_blank">{{$d->riwayat_rumah_sakit}} </a>
+                        <a href="{{ ENV('ASSET_URL') }}/uploads/bukti_riwayat_rumah_sakit/ {{$d->bukti_riwayat}}" target="_blank">{{$d->riwayat_rumah_sakit}} </a>
                         @else
                         {{$d->riwayat_rumah_sakit}}
                         @endif
