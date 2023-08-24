@@ -52,7 +52,7 @@
         </div>
         <div class="col-md-2">
             <div class="form-group">
-                <button class="btn btn-primary bg-base btn-sm" type="submit"> <i class="bi bi-download"></i>Export</button>
+                <button class="btn btn-primary bg-base btn-sm" type="submit"> <i class="bi bi-download"></i> Export</button>
             </div>
         </div>
 
