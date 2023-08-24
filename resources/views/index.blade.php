@@ -76,33 +76,37 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('assets') }}/compro/js/main.js"></script>
     <script>
-        var swiper = new Swiper(".swiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            autoplay: false,
-            slidesPerView: "auto",
-            // autoplay: {
-            //     delay: 3000
-            // },
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 2,
-                slideShadows: true
-            },
-            spaceBetween: 50,
-            loop: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            }
-        });
+        var dataActivity = "{{ count($dataActivity) }}";
+        if (dataActivity > 0) {
+            var swiper = new Swiper(".swiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                autoplay: false,
+                slidesPerView: "auto",
+                // autoplay: {
+                //     delay: 3000
+                // },
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 2,
+                    slideShadows: true
+                },
+                spaceBetween: 50,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+            });
+        }
+
 
         $("#pencarian").on('keyup', function(e) {
             if (e.key === 'Enter' || e.keyCode === 13) {
@@ -168,20 +172,20 @@
 
                             defaults = "{{ ENV('ASSET_URL') }}" + "/assets/compro/img/user.png";
                             foto = "";
-                            if ( (value['foto'] ?? '')  == '') {
+                            if ((value['foto'] ?? '') == '') {
                                 foto = 'https://drive.google.com/uc?export=view&id=' + value['foto'];
                                 foto = (value['foto'] == '' ? defaults : foto);
-                            }else{
-                                if( value['sumber'] == 'Input' ){
-                                    
-                                    foto = "{{ ENV('ASSET_URL') }}" +  "/uploads/foto_WBS/" + value['foto'];
+                            } else {
+                                if (value['sumber'] == 'Input') {
+
+                                    foto = "{{ ENV('ASSET_URL') }}" + "/uploads/foto_WBS/" + value['foto'];
                                     foto = (value['foto'] == '' ? defaults : foto);
-                                }else{
+                                } else {
                                     foto = 'https://drive.google.com/uc?export=view&id=' + value['foto'];
                                     foto = (value['foto'] == '' ? defaults : foto);
                                 }
-                            } 
-                                    
+                            }
+
 
                             console.log(foto)
                             html += ' <div class="card shadow my-3">' +
@@ -306,12 +310,12 @@
             });
         }
 
-        function showaAnotherLink(e){
+        function showaAnotherLink(e) {
             $(e).addClass('d-none')
             $('#doubleWA').removeClass('d-none')
         }
 
-        function showaAnotherLink2(e){
+        function showaAnotherLink2(e) {
             $('#doubleWA').addClass('d-none')
             $('#penampungWA').removeClass('d-none')
         }

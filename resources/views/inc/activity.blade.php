@@ -10,8 +10,6 @@
 
         <!-- Swiper -->
         <div class="d-flex justify-content-center align-items-center" id="swipers">
-
-
             <div class="container">
                 <div class="swiper">
                     <div class="swiper-wrapper">
@@ -27,7 +25,8 @@
                                         </span>
                                     </div> -->
                         </div>
-                        @endforeach                        
+                        @endforeach
+                        
                     </div>
                     <!-- If we need pagination -->
                     <!-- <div class="swiper-pagination"></div> -->
