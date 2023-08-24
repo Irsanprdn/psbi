@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/login/fonts/icomoon/style.css">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.7" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.8" rel="stylesheet">
 </head>
 
 <body>
@@ -259,9 +259,9 @@
                                 '<div class="accordion " id="accordion' + value['nomor_panti'] + '">' +
                                 '<div class="accordion-item">' +
                                 '<p class="accordion-header custom-mobile-accordion-2 bg-light text-base text-center" id="heading' + value['nomor_panti'] + '" >' +
-                                '<a class="px-2 py-1" aria-expanded="false" aria-controls="collapse' + value['nomor_panti'] + '" style="font-size:13px;">' +
+                                '<p class="px-2 py-1"  style="font-size:13px;">' +
                                 ' Keterangan Tambahan ' +
-                                '</a>' +
+                                '</p>' +
                                 '</p>' +
                                 '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse show bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:11px; font-weight:bold;"">' +
                                 '<div class="accordion-body">' +
