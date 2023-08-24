@@ -52,7 +52,7 @@
         </div>
         <div class="col-md-2">
             <div class="form-group">
-                <button class="btn btn-primary bg-base btn-sm" type="submit">Export</button>
+                <button class="btn btn-primary bg-base btn-sm" type="submit"> <i class="bi bi-download"></i>Export</button>
             </div>
         </div>
 
@@ -137,7 +137,7 @@
 
     <button class="btn btn-sm btn-primary bg-base" type="button" data-toggle="modal" data-target="#importModal"><i class="bi bi-upload"></i> Import Data</button>
 
-    <a href="{{ asset('assets') }}/templet.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-download"></i> Download Template</a>
+    <a href="{{ asset('assets') }}/templet.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-file-excel-o"></i> Download Template</a>
 </div>
 
 
