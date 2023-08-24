@@ -259,9 +259,9 @@
                                 '<div class="accordion " id="accordion' + value['nomor_panti'] + '">' +
                                 '<div class="accordion-item mt-3">' +
                                 '<p class="accordion-header custom-mobile-accordion-2 bg-secondary text-base text-center mb-0" id="heading' + value['nomor_panti'] + '" >' +
-                                    '<p class="px-2 py-1 mb-0 text-center"  style="font-size:13px;">' +
+                                    '<h6 class="px-2 py-1 mb-0 text-center"  style="font-size:13px;">' +
                                     ' Keterangan Tambahan ' +
-                                    '</p>' +
+                                    '</h6>' +
                                 '</p>' +
                                 '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse show bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:11px; font-weight:bold;">' +
                                 '<div class="accordion-body">' +

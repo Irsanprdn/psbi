@@ -72,7 +72,7 @@
 
                 <div class="form-group">
                     <label for="Asal"><span class="text-danger">*</span> Asal</label><br>
-                    <select name="asal" id="asal" class="select-search" >
+                    <select name="asal" id="asal" class="select-search">
                         <option value="" class="text-secondary">Pilih Asal</option>
                         @foreach( $dataKota as $dk)
                         <option value="{{ $dk->id }}" {{ ( ($data->asal ?? '') == $dk->id ? 'selected' : ''  ) }} class="text-dark">{{ $dk->name }}</option>
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <label for="Domisili"><span class="text-danger">*</span> Domisili</label><br>
-                    <select name="domisili" id="domisili" class="select-search" >
+                    <select name="domisili" id="domisili" class="select-search">
                         <option value="" class="text-secondary">Pilih Domisili</option>
                         @foreach( $dataKota as $dk)
                         <option value="{{ $dk->id }}" {{ ( ($data->domisili ?? '') == $dk->id ? 'selected' : ''  ) }} class="text-dark">{{ $dk->name }}</option>
@@ -92,7 +92,7 @@
 
                 <div class="form-group">
                     <label for="Alamat Domisili"><span class="text-danger">*</span> Alamat Domisili</label><br>
-                    <textarea name="alamat" id="alamat" class="form-control" >{{ $data->alamat ?? '' }}</textarea>
+                    <textarea name="alamat" id="alamat" class="form-control">{{ $data->alamat ?? '' }}</textarea>
                 </div>
             </div>
         </div>
@@ -113,6 +113,7 @@
 
     ?>
     <h5 class="font-weight-bold"> <u>Informasi Detail</u> </h5>
+
     <div class="card card-body">
         <div class="row">
             <div class="col-md-6 col-12">
@@ -156,45 +157,46 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="Photo">{!! ($id == 0 ? '<span class="text-danger">*</span>' : '') !!} Photo</label>
-                    <input type="file" class="form-control" name="imgFile" id="imgFile" {{ ($id == 0 ? 'required' : '') }} onchange="readURL(this)">
-                </div>
+
             </div>
             <div class="col-md-6 col-12">
+                <div class="form-group">
+                    <label for="Link Berkas">Link Berkas</label>
+                    <input type="text" class="form-control" value="{{ $data->link_berkas ?? '' }}" id="link_berkas" name="link_berkas">
+                </div>
                 <div class="form-group">
                     <label for="Operator">Operator</label>
                     <input type="text" class="form-control" id="updated_by" name="updated_by" value="{{ auth()->user()->fullname }}" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="Link Berkas">Link Berkas</label>
-                    <input type="text" class="form-control" value="{{ $data->link_berkas ?? '' }}" id="link_berkas" name="link_berkas">
-                </div>
-
-                <div class="form-group">
                     <label for="Keterangan"><span class="text-danger">*</span> Keterangan</label><br>
                     <textarea name="keterangan" id="keterangan" class="form-control" rows="5">{{ $data->keterangan ?? '' }}</textarea>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="preview">
-                            <img id="viewImg" src="{{ $default }}" alt="Upload Preview" style="width: 97.5px; height:130px;">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="text-right mt-3 pb-0 mb-0">
-                            <a href="{{ route('wbs_data') }}" class="btn btn-sm btn-secondary" type="button"><i class="bi bi-arrow-left"></i> Kembali</a>
-                            <button class="btn btn-sm btn-success" type="submit"><i class="bi bi-save"></i> Simpan Data</button>
-                        </p>
-                    </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Photo">{!! ($id == 0 ? '<span class="text-danger">*</span>' : '') !!} Photo</label>
+                    <input type="file" class="form-control" name="imgFile" id="imgFile" {{ ($id == 0 ? 'required' : '') }} onchange="readURL(this)">
                 </div>
+            </div>
 
+            <div class="col-md-6">
+                <div id="preview">
+                    <img id="viewImg" src="{{ $default }}" alt="Upload Preview" style="width: 97.5px; height:130px;">
+                </div>
+            </div>
+
+            <div class="col-md-12 ">
+                <p class="text-right mt-3 pb-0 mb-0">
+                    <a href="{{ route('wbs_data') }}" class="btn btn-sm btn-secondary" type="button"><i class="bi bi-arrow-left"></i> Kembali</a>
+                    <button class="btn btn-sm btn-success" type="submit"><i class="bi bi-save"></i> Simpan Data</button>
+                </p>
             </div>
         </div>
     </div>
-
 </form>
 @endsection
 @section('js')

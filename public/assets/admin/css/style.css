@@ -22615,3 +22615,7 @@ File: scss
 .cursor-pointer {
     cursor: pointer;
 }
+
+#getHeight {
+    height: 65vh !important;
+}
