@@ -165,7 +165,7 @@ class WBSController extends Controller
 
         $buktiRiwayat = $req->file('buktiRiwayat');
         if ($buktiRiwayat != '') {
-            $input['bukti_riwayat'] = 'BUKTI_RIWAYAT_RUMAH_SAKIT' . time() . '.' . $image->extension();
+            $input['bukti_riwayat'] = 'BUKTI_RIWAYAT_RUMAH_SAKIT' . time() . '.' . $buktiRiwayat->extension();
 
             $filePath = public_path('/uploads/bukti_riwayat_rumah_sakit/');
             

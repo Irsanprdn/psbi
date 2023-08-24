@@ -40,7 +40,10 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
             foto,            
             lokasi,
             sumber,
-            link_berkas
+            link_berkas,
+            riwayat_rumah_sakit, 
+            bukti_riwayat,
+            wisma
             ')
         )
             ->leftJoin('basic_data as bsAgama', function ($join1) {
@@ -84,6 +87,7 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
                 'Jenis Kelamin' => $item->jkNm,
                 'Umur' => $item->umur,
                 'Status' => $item->statusNm,
+                'Riwayat Rumah Sakit' => $item->riwayat_rumah_sakit,
                 'Pendidikan' => $item->pendidikanNm,
                 'Agama' => $item->agamaNm,
                 'Tgl Masuk' => $item->tanggal_masuk,
@@ -95,6 +99,7 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
                 'Klasifikasi' => $item->klasifikasi,
                 'Foto' => 'https://drive.google.com/file/d/'.$item->foto.'/view?usp=drive_link',
                 'Lokasi' => $item->lokasi,
+                'Wisma' => $item->wisma,
                 'Sumber' => $item->sumber,
                 'Link Berkas' => $item->link_berkas,
             ];

@@ -43,7 +43,10 @@ class MonthlyDataSheet implements FromCollection, WithTitle, WithHeadings, WithS
             foto,            
             lokasi,
             sumber,
-            link_berkas
+            link_berkas,
+            riwayat_rumah_sakit, 
+            bukti_riwayat,
+            wisma
             ')
         )
             ->leftJoin('basic_data as bsAgama', function ($join1) {
@@ -88,6 +91,7 @@ class MonthlyDataSheet implements FromCollection, WithTitle, WithHeadings, WithS
                 'Jenis Kelamin' => $item->jkNm,
                 'Umur' => $item->umur,
                 'Status' => $item->statusNm,
+                'Riwayat Rumah Sakit' => $item->riwayat_rumah_sakit,
                 'Pendidikan' => $item->pendidikanNm,
                 'Agama' => $item->agamaNm,
                 'Tgl Masuk' => $item->tanggal_masuk,
@@ -99,6 +103,7 @@ class MonthlyDataSheet implements FromCollection, WithTitle, WithHeadings, WithS
                 'Klasifikasi' => $item->klasifikasi,
                 'Foto' => 'https://drive.google.com/file/d/'.$item->foto.'/view?usp=drive_link',
                 'Lokasi' => $item->lokasi,
+                'Wisma' => $item->wisma,
                 'Sumber' => $item->sumber,
                 'Link Berkas' => $item->link_berkas,
             ];
