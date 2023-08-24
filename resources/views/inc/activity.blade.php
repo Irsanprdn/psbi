@@ -1,4 +1,4 @@
-<div id="activity" class="services-area">
+<div id="activity" class="services-area {{ ( count($dataActivity) > 0 ? '' : 'd-none' ) }}">
     <div class="container py-5">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
