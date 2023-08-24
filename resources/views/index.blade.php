@@ -257,13 +257,13 @@
                                 '</div>' +
                                 '<div class="col-md-4 custom-mobile-accordion px-0">' +
                                 '<div class="accordion " id="accordion' + value['nomor_panti'] + '">' +
-                                '<div class="accordion-item mt-4">' +
-                                '<p class="accordion-header custom-mobile-accordion-2 bg-light text-base text-center" id="heading' + value['nomor_panti'] + '" >' +
-                                '<p class="px-2 py-1"  style="font-size:13px;">' +
-                                ' Keterangan Tambahan ' +
+                                '<div class="accordion-item mt-3">' +
+                                '<p class="accordion-header custom-mobile-accordion-2 bg-secondary text-base text-center mb-0" id="heading' + value['nomor_panti'] + '" >' +
+                                    '<p class="px-2 py-1 mb-0 text-center"  style="font-size:13px;">' +
+                                    ' Keterangan Tambahan ' +
+                                    '</p>' +
                                 '</p>' +
-                                '</p>' +
-                                '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse show bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:11px; font-weight:bold;"">' +
+                                '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse show bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:11px; font-weight:bold;">' +
                                 '<div class="accordion-body">' +
                                 '<div class="row">' +
                                 '<div class="col-md-4 col-5 px-0">' +
