@@ -62,6 +62,7 @@
             <thead class="bg-base text-light">
                 <tr>
                     <th class="text-capitalize"> no </th>
+                    <th class="text-capitalize"> aksi </th>
                     <th class="text-capitalize"> foto </th>
                     <th class="text-capitalize"> nama </th>
                     <th class="text-capitalize"> jenis kelamin </th>
@@ -79,8 +80,7 @@
                     <th class="text-capitalize"> lokasi </th>
                     <th class="text-capitalize"> sumber </th>
                     <th class="text-capitalize"> updated by </th>
-                    <th class="text-capitalize"> updated date </th>
-                    <th class="text-capitalize"> aksi </th>
+                    <th class="text-capitalize"> updated date </th>                    
                 </tr>
             </thead>
             <tbody>
@@ -100,6 +100,11 @@
                 ?>
                 <tr>
                     <td>{{ $no++ }}</td>
+                    <td>
+                        <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning m-1 text-light" title="Ubah"><i class="bi bi-pencil"></i> </a>
+                        <a data-url="{{ $d->link_berkas }}" onclick="openBerkas(this)" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a>
+                        <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger m-1 text-light" title="Hapus"><i class="bi bi-trash"></i> </button>
+                    </td>
                     <td align="center">
                         <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;">
                     </td>
@@ -119,12 +124,7 @@
                     <td> {{$d->lokasi}} </td>
                     <td> {{$d->sumber}} </td>
                     <td> {{$d->updated_by}} </td>
-                    <td> {{$d->updated_date}} </td>
-                    <td>
-                        <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning m-1 text-light" title="Ubah"><i class="bi bi-pencil"></i> </a>
-                        <a data-url="{{ $d->link_berkas }}" onclick="openBerkas(this)" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a>
-                        <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger m-1 text-light" title="Hapus"><i class="bi bi-trash"></i> </button>
-                    </td>
+                    <td> {{$d->updated_date}} </td>                    
                 </tr>
                 @endforeach
             </tbody>
