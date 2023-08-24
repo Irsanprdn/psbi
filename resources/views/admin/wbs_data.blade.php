@@ -25,9 +25,9 @@
         </button>
     </div>
     @endif
-    <div class="row">        
+    <div class="row">
         <div class="col-md-2">
-            <div class="form-group">                
+            <div class="form-group">
                 <select name="filterExport" id="filterExport" class="form-control form-control-sm">
                     <option value="">Pilih Filter Export</option>
                     <option value="filterTahun">Berdasarkan Tahun</option>
@@ -36,12 +36,12 @@
             </div>
         </div>
         <div class="col-md-2 d-none saringan" id="filterTahun">
-            <div class="form-group">                
+            <div class="form-group">
                 <input class="form-control form-control-sm" type="text" name="year" id="year" maxlength="4" value="{{ date('Y') }}">
             </div>
         </div>
         <div class="col-md-2 d-none saringan" id="filterStatus">
-            <div class="form-group">                
+            <div class="form-group">
                 <select name="status" id="status" class="form-control form-control-sm">
                     <option value="">Pilih Status</option>
                     @foreach( $dataStatus as $ds )
@@ -68,6 +68,7 @@
                     <th class="text-capitalize"> jenis kelamin </th>
                     <th class="text-capitalize"> umur </th>
                     <th class="text-capitalize"> status </th>
+                    <th class="text-capitalize"> riwayat rumah sakit </th>
                     <th class="text-capitalize"> pendidikan </th>
                     <th class="text-capitalize"> agama </th>
                     <th class="text-capitalize"> tanggal masuk </th>
@@ -78,9 +79,10 @@
                     <th class="text-capitalize"> status pernikahan </th>
                     <th class="text-capitalize"> klasifikasi </th>
                     <th class="text-capitalize"> lokasi </th>
+                    <th class="text-capitalize"> wisma </th>
                     <th class="text-capitalize"> sumber </th>
                     <th class="text-capitalize"> updated by </th>
-                    <th class="text-capitalize"> updated date </th>                    
+                    <th class="text-capitalize"> updated date </th>
                 </tr>
             </thead>
             <tbody>
@@ -112,6 +114,13 @@
                     <td> {{$d->jkNm}} </td>
                     <td> {{$d->umur}} </td>
                     <td> {{$d->statusNm}} </td>
+                    <td>
+                        @if( $d->riwayat_rumah_sakit == 'Pernah')
+                        <a href="{{ ENV('ASSET_URL') }}. '/uploads/bukti_riwayat_rumah_sakit/'. {{$d->bukti_riwayat}}">{{$d->riwayat_rumah_sakit}} </a>
+                        @else
+                        <a href="{{ ENV('ASSET_URL') }}. '/uploads/bukti_riwayat_rumah_sakit/'. {{$d->bukti_riwayat}}">{{$d->riwayat_rumah_sakit}} </a>
+                        @endif
+                    </td>
                     <td> {{$d->pendidikanNm}} </td>
                     <td> {{$d->agamaNm}} </td>
                     <td> {{$d->tanggal_masuk}} </td>
@@ -122,9 +131,10 @@
                     <td> {{$d->spNm}} </td>
                     <td> {{$d->klasifikasi}} </td>
                     <td> {{$d->lokasi}} </td>
+                    <td> {{$d->wisma}} </td>
                     <td> {{$d->sumber}} </td>
                     <td> {{$d->updated_by}} </td>
-                    <td> {{$d->updated_date}} </td>                    
+                    <td> {{$d->updated_date}} </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -198,10 +208,10 @@
         }
     }
 
-    $('#filterExport').on('change',function(){
+    $('#filterExport').on('change', function() {
         var val = $(this).val()
         $('.saringan').addClass('d-none')
-        $('#'+val).removeClass('d-none')
+        $('#' + val).removeClass('d-none')
     })
 
     function openBerkas(e) {
