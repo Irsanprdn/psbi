@@ -255,11 +255,11 @@
                                 '<div class="accordion " id="accordion' + value['nomor_panti'] + '">' +
                                 '<div class="accordion-item">' +
                                 '<p class="accordion-header custom-mobile-accordion-2 bg-light text-base text-center" id="heading' + value['nomor_panti'] + '" >' +
-                                '<a class="px-2 py-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' + value['nomor_panti'] + '" aria-expanded="false" aria-controls="collapse' + value['nomor_panti'] + '" style="font-size:13px;">' +
+                                '<a class="px-2 py-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' + value['nomor_panti'] + '" aria-expanded="false" aria-controls="collapse' + value['nomor_panti'] + '" style="font-size:13px;">' +
                                 ' Keterangan Tambahan ' +
                                 '</a>' +
                                 '</p>' +
-                                '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:12px;">' +
+                                '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse show bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:11px; font-weight:bold;"">' +
                                 '<div class="accordion-body">' +
                                 '<div class="row">' +
                                 '<div class="col-md-4 col-5 px-0">' +
