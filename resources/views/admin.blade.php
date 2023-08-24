@@ -42,18 +42,18 @@
         <div class="page-wrapper">
             <div class="page-breadcrumb">
                 <div class="row align-items-center">                    
-                    <div class="col-md-6 col-8">                        
+                    <div class="col-md-6 col-6">                        
                         <div class="d-flex align-items-center ">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li style="font-size: 20px;" class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li style="font-size: 20px;" class="breadcrumb-item active" aria-current="page">> @yield('title')</li>
+                                    <li style="font-size: 15px;" class="breadcrumb-item"><a href="#">Admin</a></li>
+                                    <li style="font-size: 15px;" class="breadcrumb-item active" aria-current="page">> @yield('title')</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-md-6 col-8 align-self-center text-right">
-                        <h5 class="page-title mb-0 p-0">{{ auth()->user()->fullname}}</h5>
+                    <div class="col-md-6 col-6 align-self-center text-right">
+                        <p style="font-size: 15px;" class="page-title mb-0 p-0">{{ auth()->user()->fullname}}</p>
                     </div>
                 </div>
             </div>
