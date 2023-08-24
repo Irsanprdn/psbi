@@ -25,10 +25,9 @@
         </button>
     </div>
     @endif
-    <div class="row">
+    <div class="row">        
         <div class="col-md-2">
-            <div class="form-group">
-                <label for="">Filter Export</label>
+            <div class="form-group">                
                 <select name="filterExport" id="filterExport" class="form-control form-control-sm">
                     <option value="">Pilih Filter Export</option>
                     <option value="filterTahun">Berdasarkan Tahun</option>
@@ -37,14 +36,12 @@
             </div>
         </div>
         <div class="col-md-2 d-none saringan" id="filterTahun">
-            <div class="form-group">
-                <label for="">Tahun</label>
+            <div class="form-group">                
                 <input class="form-control form-control-sm" type="text" name="year" id="year" maxlength="4" value="{{ date('Y') }}">
             </div>
         </div>
         <div class="col-md-2 d-none saringan" id="filterStatus">
-            <div class="form-group">
-                <label for="">Status</label>
+            <div class="form-group">                
                 <select name="status" id="status" class="form-control form-control-sm">
                     <option value="">Pilih Status</option>
                     @foreach( $dataStatus as $ds )
@@ -55,7 +52,6 @@
         </div>
         <div class="col-md-2">
             <div class="form-group">
-                <label for="">&nbsp;</label><br>
                 <button class="btn btn-primary bg-base btn-sm" type="submit">Export</button>
             </div>
         </div>

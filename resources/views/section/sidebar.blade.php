@@ -1,6 +1,6 @@
-<nav class="navbar top-navbar navbar-dark d-flex justify-content-end d-md-none" style="height: 10vh;">
+<nav class="navbar top-navbar navbar-dark d-flex justify-content-end d-md-none" style="height: 6vh;">
     <div class="navbar-header d-flex justify-content-center" data-logobg="skin6">
-        <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close" style="font-size: 35px;"></i></a>
+        <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close" style="font-size: 20px;"></i></a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </nav>

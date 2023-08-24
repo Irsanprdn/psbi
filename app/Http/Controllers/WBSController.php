@@ -80,7 +80,7 @@ class WBSController extends Controller
             ->leftJoin('regencies as kotaDomisili', function ($join6) {
                 $join6->on('wbs.domisili', '=', 'kotaDomisili.id');
             })
-            ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->get();
+            ->where('wbs.is_delete', 'N')->orderBy('tanggal_masuk', 'DESC')->limit('10')->get();
 
         $dataStatus =  DB::select(" SELECT data_id,data_name FROM basic_data WHERE group_id = '000006' ");
 
