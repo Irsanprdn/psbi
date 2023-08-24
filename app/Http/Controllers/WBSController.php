@@ -38,7 +38,10 @@ class WBSController extends Controller
             foto,
             wbs.updated_by,
             wbs.updated_date,
-            wbs.is_delete, 
+            wbs.is_delete,
+            riwayat_rumah_sakit, 
+            bukti_riwayat,
+            wisma,
             IFNULL(`bsAgama`.data_name,agama) as agamaNm,
             IFNULL(`bsJK`.data_name,jenis_kelamin) as jkNm, 
             IFNULL(`bsPendidikan`.data_name,pendidikan) as pendidikanNm, 
@@ -135,7 +138,15 @@ class WBSController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+            return redirect()->route('wbs')->with('error', 'Format file atau Ukuran file tidak sesuai');
+        }
+
+        $validator2 = Validator::make($req->all(), [
+            'buktiRiwayat' => 'image|mimes:jpg,jpeg,png,svg,gif,pdf|max:5048',
+        ]);
+
+        if ($validator2->fails()) {
+            return redirect()->route('wbs')->with('error', 'Format file atau Ukuran file tidak sesuai');
         }
 
         $image = $req->file('imgFile');
@@ -152,6 +163,17 @@ class WBSController extends Controller
             $input['foto'] = "";
         }
 
+        $buktiRiwayat = $req->file('buktiRiwayat');
+        if ($buktiRiwayat != '') {
+            $input['bukti_riwayat'] = 'BUKTI_RIWAYAT_RUMAH_SAKIT' . time() . '.' . $image->extension();
+
+            $filePath = public_path('/uploads/bukti_riwayat_rumah_sakit/');
+            
+            $buktiRiwayat->move($filePath, $input['bukti_riwayat']);
+        }else{
+            $input['bukti_riwayat'] = "";
+        }
+
         $input['sumber']  = "Input";
         $input['updated_date'] = date('Y-m-d H:i:s');
 
@@ -160,6 +182,10 @@ class WBSController extends Controller
         } else { //update
             if ($input['foto'] == '') {
                 unset($input['foto']);
+            }
+
+            if ($input['bukti_riwayat'] == '') {
+                unset($input['bukti_riwayat']);
             }
 
             if ($input['asal'] == '') {
@@ -173,7 +199,10 @@ class WBSController extends Controller
             if ($input['_token'] != '') {
                 unset($input['_token']);
             }
+
             unset($input['imgFile']);
+            unset($input['buktiRiwayat']);
+
             $save = WBS::where("nomor_panti", $id)->update($input);
         }
 

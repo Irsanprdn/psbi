@@ -101,6 +101,10 @@
     $selectedKedoya = (str_replace("Admin ", "", auth()->user()->fullname) == "Kedoya" ? "selected" : "");
     $selectedCengkareng = ((str_replace("Admin ", "", auth()->user()->fullname)) == "Cengkareng" ? "selected" : "");
 
+    $selectedPernah =(($data->riwayat_rumah_sakit ?? '') == "Pernah" ? "selected" : "");
+    $selectedTidakPernah = (($data->riwayat_rumah_sakit ?? '') == "Tidak Pernah" ? "selected" : "");
+    
+
     $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/user.png";
     $default = "";
     if (($data->foto ?? '') != '' && str_contains($data->foto, 'WBS')) {
@@ -125,13 +129,15 @@
                         <option value="Cengkareng" {{ $selectedCengkareng }}>PSBI Bangun Daya 1 Cengkareng</option>
                     </select>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="nama"><span class="text-danger">*</span> Klasifikasi</label>
-                    <select name="grup_klasifikasi" id="grup_klasifikasi" class="form-control" required>
-                        <option value="">Pilih Klasifikasi</option>
-                        <option value=""></option>
+
+                <div class="form-group">
+                    <label for="nama"><span class="text-danger">*</span> Riwayat Rumah Sakit</label>
+                    <select name="riwayat_rumah_sakit" id="riwayat_rumah_sakit" class="form-control" required onchange="riwayatSakit(this)">
+                        <option value="">Pilih Riwayat</option>
+                        <option value="Pernah" {{ $selectedPernah }}>Pernah</option>
+                        <option value="Tidak Pernah" {{ $selectedTidakPernah }}>Tidak Pernah</option>
                     </select>
-                </div> -->
+                </div>               
 
                 <div class="form-group">
                     <label for="Klasifikasi"><span class="text-danger">*</span>Klasifikasi</label>
@@ -156,7 +162,7 @@
                         <option value="{{ $ds->data_id }}" {{ ( ($data->status ?? '') == $ds->data_id ? 'selected' : ''  ) }} class="text-dark">{{ $ds->data_name }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div>                
 
             </div>
             <div class="col-md-6 col-12">
@@ -164,14 +170,24 @@
                     <label for="Link Berkas">Link Berkas</label>
                     <input type="text" class="form-control" value="{{ $data->link_berkas ?? '' }}" id="link_berkas" name="link_berkas">
                 </div>
+
+                <div class="form-group d-none" id="uploadBuktiRiwayat">
+                    <label for="nama">Upload Bukti Riwayat</label>
+                    <input type="file" class="form-control" name="buktiRiwayat" id="buktiRiwayat">
+                </div>                
+                
                 <div class="form-group">
                     <label for="Operator">Operator</label>
                     <input type="text" class="form-control" id="updated_by" name="updated_by" value="{{ auth()->user()->fullname }}" readonly>
                 </div>
+                <div class="form-group">
+                    <label for="Wisma">Wisma</label>
+                    <input type="text" class="form-control" id="wisma" name="wisma" value="{{ $data->wisma ?? '' }}">
+                </div>  
 
                 <div class="form-group">
                     <label for="Keterangan"><span class="text-danger">*</span> Keterangan</label><br>
-                    <textarea name="keterangan" id="keterangan" class="form-control" rows="5">{{ $data->keterangan ?? '' }}</textarea>
+                    <textarea name="keterangan" id="keterangan" class="form-control" rows="4">{{ $data->keterangan ?? '' }}</textarea>
                 </div>
             </div>
 
@@ -218,6 +234,15 @@
             reader.readAsDataURL(input.files[0]);
         } else {
             $('#viewImg').attr('src', defaults);
+        }
+    }
+
+    function riwayatSakit(e){
+        var data = $(e).val()
+        if ( data == 'Pernah' ) {
+            $('#uploadBuktiRiwayat').removeClass('d-none')
+        }else{
+            $('#uploadBuktiRiwayat').addClass('d-none')
         }
     }
 </script>

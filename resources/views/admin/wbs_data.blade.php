@@ -101,8 +101,8 @@
                 <tr>
                     <td>{{ $no++ }}</td>
                     <td>
-                        <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning m-1 text-light" title="Ubah"><i class="bi bi-pencil"></i> </a>
-                        <a data-url="{{ $d->link_berkas }}" onclick="openBerkas(this)" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a>
+                        <a href="{{ route('wbs_data.input', $d->nomor_panti) }}" type="button" class="btn btn-sm btn-warning m-1 text-light" title="Ubah"><i class="bi bi-pencil"></i> </a><br>
+                        <a data-url="{{ $d->link_berkas }}" onclick="openBerkas(this)" type="button" class="btn btn-sm {{ ( $d->link_berkas == '' ? 'btn-secondary' : 'btn-info'  )}} m-1 text-light" title="Link Berkas"><i class="bi {{ ( $d->link_berkas == '' ? 'bi-folder-x' : 'bi-folder-symlink'  )}}"></i> </a><br>
                         <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger m-1 text-light" title="Hapus"><i class="bi bi-trash"></i> </button>
                     </td>
                     <td align="center">
