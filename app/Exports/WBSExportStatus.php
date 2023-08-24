@@ -81,13 +81,14 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
             ->get();
 
         $numberedData = $data->map(function ($item, $index) {
-            return [                
-                'No'  => $index + 1,     
+            return [
+                'No'  => $index + 1,
                 'Nama' => $item->nama,
                 'Jenis Kelamin' => $item->jkNm,
                 'Umur' => $item->umur,
                 'Status' => $item->statusNm,
                 'Riwayat Rumah Sakit' => $item->riwayat_rumah_sakit,
+                'Bukti Riwayat' => ($item->riwayat_rumah_sakit  == 'Pernah' ?  ENV('ASSET_URL') . '/uploads/bukti_riwayat_rumah_sakit/' . $item->bukti_riwayat : ''),
                 'Pendidikan' => $item->pendidikanNm,
                 'Agama' => $item->agamaNm,
                 'Tgl Masuk' => $item->tanggal_masuk,
@@ -97,7 +98,7 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
                 'Hasil Jangkauan' => $item->hjNm,
                 'Status Pernikahan' => $item->spNm,
                 'Klasifikasi' => $item->klasifikasi,
-                'Foto' => 'https://drive.google.com/file/d/'.$item->foto.'/view?usp=drive_link',
+                'Foto' => 'https://drive.google.com/file/d/' . $item->foto . '/view?usp=drive_link',
                 'Lokasi' => $item->lokasi,
                 'Wisma' => $item->wisma,
                 'Sumber' => $item->sumber,
@@ -110,20 +111,22 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
 
     public function title(): string
     {
-        $dataStatus =  collect(DB::select(" SELECT data_id,data_name FROM basic_data WHERE group_id = '000006' AND data_id  = '".$this->status."' "))->first();
-        
-        return 'Status '. $dataStatus->data_name;
+        $dataStatus =  collect(DB::select(" SELECT data_id,data_name FROM basic_data WHERE group_id = '000006' AND data_id  = '" . $this->status . "' "))->first();
+
+        return 'Status ' . $dataStatus->data_name;
     }
 
     public function headings(): array
     {
         // Define your column headings here
         return [
-            'No',        
+            'No',
             'Nama',
             'Jenis Kelamin',
             'Umur',
             'Status',
+            'Riwayat Rumah Sakit',
+            'Bukti Riwayat',
             'Pendidikan',
             'Agama',
             'Tgl Masuk',
@@ -135,6 +138,7 @@ class WBSExportStatus implements FromCollection, WithTitle, WithHeadings, WithSt
             'Klasifikasi',
             'Foto',
             'Lokasi',
+            'Wisma',
             'Sumber',
             'Link Berkas',
             // 'Update By',

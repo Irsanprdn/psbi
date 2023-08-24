@@ -85,13 +85,16 @@ class MonthlyDataSheet implements FromCollection, WithTitle, WithHeadings, WithS
             ->get();
 
         $numberedData = $data->map(function ($item, $index) {
+
+            
             return [                
                 'No'  => $index + 1,     
                 'Nama' => $item->nama,
                 'Jenis Kelamin' => $item->jkNm,
                 'Umur' => $item->umur,
                 'Status' => $item->statusNm,
-                'Riwayat Rumah Sakit' => $item->riwayat_rumah_sakit,
+                'Riwayat Rumah Sakit' => $item->riwayat_rumah_sakit ,
+                'Bukti Riwayat' => ($item->riwayat_rumah_sakit  == 'Pernah' ?  ENV('ASSET_URL') .'/uploads/bukti_riwayat_rumah_sakit/'.$item->bukti_riwayat : ''),
                 'Pendidikan' => $item->pendidikanNm,
                 'Agama' => $item->agamaNm,
                 'Tgl Masuk' => $item->tanggal_masuk,
@@ -126,6 +129,8 @@ class MonthlyDataSheet implements FromCollection, WithTitle, WithHeadings, WithS
             'Jenis Kelamin',
             'Umur',
             'Status',
+            'Riwayat Rumah Sakit',
+            'Bukti Riwayat',
             'Pendidikan',
             'Agama',
             'Tgl Masuk',
@@ -137,6 +142,7 @@ class MonthlyDataSheet implements FromCollection, WithTitle, WithHeadings, WithS
             'Klasifikasi',
             'Foto',
             'Lokasi',
+            'Wisma',
             'Sumber',
             'Link Berkas',
             // 'Update By',
