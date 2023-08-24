@@ -101,9 +101,9 @@
     $selectedKedoya = (str_replace("Admin ", "", auth()->user()->fullname) == "Kedoya" ? "selected" : "");
     $selectedCengkareng = ((str_replace("Admin ", "", auth()->user()->fullname)) == "Cengkareng" ? "selected" : "");
 
-    $selectedPernah =(($data->riwayat_rumah_sakit ?? '') == "Pernah" ? "selected" : "");
+    $selectedPernah = (($data->riwayat_rumah_sakit ?? '') == "Pernah" ? "selected" : "");
     $selectedTidakPernah = (($data->riwayat_rumah_sakit ?? '') == "Tidak Pernah" ? "selected" : "");
-    
+
 
     $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/user.png";
     $default = "";
@@ -130,14 +130,24 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="nama"><span class="text-danger">*</span> Riwayat Rumah Sakit</label>
-                    <select name="riwayat_rumah_sakit" id="riwayat_rumah_sakit" class="form-control" required onchange="riwayatSakit(this)">
-                        <option value="">Pilih Riwayat</option>
-                        <option value="Pernah" {{ $selectedPernah }}>Pernah</option>
-                        <option value="Tidak Pernah" {{ $selectedTidakPernah }}>Tidak Pernah</option>
-                    </select>
-                </div>               
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nama">Riwayat Rumah Sakit</label>
+                            <select name="riwayat_rumah_sakit" id="riwayat_rumah_sakit" class="form-control" onchange="riwayatSakit(this)">
+                                <option value="">Pilih Riwayat</option>
+                                <option value="Pernah" {{ $selectedPernah }}>Pernah</option>
+                                <option value="Tidak Pernah" {{ $selectedTidakPernah }}>Tidak Pernah</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group d-none" id="uploadBuktiRiwayat">
+                            <label for="nama">Upload Bukti Riwayat</label>
+                            <input type="file" class="form-control" name="buktiRiwayat" id="buktiRiwayat">
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="Klasifikasi"><span class="text-danger">*</span>Klasifikasi</label>
@@ -162,7 +172,7 @@
                         <option value="{{ $ds->data_id }}" {{ ( ($data->status ?? '') == $ds->data_id ? 'selected' : ''  ) }} class="text-dark">{{ $ds->data_name }}</option>
                         @endforeach
                     </select>
-                </div>                
+                </div>
 
             </div>
             <div class="col-md-6 col-12">
@@ -171,11 +181,6 @@
                     <input type="text" class="form-control" value="{{ $data->link_berkas ?? '' }}" id="link_berkas" name="link_berkas">
                 </div>
 
-                <div class="form-group d-none" id="uploadBuktiRiwayat">
-                    <label for="nama">Upload Bukti Riwayat</label>
-                    <input type="file" class="form-control" name="buktiRiwayat" id="buktiRiwayat">
-                </div>                
-                
                 <div class="form-group">
                     <label for="Operator">Operator</label>
                     <input type="text" class="form-control" id="updated_by" name="updated_by" value="{{ auth()->user()->fullname }}" readonly>
@@ -183,7 +188,7 @@
                 <div class="form-group">
                     <label for="Wisma">Wisma</label>
                     <input type="text" class="form-control" id="wisma" name="wisma" value="{{ $data->wisma ?? '' }}">
-                </div>  
+                </div>
 
                 <div class="form-group">
                     <label for="Keterangan"><span class="text-danger">*</span> Keterangan</label><br>
@@ -237,11 +242,11 @@
         }
     }
 
-    function riwayatSakit(e){
+    function riwayatSakit(e) {
         var data = $(e).val()
-        if ( data == 'Pernah' ) {
+        if (data == 'Pernah') {
             $('#uploadBuktiRiwayat').removeClass('d-none')
-        }else{
+        } else {
             $('#uploadBuktiRiwayat').addClass('d-none')
         }
     }
