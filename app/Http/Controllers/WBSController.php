@@ -145,7 +145,7 @@ class WBSController extends Controller
 
             $filePath = public_path('/uploads/foto_WBS/');
             $img = Image::make($image->path());
-            $img->resize(97.5, 130, function ($const) {
+            $img->resize(720,1080, function ($const) {
                 $const->aspectRatio();
             })->save($filePath . '/' . $input['foto']);
         } else {
