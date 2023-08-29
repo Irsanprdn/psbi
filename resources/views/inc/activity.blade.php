@@ -1,4 +1,4 @@
-<div id="activity" class="services-area">
+<div id="activity" class="services-area {{ ( count($dataActivity) > 0 ? '' : 'd-none' ) }}">
     <div class="container py-5">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -10,13 +10,12 @@
 
         <!-- Swiper -->
         <div class="d-flex justify-content-center align-items-center" id="swipers">
-
-
             <div class="container">
                 <div class="swiper">
                     <div class="swiper-wrapper">
+                        @foreach($dataActivity as $dact)
                         <div class="swiper-slide swiper-slide-active">
-                            <img src="{{ asset('assets') }}/compro/img/swiper/sw1.png" alt="">
+                            <img src="{{ ENV('ASSET_URL') }}/uploads/activity/{{$dact->image}}" alt="Image Activity">
                             <!-- <div class="info">
                                         <h4 class="name">
                                             Giratina
@@ -26,28 +25,8 @@
                                         </span>
                                     </div> -->
                         </div>
-                        <div class="swiper-slide swiper-slide-active">
-                            <img src="{{ asset('assets') }}/compro/img/swiper/sw2.png" alt="">
-                            <!-- <div class="info">
-                                        <h4 class="name">
-                                            Rayquaza
-                                        </h4>
-                                        <span class="type">
-                                            Dragon, Flying
-                                        </span>
-                                    </div> -->
-                        </div>
-                        <div class="swiper-slide swiper-slide-active">
-                            <img src="{{ asset('assets') }}/compro/img/swiper/sw3.png" alt="">
-                            <!-- <div class="info">
-                                        <h4 class="name">
-                                            Kyrum
-                                        </h4>
-                                        <span class="type">
-                                            Dragon, Ice
-                                        </span>
-                                    </div> -->
-                        </div>
+                        @endforeach
+                        
                     </div>
                     <!-- If we need pagination -->
                     <!-- <div class="swiper-pagination"></div> -->
