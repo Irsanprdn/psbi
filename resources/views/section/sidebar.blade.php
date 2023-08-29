@@ -40,7 +40,9 @@
                 <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('contact') }}" aria-expanded="false">
                         <i class="me-3 bi bi-geo-alt" aria-hidden="true"></i><span class="hide-menu">Contact</span></a></li>
-                <li class="sidebar-item"> 
+                        <li class="sidebar-item"> 
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('wbs_data.input', 0) }}" aria-expanded="false"><i class="me-3 bi bi-people" aria-hidden="true"></i><span class="hide-menu">Tambah WBS Data</span></a></li>
+                        <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('wbs_data') }}" aria-expanded="false"><i class="me-3 bi bi-people" aria-hidden="true"></i><span class="hide-menu">WBS Data</span></a></li>
                 <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('master_data') }}" aria-expanded="false"><i class="me-3 bi bi-database" aria-hidden="true"></i><span class="hide-menu">Master Data</span></a></li>
