@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 <div class="logo mb-2">
                     <a href="{{ route('compro') }}"><img src="{{ asset('assets') }}/compro/img/logonavbar.png" alt="" class="img-fluid"></a>
-                </div>
+                </div> 
             </div>
             <div class="col-md-9">
                 <nav id="navbar" class="navbar">
