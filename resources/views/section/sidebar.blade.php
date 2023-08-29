@@ -30,27 +30,20 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('about') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('about') }}" aria-expanded="false">                    
                         <i class="me-3 bi bi-info-circle" aria-hidden="true"></i><span class="hide-menu">About Us</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('activity') }}" aria-expanded="false">
-                        <i class="me-3 bi bi-activity" aria-hidden="true"></i><span class="hide-menu">Activity</span></a>
-                </li>
-                <li class="sidebar-item">
+                        <i class="me-3 bi bi-activity" aria-hidden="true"></i><span class="hide-menu">Activity</span></a></li>
+                <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('contact') }}" aria-expanded="false">
-                        <i class="me-3 bi bi-geo-alt" aria-hidden="true"></i><span class="hide-menu">Contact</span></a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('wbs_data') }}" aria-expanded="false"><i class="me-3 bi bi-people" aria-hidden="true"></i><span class="hide-menu">WBS Data</span></a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('wbs_data.input', 0) }}" aria-expanded="false"><i class="me-3 bi bi-people" aria-hidden="true"></i><span class="hide-menu">Tambah Data WBS</span></a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('master_data') }}" aria-expanded="false"><i class="me-3 bi bi-database" aria-hidden="true"></i><span class="hide-menu">Master Data</span></a>
-                </li>
+                        <i class="me-3 bi bi-geo-alt" aria-hidden="true"></i><span class="hide-menu">Contact</span></a></li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('wbs_data') }}" aria-expanded="false"><i class="me-3 bi bi-people" aria-hidden="true"></i><span class="hide-menu">WBS Data</span></a></li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('master_data') }}" aria-expanded="false"><i class="me-3 bi bi-database" aria-hidden="true"></i><span class="hide-menu">Master Data</span></a></li>
                 <li class="text-center p-20 upgrade-btn mt-5">
                     <a href="{{ route('logout') }}" class="btn btn-danger text-white mt-4">Logout</a>
                 </li>

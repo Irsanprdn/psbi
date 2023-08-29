@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/login/fonts/icomoon/style.css">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=2.2" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=1.9" rel="stylesheet">
 </head>
 
 <body>
@@ -61,18 +61,6 @@
     <!-- ======= Footer ======= -->
     @include('inc.footer')
     <!-- End  Footer -->
-
-    <div class="modal fade" id="modalPopUpImage" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" style="width: auto !important;">
-            <div class="modal-content" style="background-color: transparent; border:none;">
-                <div class="modal-body">
-                    <div class="d-flex justify-content-center">
-                        <img src="" alt="Pop Up Image" id="popUpImage" width="300">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -126,6 +114,12 @@
             }
         });
 
+        function menujuPencarian() {
+            $('#preloader2').addClass('d-none')
+            $('#konten-satu').addClass('d-none')
+            $('#konten-dua').removeClass('d-none')
+        }
+
         function menujuMenu() {
             $('#konten-dua').addClass('d-none')
             $('#konten-satu').removeClass('d-none')
@@ -147,8 +141,6 @@
 
         function typeToSearch() {
 
-            $('#konten-satu').addClass('d-none')
-            $('#konten-dua').removeClass('d-none')
             $('#preloader2').removeClass('d-none')
             var status = $('#statusval').val()
             var hj = $('#hjval').val()
@@ -170,7 +162,7 @@
                 processData: false,
                 data: formData,
                 success: function(response) {
-                    
+                    console.log(response)
                     if (response.code == 200) {
                         var row = response.data
 
@@ -195,12 +187,12 @@
                             }
 
 
-                            
+                            console.log(foto)
                             html += ' <div class="card shadow my-3">' +
                                 '<div class="card-body" style="padding: 2rem;">' +
                                 '<div class="row">' +
                                 '<div class="col-md-2">' +
-                                '<img src="' + foto + '" alt="Foto ' + (value['nama'] ?? '') + '" class="rounded img-pencarian cursor-pointer" onclick="popUpImage(this)">' +
+                                '<img src="' + foto + '" alt="Foto ' + (value['nama'] ?? '') + '" class="rounded img-pencarian">' +
                                 '</div>' +
                                 '<div class="col-md-6">' +
                                 '<p class="text-base font-weight-bold mb-0"> ' + (value['nama'] ?? '') + ' </p>' +
@@ -267,9 +259,9 @@
                                 '<div class="accordion " id="accordion' + value['nomor_panti'] + '">' +
                                 '<div class="accordion-item mt-3">' +
                                 '<p class="accordion-header custom-mobile-accordion-2 bg-secondary text-base text-center mb-0" id="heading' + value['nomor_panti'] + '" >' +
-                                '<h6 class="px-2 py-1 mb-0 text-center"  style="font-size:13px;">' +
-                                ' Keterangan Tambahan ' +
-                                '</h6>' +
+                                    '<h6 class="px-2 py-1 mb-0 text-center"  style="font-size:13px;">' +
+                                    ' Keterangan Tambahan ' +
+                                    '</h6>' +
                                 '</p>' +
                                 '<div id="collapse' + value['nomor_panti'] + '" class="accordion-collapse collapse show bg-light" aria-labelledby="heading' + value['nomor_panti'] + '" data-bs-parent="#accordion' + value['nomor_panti'] + '" style="font-size:11px; font-weight:bold;">' +
                                 '<div class="accordion-body">' +
@@ -312,7 +304,7 @@
                     }
 
                     $('#penampung-pencarian').html(html).promise().done(function() {
-                        $('#preloader2').addClass('d-none')
+                        menujuPencarian()
                     });
                 }
             });
@@ -326,12 +318,6 @@
         function showaAnotherLink2(e) {
             $('#doubleWA').addClass('d-none')
             $('#penampungWA').removeClass('d-none')
-        }
-
-        function popUpImage(e) {
-            var src = $(e).attr('src')
-            $('#modalPopUpImage').modal('show')
-            $('#popUpImage').attr('src', src)
         }
     </script>
 </body>
