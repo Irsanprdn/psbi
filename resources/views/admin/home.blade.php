@@ -156,7 +156,7 @@
             processData: false,
             data: formData,
             success: function(response) {
-                // console.log(response)
+                console.log(response)
                 var row = response.data
                 if (response.code == 200) {
                     var file = "{{ENV('ASSET_URL')}}" + "/uploads/slider/" + row.slide
@@ -219,7 +219,7 @@
             processData: false,
             data: formData,
             success: function(response) {
-                // console.log(response)
+                console.log(response)
                 if (response.code == 200) {
                     alert('Berhasil menyimpan')
                 } else {

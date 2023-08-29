@@ -144,7 +144,7 @@
             processData: false,
             data: formData,
             success: function(response) {
-                // console.log(response)
+                console.log(response)
                 if (response.code == 200) {
                     var row = response.data[0]
 
