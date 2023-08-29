@@ -102,7 +102,7 @@
             processData: false,
             data: formData,
             success: function(response) {
-                console.log(response)
+                
                 var row = response.data
                 if (response.code == 200) {
                     var file = "{{ENV('ASSET_URL')}}" + "/uploads/activity/" + row.image

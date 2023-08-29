@@ -108,7 +108,7 @@
                         <a data-url="{{ route('wbs_data.delete', $d->nomor_panti) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger m-1 text-light" title="Hapus"><i class="bi bi-trash"></i> </button>
                     </td>
                     <td align="center">
-                        <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;">
+                        <img src="{{ $foto }}" alt="Foto {{ $d->nama }}" style="width: 97.5px;height:130px;" onclick="popUpImage(this)" class="cursor-pointer">
                     </td>
                     <td> {{$d->nama}} </td>
                     <td> {{$d->jkNm}} </td>
@@ -150,6 +150,17 @@
     <a href="{{ asset('assets') }}/templet.xlsx" class="btn btn-sm btn-primary bg-base"><i class="bi bi-file-excel-o"></i> Download Template</a>
 </div>
 
+<div class="modal fade" id="modalPopUpImage" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: auto !important;">
+        <div class="modal-content" style="background-color: transparent; border:none;">
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <img src="" alt="Pop Up Image" id="popUpImage" width="200">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true">
@@ -221,6 +232,12 @@
             return;
         }
         window.open(url, '_blank');
+    }
+
+    function popUpImage(e) {
+        var src = $(e).attr('src')
+        $('#modalPopUpImage').modal('show')
+        $('#popUpImage').attr('src', src)
     }
 </script>
 @endsection
